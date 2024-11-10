@@ -9,9 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Welcome to ABC Cinema</title>
+        <%@include file="components/allCdn.jsp"%>
     </head>
     <body>
+        <%@include file="components/navbar.jsp"%>
         <h1>Hello World!</h1>
     </body>
 </html>
