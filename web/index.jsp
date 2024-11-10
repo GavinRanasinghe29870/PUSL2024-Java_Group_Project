@@ -15,5 +15,6 @@
     <body>
         <%@include file="components/navbar.jsp"%>
         <h1>Hello World!</h1>
+        <%@include file="components/footer.jsp"%>
     </body>
 </html>

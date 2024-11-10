@@ -20,6 +20,53 @@
         .navbar-nav .nav-link:hover {
             color: #FFF282;
         }
+        .footerItem {
+            color: black;
+        }
+
+        .circle {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            /* Change this to your desired background color */
+            text-align: center;
+            color: #000;
+            /* Change this to your desired icon color */
+            margin: 5px;
+        }
+
+        .footer-section {
+            background-color: #D4AF37;
+            padding: 40px 0;
+        }
+
+        .footer-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-item {
+            color: #000000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-item:hover {
+            color: #FFF282;
+        }
+
+        .social .footer-item {
+            font-size: 20px;
+            margin: 0 5px;
+            color: black;
+        }
+
+        .social .footer-item:hover {
+            color: #D4AF37;
+        }
 
         @media only screen and (max-width: 940px) {
             .navbar {
