@@ -1,0 +1,18 @@
+.custom-box{
+    background-color: #D4AF37;
+    margin-top: 125px;
+    margin-bottom: 20px;
+    height: auto;
+    width: auto !important;
+    margin-right: 30px !important;
+    margin-left: 30px !important;
+    
+}
+
+.time-box{
+    width:110px !important;
+}
+
+.time-text{
+    text-align: center;
+}
