@@ -1,3 +1,39 @@
+.Custom-title {
+    font-size: 36px;
+    font-family: poppins;
+    font-weight: bold;
+    background-color: #000000;
+    padding-left: 25px;
+    position: relative;
+    color: #000000;
+    -webkit-text-stroke: 0.3vw #000000;
+    text-transform: uppercase;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.Custom-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 20px;
+    color: #D4AF37;
+    -webkit-text-stroke: 0vw #0D0C0C;
+    white-space: nowrap;
+    overflow: hidden;
+    clip-path: inset(0 100% 0 0);
+    animation: animateText 2s linear forwards infinite;
+}
+
+@keyframes animateText {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
 .custom-box{
     background-color: #D4AF37;
     margin-top: 125px;
@@ -6,13 +42,45 @@
     width: auto !important;
     margin-right: 30px !important;
     margin-left: 30px !important;
+    padding-bottom: 40px;
+    padding-top: 40px;
     
 }
 
 .time-box{
-    width:110px !important;
+    margin-top: 90px;
+    justify-content: flex-start; /* Aligns all items to the left */
+    gap: 10px;
 }
 
 .time-text{
-    text-align: center;
+    background-color: #FFF282;
+    width: 110px;
+    height: auto;
+    justify-content: flex-start;
 }
+
+.box:hover {
+            z-index: 5;
+            transform: translateY(-10px);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+@keyframes appear{
+    from{
+        opacity: 0;
+        //clip-path: inset(100% 100% 0 0);
+        transform: translateX(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+        //clip-path: inset(0 0 0 0);
+        
+    }
+        }
+        .box{
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+      
