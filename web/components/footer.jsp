@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row mb-4">
             <div class="col-12 col-md-2 d-flex flex-column align-items-center justify-content-center mb-4 mb-md-0">
-                <img src="images/ABC President 2016.svg" width="200px" alt="logo" class="img-fluid mb-3">
+                <img src="Images/footerlogo.png" width="200px" alt="logo" class="img-fluid mb-3">
                 <p class="mb-1"><i class="fa-solid fa-phone"></i> (011) 456-7890</p>
                 <p><i class="fa-solid fa-envelope"></i> info@abc.lk</p>
             </div>
@@ -37,6 +37,16 @@
                         <div class="mb-3">
                             <textarea class="form-control" id="message" rows="4"
                                       placeholder="Your message..."></textarea>
+                        </div>
+                        <div class=" d-flex">
+                            <h5 class="rate">Rate Us: </h5>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
                         </div>
                         <div class="mb-3 text-end">
                             <button type="submit" class="btn btn-dark btn-lg">Submit</button>

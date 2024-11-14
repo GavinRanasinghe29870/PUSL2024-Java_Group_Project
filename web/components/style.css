@@ -1,87 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0D0C0C;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0D0C0C;
+}
 
-        .navbar {
-            background-color: black;
-            height: 90px;
-            font-size: 18px;
-        }
+.navbar {
+    background-color: black;
+    height: 90px;
+    font-size: 18px;
+}
 
-        .navbar-nav .nav-link {
-            color: #D4AF37;
-        }
+.navbar-nav .nav-link {
+    color: #D4AF37;
+}
 
-        .navbar-nav .nav-link.active,
-        .navbar-nav .nav-link:focus,
-        .navbar-nav .nav-link:hover {
-            color: #FFF282;
-        }
-        .footerItem {
-            color: black;
-        }
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover {
+    color: #FFF282;
+}
+.btn-log {
+    background-color: #D4AF37;
+    color: #000000;
+}
 
-        .circle {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 50%;
-            background-color: #f0f0f0;
-            /* Change this to your desired background color */
-            text-align: center;
-            color: #000;
-            /* Change this to your desired icon color */
-            margin: 5px;
-        }
+.btn-log:hover {
+    background-color: #FFF282;
+    color: #000000;
+}
+.footerItem {
+    color: black;
+}
 
-        .footer-section {
-            background-color: #D4AF37;
-            padding: 40px 0;
-        }
+.circle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    text-align: center;
+    color: #000;
+    margin: 5px;
+}
 
-        .footer-title {
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+.footer-section {
+    background-color: #D4AF37;
+    padding: 40px 0;
+}
 
-        .footer-item {
-            color: #000000;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.footer-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-        .footer-item:hover {
-            color: #FFF282;
-        }
+.footer-item {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-        .social .footer-item {
-            font-size: 20px;
-            margin: 0 5px;
-            color: black;
-        }
+.footer-item:hover {
+    color: #FFF282;
+}
 
-        .social .footer-item:hover {
-            color: #D4AF37;
-        }
+.social .footer-item {
+    font-size: 20px;
+    margin: 0 5px;
+    color: black;
+}
 
-        @media only screen and (max-width: 940px) {
-            .navbar {
-                background: #000 !important;
-                color: #fff !important;
-                text-align: center;
-                top: 0;
-            }
+.social .footer-item:hover {
+    color: #D4AF37;
+}
 
-            .navbar-nav .nav-item {
-                background: #000;
-            }
+@media only screen and (max-width: 940px) {
+    .navbar {
+        background: #000 !important;
+        color: #fff !important;
+        text-align: center;
+        top: 0;
+    }
 
-            .navbar-collapse {
-                background-color: black;
-                padding-bottom: 40px;
-            }
-        }
+    .navbar-nav .nav-item {
+        background: #000;
+    }
+
+    .navbar-collapse {
+        background-color: black;
+        padding-bottom: 40px;
+    }
+}

@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="images/ABC President 2016.svg" alt="" width="100px" class="d-inline-block align-text-top">
+            <img src="Images/navbarlogo.png" alt="" width="100px" class="d-inline-block align-text-top">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -26,7 +26,18 @@
                     <a class="nav-link" href="#">About Us</a>
                 </li>
             </ul>
-            <a href="login.html" class="btn btn-outline-success btn-log">Login | Signup</a>
+            <a href="login.html" class="btn btn-log">Sign in | Sign up</a>
+            <style>
+                .btn-log {
+                    background-color: #D4AF37;
+                    color: #000000;
+                }
+
+                .btn-log:hover {
+                    background-color: #FFF282;
+                    color: #000000;
+                }
+            </style>
         </div>
     </div>
 </nav>
