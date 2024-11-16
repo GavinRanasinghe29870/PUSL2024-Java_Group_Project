@@ -11,29 +11,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Page</title>
+       <%@include file = "components/navbar.jsp" %>
+        <%@include file = "components/allCdn.jsp" %>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #333;
-            color: #fff;
-            background-color:#BF873E;
+            background-color: #BF873E;
+            color: black;
+           
         }
         .container {
    
-            margin: auto;
-            background-color: #b8860b;
             padding: 80px;
-            border-radius: 10px;
+            border-radius: 50px;
+            border: black;
+            
         }
         .content {
             display: flex;
             justify-content: space-between;
+            border: 2px solid black;
+            
         }
         .box {
-            width: 45%;
+            width: 50%;
             padding: 20px;
-            background-color: #000;
+            background-color: #D4AF37;
             border-radius: 0px;
+            
+            
         }
         
         .box input, .box select, .box textarea {
@@ -47,72 +53,125 @@
             width: auto;
         }
         .box button {
-            width: 30%;
+            width: 20%;
             padding: 10px;
             margin: 10px 1%;
             border: none;
             border-radius: 5px;
-            background-color: #d4af37;
-            color: #000;
+            background-color: #000;
+            color:#ffffff;
             cursor: pointer;
+             justify-content: center;
         }
         .box button:hover {
             background-color: #c0a16b;
+             justify-content: center;
         }
-       .button-container button { width: 38%; 
+       .button-container button { width: 10%; 
                                   padding: 10px;
-                                  margin: 10px 1%; 
+                                 
                                   border: none; 
                                   border-radius: 5px; 
-                                  background-color: #d4af37;/* Gold color */
-                                  color: #000; /* Black text */
+                                  background-color: #D4AF37;
+                                  color: #000;
                                   cursor: pointer; 
-                                 justify-content: center;
+                                gap: 20px; 
+                                margin-top: 20px; 
+                                justify-content: center;
+                                align-items: center;
+    
+                                
+ 
        }
+      #myTextBox {
+    width: 90%; /* Match the input fields' width with the parent container */
+    height: 30px;
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+}
+
+  
+  
+
+#back-button, #paynow-button {
+    padding: 10px 20px;
+    background-color: #d4a420; /* Button background color */
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+#back-button:hover, #paynow-button:hover {
+    background-color: #b48818; /* Hover color */
+}
+
+      
+       
         
     </style>
 </head>
 <body>
+   
     <div class="container">
+       
         <div class="content">
             <div class="box">
                 <h2>Purchase Summary</h2>
-                <p>Adult Ticket: LKR 1000.00</p>
+                <hr style="border: 1px solid black;">
+
+                <p>Adult Ticket:   LKR 1000.00</p>
                 <p>Child Ticket: LKR 00.00</p>
                 <p>Total Amount: LKR 00.00</p>
+                <br>
+               <hr style="border: 1px solid black;">
+
                 <h3>Payment Method</h3>
                 <button>Add Card</button>
-                <br>
+              
                 <img src="mastercard." alt="MasterCard">
-                <img src="visa.png" alt="Visa">
+                <img src="Images/Despicable ME .jpg" alt="Visa">
             </div>
+              <hr style="border: 1px solid black;">
+
             <div class="box">
+                <div class="text-container">
                 <h2>Your Details</h2> <br>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+                <hr style="border: 1px solid black;">
+
+                <label for="name">Name:</label><br>
+                <input type="text" style="color: black;" id="myTextBox" name="name">
+                
                  <br>
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone">
+                <label for="phone">Phone Number:</label><br>
+                <input type="text" id="myTextBox" name="phone">
                  <br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <label for="email">Email:</label><br>
+                <input type="email" id="myTextBox" name="email">
                  <br>
+                 <hr style="border: 1px solid black;">
+
                 <input type="checkbox" id="terms" name="terms">
                
                 <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
                 <div>
-                   
+                   <div class="separator"></div>
+                </div>
                 </div>
                 
                 
             </div>
         </div>
-        <div class="button-container"> 
-            <button>Back</button> 
-            <button>Pay Now</button> 
+        <div class="mb-3 text-center">
+        <div class="button-container">
+    <button id="back-button">Back</button>
+    <button id="paynow-button">Pay Now</button>
+</div>
         </div>
     </div>
-     
+    </div>
+    </div>
+     <%@include file="components/footer.jsp"%>
 </body>
 </html>
 
