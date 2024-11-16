@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to ABC Cinema</title>
         <%@include file="components/allCdn.jsp"%>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css" /> 
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/index.css" /> 
     </head>
     <body>
         <%@include file="components/navbar.jsp"%>
