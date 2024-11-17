@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="net.abccinema.connection.DbCon" %>
+<%@page import="net.abccinema.model.*" %>
+<%@page import="net.abccinema.servlet.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,7 +59,7 @@
                     <li><a class="dropdown-item" href="#">Something else here 3</a></li> 
                 </ul> 
             </div> 
-        </div>
+        </div>        
 
         <div class="custom-box box container-fluid" id="hoverBox">
             <h1>Despicable ME 4</h1>
@@ -83,45 +86,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="custom-box box container-fluid">
-            <h1>Despicable ME 4</h1>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <p class="mt-5"> Gru, Lucy, Margo, Edith, and Agnes welcome a new 
-                            member to the family, Gru Jr., who is intent on 
-                            tormenting his dad. Gru faces a new nemesis in 
-                            Maxime Le Mal and his girlfriend Valentina, and the 
-                            family is forced to go on the run.
-                        </p>
-
-                        <div class="time-box d-flex ">
-                            <div class="container-fluid">
-                                <button class="time-text"> 10.30 a.m</button>
-                            </div>
-                            <div class="container-fluid">
-                                <button class="time-text"> 10.30 a.m</button>
-                            </div>
-                            <div class="container-fluid">
-                                <button class="time-text"> 10.30 a.m</button>
-                            </div>
-                            <div class="container-fluid">
-                                <button class="time-text"> 10.30 a.m</button>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col">
-                        <img src="Images/Despicable ME 4.jpg" width="width" height="height" alt="alt"/>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
 
 
         <script>

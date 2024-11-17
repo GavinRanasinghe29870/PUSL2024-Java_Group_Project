@@ -1,4 +1,4 @@
-package net.abccinema.module;
+package net.abccinema.model;
 
 /**
  *

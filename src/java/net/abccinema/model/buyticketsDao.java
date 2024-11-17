@@ -1,4 +1,4 @@
-package net.abccinema.module;
+package net.abccinema.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
