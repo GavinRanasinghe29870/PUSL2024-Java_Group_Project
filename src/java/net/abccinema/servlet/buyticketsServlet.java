@@ -19,10 +19,10 @@ public class buyticketsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        buyticketsDao buyticketsDao = new buyticketsDao();
-        List<buytickets> movies = buyticketsDao.getMovies();
+        /*buyticketsDao buyticketsDao = new buyticketsDao();*/
+        /*List<buytickets> movies = buyticketsDao.getMovies();
         
         request.setAttribute("movies", movies);
-        request.getRequestDispatcher("BuyTickets.jsp").forward(request, response);
-    }
+        request.getRequestDispatcher("BuyTickets.jsp").forward(request, response);*/
+        }
 }

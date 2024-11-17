@@ -18,7 +18,7 @@
     
         <body style="background-color: #0D0C0C ">
         <hr style="border-top: 3px solid #D4AF37;">
-        <div style="background-color: #000000; padding-top:20px;">
+        <div style="background-color: #000000; padding-top:2px;">
            
             <!-- About Us -->
         <p class="Custom-title" data-text="About Us">About Us</p>
@@ -44,7 +44,30 @@
         
         <hr style="border-top: 3px solid #D4AF37;">
         
+        <!-- Our Vision -->
    
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="subBox">
+                    <h4>VISION</h4>
+                    
+                    <div class="text">
+                        <p>To be the first holistic premium amusement firm in<br> 
+                            Sri Lanka which pushes the boundaries of the sector<br> 
+                            by offering clients across all backgrounds creative<br> 
+                           remedies.
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        <section class="vision">
+            <div class="vision-text">
+                <p>To be the first holistic premium amusement firm in Sri Lanka<br> 
+                    which pushes the boundaries of the sector by offering clients<br> 
+                   across all backgrounds creative remedies.
+                </p>
+            </div>
+        </section>
         
        
             
