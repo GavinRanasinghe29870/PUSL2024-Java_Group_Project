@@ -26,27 +26,25 @@
         <hr style="border-top: 3px solid #D4AF37;">
         
         <!-- About ABC Cinema -->   
-        <div class="container">
-            <h2 class="title">ABOUT ABC CINEMAS</h2>
-            <div class="about-content">
-                <div class="image">
-                    <img src ="Images/Aboutus.jpeg"> 
-                </div>
+        <section class="aboutUs">
+            <div class="about-image">
+                <img src="Images/about.jpg">
+                
             </div>
-                
-                <div class="content">
-                    <p>Committed to elevating the standard of Sri Lankan 
-                       cinema, ABC strives to provide our guests the flair of 
-                       vintage movie theaters along with cutting-edge luxury 
-                       and modernity that meet the highest global standards.</p>
-                
-                
-                </div>
-          
-        </div>
-    
+            
+            <div class="about-text">
+                <h3>ABOUT ABC CINEMAS</h3>
+                <p>Committed to elevating the standard of Sri Lankan cinema,<br> 
+                   ABC strives to provide our guests the flair of vintage movie<br> 
+                   theaters along with cutting-edge luxury and modernity that<br> 
+                   meet the highest global standards.
+                </p>
+            </div>
+        </section>
         
-        </div>
+        <hr style="border-top: 3px solid #D4AF37;">
+        
+   
         
        
             
