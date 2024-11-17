@@ -15,7 +15,7 @@
     </head>
     <body>
         <%@include file="components/navbar.jsp"%>
-
+        
         <!-- Carousel -->
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">

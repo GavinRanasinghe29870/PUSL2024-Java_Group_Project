@@ -18,7 +18,7 @@
     <body style="background-color: #0D0C0C ">
         <hr style="border-top: 3px solid #D4AF37;">
         <div style="background-color: #000000; padding-top:20px;">
-        <p class="Custom-title" data-text="Buy Tickets">Buy Tickets</p>
+            <p class="Custom-title" data-text="Buy Tickets">Buy Tickets</p>
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
 
@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="custom-box box container-fluid">
             <h1>Despicable ME 4</h1>
             <div class="container">
@@ -95,56 +95,56 @@
                             Maxime Le Mal and his girlfriend Valentina, and the 
                             family is forced to go on the run.
                         </p>
-                        
+
                         <div class="time-box d-flex ">
                             <div class="container-fluid">
-                                    <button class="time-text"> 10.30 a.m</button>
+                                <button class="time-text"> 10.30 a.m</button>
                             </div>
                             <div class="container-fluid">
-                                    <button class="time-text"> 10.30 a.m</button>
+                                <button class="time-text"> 10.30 a.m</button>
                             </div>
                             <div class="container-fluid">
-                                    <button class="time-text"> 10.30 a.m</button>
+                                <button class="time-text"> 10.30 a.m</button>
                             </div>
                             <div class="container-fluid">
-                                    <button class="time-text"> 10.30 a.m</button>
+                                <button class="time-text"> 10.30 a.m</button>
                             </div>
                         </div>
-                        
-                        
+
+
                     </div>
                     <div class="col">
                         <img src="Images/Despicable ME 4.jpg" width="width" height="height" alt="alt"/>
                     </div>
                 </div>
-                        
+
             </div>
         </div>
-        
+
 
 
 
         <script>
-    const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
-    
-    dropdownButtons.forEach(button => {
-        const originalText = button.textContent;
+            const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
 
-        const dropdownMenu = button.nextElementSibling;
-        const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
+            dropdownButtons.forEach(button => {
+                const originalText = button.textContent;
 
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', () => {
-                button.textContent = item.textContent;
+                const dropdownMenu = button.nextElementSibling;
+                const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
+
+                dropdownItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        button.textContent = item.textContent;
+                    });
+                });
+
+                button.addEventListener('click', () => {
+
+                    button.textContent = originalText;
+                });
             });
-        });
-
-        button.addEventListener('click', () => {
-            
-            button.textContent = originalText;
-        });
-    });
-</script>
+        </script>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
