@@ -4,18 +4,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 /* 
     Created on : Nov 16, 2024, 3:17:13 PM
-    Author     : USER
+    Author     : Vihanga
 */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
 .Custom-title {
     font-size: 36px;
     font-family: poppins;
-    font-weight: bold;
+    
     background-color: #000000;
     padding-left: 25px;
     position: relative;
     color: #000000;
     -webkit-text-stroke: 0.3vw #000000;
-    text-transform: uppercase;
+   
     display: inline-block;
     overflow: hidden;
 }
@@ -32,26 +40,57 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
    
 }
 
-
-.heading{
-    text-align: left;
-    color: #D4AF37;
-    text-transform: uppercase;
-    padding-bottom: 3.5rem;
-    font-size: 4rem;
+.container{
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
 }
-
-.heading span{
-    color: #D4AF37;
-    text-transform: uppercase;
+.title{
+   text-align: center;
+   font-size: 45px;
+   font-weight: bold;
+   margin-bottom: 70px;
+   color: #D4AF37;
 }
-
-.About .row{
+.about-content{
     display: flex;
-    align-items: center;
-    background-color: #000000;
     flex-wrap: wrap;
+    align-items: center;
+}
+.image img{
+    width: 70%;
+    transition: transform 0.3s ease;
     
+}
+.image:hover img{
+    transform: scale(1.1);
+}
+
+.image{
+    flex: 1;
+    margin-right:20px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.content{
+    flex: 1;
+    margin-left: 20px;
     
-    
+}
+.content p{
+    font-size: 17px;
+    line-height: 1.6;
+}
+@media screen and (max-width:768px){
+    .about-content{
+        flex-direction: column;
+    }
+    .image, .content{
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .title{
+        font-size: 38px;
+        margin-bottom: 50px;
+    }
 }
