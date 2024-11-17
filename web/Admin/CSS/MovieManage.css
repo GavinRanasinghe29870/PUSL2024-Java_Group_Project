@@ -1,0 +1,138 @@
+body {
+    background-color: #0D0C0C;
+    color: #ffffff;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-heading {
+    color: #d4a017;
+}
+
+.table-container {
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.table {
+    border-collapse: collapse;
+    max-width: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.table th,
+.table td {
+    border: 2px solid #d4a017;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.table thead th {
+    background-color: #d4a017;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table tbody tr {
+    background-color: #333;
+    color: #fff;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #444;
+}
+
+.table td img {
+    max-width: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.table .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.modal-body {
+    background-color: #444;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content {
+    padding: 30px;
+    background-color: #333;
+    color: white;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.modal-content h2 {
+    color: #d4a017;
+    text-align: center;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    border: 2px solid #d4a017;
+    background-color: #444;
+    color: white;
+}
+
+.form-group button {
+    background-color: #d4a017;
+    color: white;
+    font-weight: bold;
+}
+
+.form-group button:hover {
+    background-color: #b38b13;
+}
+
+.modal-content .btn-secondary {
+    background-color: gray;
+    border-color: gray;
+    color: white;
+}
+
+.modal-content .btn-secondary:hover {
+    background-color: #5a5a5a;
+    border-color: #5a5a5a;
+}
+.form-group{
+    margin-bottom: 20px;
+}
+.form-group .time-slot-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-group .time-slot-group .form-check {
+    background-color: #333;
+    border: 1px solid #d4a017;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 40px;
+    flex: 1 1 calc(50% - 20px);
+    display: flex;
+    align-items: center;
+}
+
+.form-group .time-slot-group .form-check input {
+    margin-right: 10px;
+}
