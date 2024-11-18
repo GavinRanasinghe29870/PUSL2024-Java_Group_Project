@@ -7,13 +7,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Vihanga
 */
 
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: poppins;
-}
 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: poppins;
+    
+}
 .Custom-title {
     font-size: 36px;
     font-family: poppins;
@@ -31,7 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .Custom-title::before {
     content: attr(data-text);
     position: absolute;
-    top: 0;
+    top: 2px;
     left: 20px;
     color: #D4AF37;
     -webkit-text-stroke: 0vw #0D0C0C;
@@ -39,58 +44,85 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     overflow: hidden;
    
 }
+.aboutUs{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    gap: 7rem;
+    animation: fadeInUp 2s ease;
+}
+.about-image img{
+    width: 700px;
+    height: auto;
+    border-radius: 10px;
+    padding-left: 80px;
+    animation: fadeInRight 2s ease;
+    
+}
+.about-text h3{
+    font-size: 36px;
+    font-weight: 600;
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 50px;
+    padding-right: 30px;
+    bottom: 8px;
+}
+.about-text p{
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 30px;
+    color: #D4AF37;
+    margin-bottom: 35px;
+    
+}
 
-.container{
-    width: 80%;
-    margin: 50px auto;
-    padding: 20px;
-}
-.title{
-   text-align: center;
-   font-size: 45px;
-   font-weight: bold;
-   margin-bottom: 70px;
-   color: #D4AF37;
-}
-.about-content{
+.row{
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    margin-right: -15px;
+    margin-left: -15px;
 }
-.image img{
-    width: 70%;
-    transition: transform 0.3s ease;
+.h4{
+    font-size: 24px;
+    font-weight: 600;
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 50px;
+    padding-left: 60px;
+    bottom: 8px;
+}
+.p{
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 30px;
+    color: #D4AF37;
+    margin-bottom: 35px;
     
-}
-.image:hover img{
-    transform: scale(1.1);
 }
 
-.image{
-    flex: 1;
-    margin-right:20px;
-    overflow: hidden;
-    border-radius: 10px;
-}
-.content{
-    flex: 1;
-    margin-left: 20px;
     
-}
-.content p{
-    font-size: 17px;
-    line-height: 1.6;
-}
-@media screen and (max-width:768px){
-    .about-content{
-        flex-direction: column;
+
+
+@keyframes fadeInUp {
+    0%{
+        opacity: 0;
+        transform: translateY(50px);
     }
-    .image, .content{
-        margin: 0;
-        margin-bottom: 20px;
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
     }
-    .title{
-        font-size: 38px;
-        margin-bottom: 50px;
+}
+@keyframes fadeInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
     }
 }
