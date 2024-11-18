@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to ABC Cinema</title>
+        <title>ABC Cinema - Buy Movie Tickets Online for the Latest Movies</title>
         <%@include file="components/allCdn.jsp"%>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/index.css" /> 
     </head>
