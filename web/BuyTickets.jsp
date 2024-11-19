@@ -4,6 +4,7 @@
     Author     : gavin
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="net.abccinema.connection.DbCon" %>
 <%@page import="net.abccinema.model.*" %>
@@ -61,6 +62,21 @@
             </div> 
         </div>        
 
+       <%
+        try {
+            List<buytickets> movies = new buyticketsDao(DbCon.getConnection()).getMovies();
+
+            if (movies != null && !movies.isEmpty()) {
+                for (buytickets movie : movies) {
+                    out.println("Movie Name: " + movie.getName() + "<br>");
+                }
+            } else {
+                out.println("No movies found.");
+            }
+        } catch (Exception e) {
+            out.println("Error: " + e.getMessage());
+        }
+    %> 
         <div class="custom-box box container-fluid" id="hoverBox">
             <h1>Despicable ME 4</h1>
             <div class="container">
