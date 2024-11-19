@@ -1,0 +1,36 @@
+.Con-Custom-title {
+    font-size: 36px;
+    font-family: poppins;
+    font-weight: bold;
+    background-color: #000000;
+    padding-left: 25px;
+    position: relative;
+    color: #000000;
+    -webkit-text-stroke: 0.3vw #000000;
+    text-transform: uppercase;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.Con-Custom-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 20px;
+    color: #D4AF37;
+    -webkit-text-stroke: 0vw #0D0C0C;
+    white-space: nowrap;
+    overflow: hidden;
+    clip-path: inset(0 100% 0 0);
+    animation: conanimateText 2s linear forwards infinite;
+}
+
+@keyframes conanimateText {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
