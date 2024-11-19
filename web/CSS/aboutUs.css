@@ -19,6 +19,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     font-family: poppins;
     
 }
+
+body{
+    
+    overflow-x: hidden;
+}
 .Custom-title {
     font-size: 36px;
     font-family: poppins;
@@ -52,12 +57,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     animation: fadeInUp 2s ease;
 }
 .about-image img{
-    width: 700px;
+    width: 100%;
     height: auto;
     border-radius: 10px;
     padding-left: 80px;
     animation: fadeInRight 2s ease;
     
+}
+
+.greyBorder{
+    border-bottom: 1px solid black;
+    
+}
+
+.bot-lg-sp{
+    padding-bottom: 30px;
 }
 .about-text h3{
     font-size: 36px;
@@ -76,6 +90,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     color: #D4AF37;
     margin-bottom: 35px;
     
+    
+}
+
+.sub-section top-lg-sp{
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 80px;
 }
 
 .row{
@@ -83,25 +104,90 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
-}
-.h4{
-    font-size: 24px;
-    font-weight: 600;
-    color: #D4AF37;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    margin-bottom: 50px;
-    padding-left: 60px;
-    bottom: 8px;
-}
-.p{
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 30px;
-    color: #D4AF37;
-    margin-bottom: 35px;
     
 }
+.col-12{
+    flex: 0 0 100%;
+    
+}
+.upperText{
+    text-transform: uppercase;
+    font-size: 28px;
+    color: #D4AF37;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: 1em;
+    padding-left: 80px;
+    animation: fadeInUp 2s ease;
+}
+
+@media(max-width:767px){
+    body{
+        font-size: 14px;
+    }
+    
+    h3.about-text{
+        font-size: 18px;
+        letter-spacing: unset;
+        font-weight: 500;
+        margin-bottom: 17px;
+        color: #D4AF37;
+        text-transform: uppercase;
+        margin-right: 20px;
+        line-height: 9em;
+        margin-top: 0;
+    }
+    iframe{
+        width: 100%;
+        height: 315px;
+    }
+    
+    h3.gridTitle{
+        font-size: 17px !important;
+    }
+    h3{
+        font-size: 1.75em;
+        margin-bottom: .5rem;
+        font-weight: 500;
+        line-height: 1.3;
+        margin-top: 0;
+        padding-left: 80px;
+        
+    }
+}
+
+.h3{
+    display: block;
+    color: #D4AF37; 
+    padding-left: 80px;
+    animation: fadeInUp 2s ease;
+}
+
+.text p{
+    font-weight: normal;
+    padding-left: 80px;
+    
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+    font-size: 18px;
+    color: #D4AF37;
+    line-height: 1.5;
+    padding-left: 80px;
+    padding-bottom: 30px;
+    animation: fadeInUp 2s ease;
+        
+}
+.col-12{
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
 
     
 
