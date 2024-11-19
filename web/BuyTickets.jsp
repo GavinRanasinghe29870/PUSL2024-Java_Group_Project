@@ -67,9 +67,29 @@
             List<buytickets> movies = new buyticketsDao(DbCon.getConnection()).getMovies();
 
             if (movies != null && !movies.isEmpty()) {
-                for (buytickets movie : movies) {
-                    out.println("Movie Name: " + movie.getName() + "<br>");
-                }
+                for (buytickets movie : movies) { %>
+                    <div class="custom-box box container-fluid" id="hoverBox">
+                        <h1><%= movie.getName() %></h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="mt-5"> <%= movie.getDescription() %>
+                        </p>
+                        <div class="time-box d-flex">
+                            <div class="container-fluid">
+                                <center>
+                                    <button class="time-text"> <%= movie.getTime() %></button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img src="Images/<%= movie.getImage() %>" width="width" height="height" alt="<%= movie.getImage() %>"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <%  }
             } else {
                 out.println("No movies found.");
             }
@@ -77,31 +97,7 @@
             out.println("Error: " + e.getMessage());
         }
     %> 
-        <div class="custom-box box container-fluid" id="hoverBox">
-            <h1>Despicable ME 4</h1>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <p class="mt-5"> Gru, Lucy, Margo, Edith, and Agnes welcome a new 
-                            member to the family, Gru Jr., who is intent on 
-                            tormenting his dad. Gru faces a new nemesis in 
-                            Maxime Le Mal and his girlfriend Valentina, and the 
-                            family is forced to go on the run.
-                        </p>
-                        <div class="time-box d-flex">
-                            <div class="container-fluid">
-                                <center>
-                                    <button class="time-text"> 10.30 a.m</button>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <img src="Images/Despicable ME 4.jpg" width="width" height="height" alt="alt"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
 
         <script>

@@ -35,5 +35,4 @@ public class buyticketsServlet extends HttpServlet {
             Logger.getLogger(buyticketsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
