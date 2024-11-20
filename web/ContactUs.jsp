@@ -21,5 +21,19 @@
             <p class="Con-Custom-title" data-text="Contact Us">Contact Us</p>
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
+        <div class="row">
+            <div class="col">
+                <div class="container-fluid">
+                    <p>If you would like to reach us by email, please complete the form below, and we will get in contact with you as soon as possible.</p>
+                </div>
+                <div class="container-fluid" style="background-color: #D4AF37">
+                    <form action="action">
+                        <label for="name">Name</label>
+                        <input type="text" name="name"> 
+                            
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
