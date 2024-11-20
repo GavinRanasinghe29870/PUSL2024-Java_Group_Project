@@ -105,6 +105,47 @@
 #back-button:hover, #paynow-button:hover {
     background-color: #b48818; /* Hover color */
 }
+input[type="text"] {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  border: 1px solid #ccc; /* Border style and color */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center the text */
+  font-size: 12px; /* Font size */
+}
+.payment-method {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.payment-method p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.logo {
+  height: 32px; /* Increase the height for larger logos */
+  width: auto;  /* Maintain aspect ratio */
+}
+
+.logos {
+  gap: 15px; /* Increase the spacing between logos, if necessary */
+}
+
+.add-card {
+  padding: 8px 12px;
+  background-color: #000; /* Adjust button color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-card:hover {
+  background-color: #444; /* Button hover effect */
+}
+
+
 
       
        
@@ -119,18 +160,29 @@
             <div class="box">
                 <h2>Purchase Summary</h2>
                 <hr style="border: 1px solid black;">
-
-                <p>Adult Ticket:   LKR 1000.00</p>
-                <p>Child Ticket: LKR 00.00</p>
-                <p>Total Amount: LKR 00.00</p>
+<div class="purchase-summary">
+    <div class="ticket-item">
+        <label for="adult-tickets">Adult Tickets: </label>
+        <input type="text" id="adult-tickets" value="0" readonly>   LKR 1000.00</div>
+    <div class="ticket-item">
+        <label for="child-tickets">Child Tickets:</label>
+        <input type="text" id="child-tickets" value="0" readonly>  LKR 00.00</div>
+</div>
+                <br>
+                <h5><p>Total Amount: LKR 00.00</p></h5>
                 <br>
                <hr style="border: 1px solid black;">
 
-                <h3>Payment Method</h3>
+                <div class="payment-method">
+   <h3>Payment Method</h3>
                 <button>Add Card</button>
               
-                <img src="mastercard." alt="MasterCard">
-                <img src="Images/Despicable ME .jpg" alt="Visa">
+                 <img src="Images/mastercard.png" alt="MasterCard" class="logo">
+      <img src="Images/visa.png" alt="Visa" class="logo">
+            </div>
+
+
+
             </div>
               <hr style="border: 1px solid black;">
 
