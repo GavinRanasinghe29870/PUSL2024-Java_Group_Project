@@ -1,0 +1,35 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Nov 17, 2024, 11:36:11 PM
+    Author     : Udula Dissanayake
+*/
+
+.Custom-titlem {
+    font-size: 36px;
+    font-family: poppins;
+    font-weight: bold;
+    padding-left: 25px;
+    position: relative;
+    color: #000000;
+    -webkit-text-stroke: 0.3vw #000000;
+    text-transform: uppercase;
+    display: inline-block;
+    overflow: hidden;
+}
+.Custom-titlem::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    color: #D4AF37;
+    -webkit-text-stroke: 0vw #000000;
+    white-space: nowrap;
+   
+}
+.cardm-color {
+    background-color: #0D0D0C;
+    color: white;
+}
