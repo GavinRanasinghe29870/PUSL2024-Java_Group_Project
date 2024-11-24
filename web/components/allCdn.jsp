@@ -7,6 +7,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 <link rel="stylesheet" type="text/css" href="./CSS/buytickets.css" /> 
+ <link rel="stylesheet" type="text/css" href="./CSS/smovie.css" /> 
 <link rel="stylesheet" type="text/css" href="./components/style.css" /> 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
