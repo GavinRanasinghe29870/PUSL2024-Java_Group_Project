@@ -19,10 +19,16 @@
         <!-- Home Section -->
 
         <div class="home">
+            <div class="content">
             <div style="background-color:#D4AF37; margin-right:65%;">
                 <h1 class=" fw-bold ps-4">Despicable ME 4</h1>
             </div>
-            <button class="cusBtn btn">Buy Tickets</button>
+                
+            </div>
+            <div class="container">
+                <img src="./Images/SingleMovie.svg">
+                <button class="btn">Buy Tickets</button>
+            </div>
         </div>
 
 
