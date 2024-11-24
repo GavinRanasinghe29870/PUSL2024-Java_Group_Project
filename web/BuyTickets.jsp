@@ -14,7 +14,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Buy Tickets</title> 
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/buytickets.css" /> 
         <%@include file = "components/navbar.jsp" %>
         <%@include file = "components/allCdn.jsp" %>
     </head>
@@ -26,24 +25,47 @@
         <hr style="border-top: 3px solid #D4AF37;">
 
         <%--Dropdown Section--%>
+        <div class="cusDrop container d-flex">
+            <div class=" cusDrop1 dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
 
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
         </div>
-        
+
         <%
             try {
                 List<buytickets> movies = new buyticketsDao(DbCon.getConnection()).getMovies();
 
                 if (movies != null && !movies.isEmpty()) {
-                   for (buytickets movie : movies) {%>
+                    for (buytickets movie : movies) {%>
         <div class="custom-box box container-fluid" id="hoverBox">
             <h1><%= movie.getName()%></h1>
             <div class="container">

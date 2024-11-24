@@ -36,7 +36,6 @@
 
 .custom-box{
     background-color: #D4AF37;
-    /*margin-top: 125px;*/
     margin-bottom: 20px;
     height: auto;
     width: auto !important;
@@ -44,7 +43,11 @@
     margin-left: 30px !important;
     padding-bottom: 40px;
     padding-top: 40px;
-    
+
+}
+
+.cusDrop{
+    margin-bottom: 120px;
 }
 
 .time-box{
@@ -61,10 +64,10 @@
 }
 
 .box:hover {
-            z-index: 5;
-            transform: translateY(-10px);
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-        }
+    z-index: 5;
+    transform: translateY(-10px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
 @keyframes appear{
     from{
         opacity: 0;
@@ -75,12 +78,15 @@
         opacity: 1;
         transform: translateX(0px);
         //clip-path: inset(0 0 0 0);
-        
+
     }
-        }
-        .box{
-            animation: appear linear;
-            animation-timeline: view();
-            animation-range: entry 0% cover 40%;
-        }
-      
+}
+.box{
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+.cusDrop1{
+ margin-right: 20px !important;
+ margin-left: 20px;
+}
