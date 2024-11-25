@@ -3,71 +3,87 @@
     Author     : USER
 */
 
-/**{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
+    border: none;
     text-decoration: none;
-    list-style: none;
     font-family: poppins;
     
 }
 
-
 body{
-    font-family: poppins;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #D4AF37;
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden;
+}
+
+.container{
+    margin-top: 10px;
+    padding-left: 0;
+    margin-left: 0px;
     
+}
+section{
+    padding: 5% 10%;
+}
+.home{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../Images/SingleMovie.svg);
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+.main-btn{
+    display: inline-block;
+    background-color: #D4AF37;
+    color: black;
+    font-size: 19px;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 12px 25px;
+    margin-top: 610px;
+    margin-left: -110px;
+   
+}
+
+/*.content button{
+    display: inline-block;
+    margin: 80px;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 12px 25px;
+    border-radius: 5rem;
+    background: #D4AF37;
+    color: black;
+    padding: .9rem 3.5rem;
+} 
+
+.content{
+    position: relative;
+    width: 50%;
+}
+.home{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../Images/SingleMovie.svg);
+    
+    background-position: center;
+}
+  
+.home .content{
+    max-width: 50rem;
 }*/
 
 
 
-.home{
-    width: 100%;
-    height: 90vh;
-   
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(./Images/SingleMovie.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 60%;
-    justify-content: left;
-}
-
-.container{
-    position: static;
-    width: 50%;
-}
-
-/*Image responsive*/
-.container img{
-    width: 180%;
-    height: auto;
-   
-}
-
-.container .btn{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #D4AF37;
-    color: black;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
 
-.home .content{
-    flex: 1 1 400px;
-   
-}
+
+
+
 
