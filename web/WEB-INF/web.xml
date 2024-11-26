@@ -4,8 +4,16 @@
         <servlet-name>buyticketsServlet</servlet-name>
         <servlet-class>net.abccinema.servlet.buyticketsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>movieinsertServlet</servlet-name>
+        <servlet-class>net.abccinema.servlet.movieinsertServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>buyticketsServlet</servlet-name>
         <url-pattern>/buyticketsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>movieinsertServlet</servlet-name>
+        <url-pattern>/movieinsertServlet</url-pattern>
     </servlet-mapping>
 </web-app>

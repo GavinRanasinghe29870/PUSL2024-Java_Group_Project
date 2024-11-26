@@ -36,6 +36,7 @@ public class buyticketsDao {
                 row.setImage(rs.getString("m_image"));
                 row.setDescription(rs.getString("m_description"));
                 row.setTime(rs.getString("m_time"));
+                row.setDate(rs.getString("m_date"));
                 
                 movies.add(row);
             }

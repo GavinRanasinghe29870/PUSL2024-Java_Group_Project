@@ -26,7 +26,7 @@
 
         <%--Dropdown Section--%>
         <div class="cusDrop container d-flex">
-            <div class=" cusDrop1 dropdown">
+            <div class="cusDrop1 dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown button
                 </button>
@@ -37,17 +37,6 @@
                 </ul>
             </div>
 
-
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown button
@@ -100,7 +89,39 @@
 
 
 
-
+        <!--        <script>
+                    $(document).ready(function(){
+                        loadDatesAndMovies();
+                        $("#dateDropdown, #movieDropdown").on("click","a", function(){
+                            var selectedDate = $("#dateFilterDropdown").text().trim();
+                            var selectedMovieName = $("movieFilterDropdown").text().trim();
+                            
+                            loadMovies(selectedDate, selectedMovieName);
+                        });
+                        function loadDatesAndMovies(){
+                            $.ajax({
+                                url: "buyticketsServlet",
+                                type: "GET",
+                                success: function(response){
+                                    var dates = response.movies;
+                                    var movies = response.movies;
+                                    
+                                    $("#dateDropdown").empty();
+                                    $.each(dates, function(index, dates){
+                                        $("#dateDropdown").append("<li><a class = 'dropdown-item' href='#'>" + dates + "</a></li>");
+                                    });
+                                    $("#movieDropdown").empty();
+                                    $.each(movies, function(index, movies){
+                                        $("#movieDropdown").append("<li><a class = 'dropdown-item' href='#'>" + movies + "</a></li>");
+                                });
+                            },
+                            error: function(error){
+                                console.error("Error fetching dates and movies:", error);
+                            }
+                            });
+                        }
+                    });
+                </script>-->
 
 
 

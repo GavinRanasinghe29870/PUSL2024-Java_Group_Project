@@ -10,16 +10,18 @@ public class buytickets {
     private String Description;
     private String Image;
     private String Time;
+    private String Date;
     
     public buytickets(){
     }
 
-    public buytickets(int id, String Name, String Description, String Image, String Time) {
+    public buytickets(int id, String Name, String Description, String Image, String Time, String Date) {
         this.id = id;
         this.Name = Name;
         this.Description = Description;
         this.Image = Image;
         this.Time = Time;
+        this.Date = Date;
     }
 
     public int getId() {
@@ -57,13 +59,21 @@ public class buytickets {
     public String getTime() {
         return Time;
     }
-
+    
     public void setTime(String Time) {
         this.Time = Time;
+    }
+    
+    public String getDate() {
+        return Date;
+    }
+    
+    public String setDate(String Date) {
+        return Date;
     }
 
     @Override
     public String toString() {
-        return "buytickets{" + "id=" + id + ", Name=" + Name + ", Description=" + Description + ", Image=" + Image + ", Time=" + Time + '}';
-    }    
+        return "buytickets{" + "id=" + id + ", Name=" + Name + ", Description=" + Description + ", Image=" + Image + ", Time=" + Time + ", Date=" + Date + '}';
+    }  
 }

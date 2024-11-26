@@ -85,68 +85,68 @@
                             <form>
                                 <div class="form-group">
                                     <label for="movieName">Movie Name:</label>
-                                    <input type="text" class="form-control" id="movieName">
+                                    <input type="text" class="form-control" name="movieName">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieImage">Upload Movie Picture:</label>
-                                    <input type="file" class="form-control" id="movieImage" accept=".jpg, .jpeg, .png">
+                                    <input type="file" class="form-control" name="movieImage" accept=".jpg, .jpeg, .png">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieDescription">Movie Description:</label>
-                                    <textarea class="form-control" id="movieDescription" rows="2"></textarea>
+                                    <textarea class="form-control" name="movieDescription" rows="2"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="movieTimeSlots">Time Slots:</label>
                                     <div class="time-slot-group" id="movieTimeSlots">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="slot1" id="slot1">
+                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot1">
                                             <label class="form-check-label" for="slot1">10:30 AM</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="slot2" id="slot2">
+                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot2">
                                             <label class="form-check-label" for="slot2">02:10 PM</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="slot3" id="slot3">
+                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot3">
                                             <label class="form-check-label" for="slot3">06:30 PM</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="slot4" id="slot4">
+                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot4">
                                             <label class="form-check-label" for="slot4">10:15 PM</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="movieGenres">Genres:</label>
-                                    <input type="text" class="form-control" id="movieGenres">
+                                    <input type="text" class="form-control" name="movieGenres">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieStars">Cast:</label>
-                                    <input type="text" class="form-control" id="movieStars">
+                                    <input type="text" class="form-control" name="movieStars">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieDirectors">Directors:</label>
-                                    <input type="text" class="form-control" id="movieDirectors">
+                                    <input type="text" class="form-control" name="movieDirectors">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieWriters">Writers:</label>
-                                    <input type="text" class="form-control" id="movieWriters">
+                                    <input type="text" class="form-control" name="movieWriters">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieProducers">Producers:</label>
-                                    <input type="text" class="form-control" id="movieProducers">
+                                    <input type="text" class="form-control" name="movieProducers">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieMusic">Music:</label>
-                                    <input type="text" class="form-control" id="movieMusic">
+                                    <input type="text" class="form-control" name="movieMusic">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieTicketPriceAdult">Ticket Price (Adult):</label>
-                                    <input type="number" class="form-control" id="movieTicketPriceAdult">
+                                    <input type="number" class="form-control" name="movieTicketPriceAdult">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieTicketPriceChild">Ticket Price (Child):</label>
-                                    <input type="number" class="form-control" id="movieTicketPriceChild">
+                                    <input type="number" class="form-control" name="movieTicketPriceChild">
                                 </div>
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn btn-primary">Add Movie</button>
