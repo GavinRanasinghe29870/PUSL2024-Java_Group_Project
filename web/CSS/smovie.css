@@ -1,6 +1,6 @@
 /* 
     Created on : Nov 20, 2024, 4:12:54 PM
-    Author     : USER
+    Author     : Vihanga
 */
 
 *{
@@ -13,21 +13,22 @@
     font-family: poppins;
     
 }
-
 body{
     overflow-x: hidden;
 }
-
 .container{
     margin-top: 10px;
-    padding-left: 0;
+    padding-left: 0px;
     margin-left: 0px;
     
 }
-section{
+.content{
     padding: 0;
+
+    position: relative;
+    width: 100%;
 }
-.main-text img{
+.content .img{
     max-width: 100%;
     height: auto;
     background-image: url(Images/SingleMovie.svg);
@@ -35,9 +36,7 @@ section{
     align-items: center;
     
 }
-
-.main-btn{
-    
+.content .btn{ 
     background-color: #D4AF37;
     color: black;
     font-size: 19px;
@@ -46,27 +45,10 @@ section{
     margin: 0;
     margin-left: 40px;
     position: absolute;
-    top: 95%;
+    top: 75%;
     left: 0;
-    
+    cursor: pointer;
 }
-
-/*.content button{
-    display: inline-block;
-    margin: 80px;
-    font-size: 16px;
-    text-transform: capitalize;
-    padding: 12px 25px;
-    border-radius: 5rem;
-    background: #D4AF37;
-    color: black;
-    padding: .9rem 3.5rem;
-} 
-
-.content{
-    position: relative;
-    width: 50%;
-}*/
 
 
 
