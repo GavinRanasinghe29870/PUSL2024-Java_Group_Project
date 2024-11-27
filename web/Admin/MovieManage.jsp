@@ -33,42 +33,43 @@
                             <th>Image</th>
                             <th>Description</th>
                             <th>Time Slots</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th>Genres</th>
-                            <th>Date</th>
-                            <th>Ticket Price</th>
+                            <th>Cast</th>
+                            <th>Directors</th>
+                            <th>Writers</th>
+                            <th>Producers</th>
+                            <th>Music</th>
+                            <th>Price(Adult)</th>
+                            <th>Price(Child)</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>#001</td>
-                            <td>Example Movie</td>
+                            <td></td>
+                            <td></td>
                             <td><img src="path_to_image.jpg" alt="Image" style="width: 50px; height: 50px;"></td>
-                            <td>Movie description goes here...</td>
-                            <td>2024-11-14</td>
-                            <td>Cast details...</td>
-                            <td>2024 Nov 01</td>
-                            <td><a href="#" class="text-white">Trailer Link</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+<!--                            <td><a href="#" class="text-white"></a></td>-->
                             <td>
                                 <button class="btn btn-success btn-sm">Edit</button>
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>#001</td>
-                            <td>Example Movie</td>
-                            <td><img src="path_to_image.jpg" alt="Image" style="width: 50px; height: 50px;"></td>
-                            <td>Movie description goes here...</td>
-                            <td>2024-11-14</td>
-                            <td>Cast details...</td>
-                            <td>2024 Nov 01</td>
-                            <td><a href="#" class="text-white">Trailer Link</a></td>
-                            <td>
-                                <button class="btn btn-success btn-sm">Edit</button>
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </td>
-                        </tr>
-
+                        
                         <!-- Repeat similar rows as needed -->
                     </tbody>
                 </table>
@@ -115,6 +116,14 @@
                                             <label class="form-check-label" for="slot4">10:15 PM</label>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date1">Start Date:</label>
+                                    <input type="date" class="form-control" name="startDate" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="date2">End Date:</label>
+                                    <input type="date" class="form-control" name="endDate" value="">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieGenres">Genres:</label>
