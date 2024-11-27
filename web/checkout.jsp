@@ -145,85 +145,74 @@ input[type="text"] {
   background-color: #444; /* Button hover effect */
 }
 
-
-
-      
-       
-        
+   
     </style>
 </head>
 <body>
-   
     <div class="container">
-       
-        <div class="content">
-            <div class="box">
-                <h2>Purchase Summary</h2>
-                <hr style="border: 1px solid black;">
-<div class="purchase-summary">
-    <div class="ticket-item">
-        <label for="adult-tickets">Adult Tickets: </label>
-        <input type="text" id="adult-tickets" value="0" readonly>   LKR 1000.00</div>
-    <div class="ticket-item">
-        <label for="child-tickets">Child Tickets:</label>
-        <input type="text" id="child-tickets" value="0" readonly>  LKR 00.00</div>
-</div>
-                <br>
-                <h5><p>Total Amount: LKR 00.00</p></h5>
-                <br>
-               <hr style="border: 1px solid black;">
-
-                <div class="payment-method">
-   <h3>Payment Method</h3>
-                <button>Add Card</button>
-              
-                 <img src="Images/mastercard.png" alt="MasterCard" class="logo">
-      <img src="Images/visa.png" alt="Visa" class="logo">
-            </div>
-
-
-
-            </div>
-              <hr style="border: 1px solid black;">
-
-            <div class="box">
-                <div class="text-container">
-                <h2>Your Details</h2> <br>
-                <hr style="border: 1px solid black;">
-
-                <label for="name">Name:</label><br>
-                <input type="text" style="color: black;" id="myTextBox" name="name">
-                
-                 <br>
-                <label for="phone">Phone Number:</label><br>
-                <input type="text" id="myTextBox" name="phone">
-                 <br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="myTextBox" name="email">
-                 <br>
-                 <hr style="border: 1px solid black;">
-
-                <input type="checkbox" id="terms" name="terms">
-               
-                <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
-                <div>
-                   <div class="separator"></div>
+        <!-- Add a form element to handle POST -->
+        <form action="purchaseServlet" method="post">
+            <div class="content">
+                <div class="box">
+                    <h2>Purchase Summary</h2>
+                    <hr style="border: 1px solid black;">
+                    <div class="purchase-summary">
+                        <div class="ticket-item">
+                            <label for="adult-tickets">Adult Tickets: </label>
+                            <input type="text" id="adult-tickets" name="adultTickets" value="0" readonly> LKR 1000.00
+                        </div>
+                        <div class="ticket-item">
+                            <label for="child-tickets">Child Tickets:</label>
+                            <input type="text" id="child-tickets" name="childTickets" value="0" readonly> LKR 00.00
+                        </div>
+                    </div>
+                    <br>
+                    <h5><p>Total Amount: LKR 00.00</p></h5>
+                    <input type="hidden" id="hidden-total-amount" name="totalAmount" value="0.00"> <!-- Hidden field for total amount -->
+                    <br>
+                    <hr style="border: 1px solid black;">
+                    <div class="payment-method">
+                        <h3>Payment Method</h3>
+                        <button type="button">Add Card</button>
+                        <img src="Images/mastercard.png" alt="MasterCard" class="logo">
+                        <img src="Images/visa.png" alt="Visa" class="logo">
+                        <select name="paymentMethod" required>
+                            <option value="">Select Payment Method</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="Cash">Cash</option>
+                        </select>
+                    </div>
                 </div>
+                <hr style="border: 1px solid black;">
+
+
+                <div class="box">
+                    <h2>Your Details</h2>
+                    <br>
+                    <hr style="border: 1px solid black;">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="myTextBox" name="name" required><br>
+                    <label for="phone">Phone Number:</label><br>
+                    <input type="text" id="myTextBox" name="phoneNumber" required><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="myTextBox" name="email" required><br>
+                    <hr style="border: 1px solid black;">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
                 </div>
-                
-                
             </div>
-        </div>
-        <div class="mb-3 text-center">
-        <div class="button-container">
-    <button id="back-button">Back</button>
-    <button id="paynow-button">Pay Now</button>
+
+            <!-- Button container for Back and Pay Now -->
+            <div class="mb-3 text-center">
+    <div class="button-container">
+        <button type="button" id="back-button" onclick="history.back();">Back</button>
+        <button type="submit" id="paynow-button">Pay Now</button>
+    </div>
 </div>
-        </div>
+
+        </form>
     </div>
-    </div>
-    </div>
-     <%@include file="components/footer.jsp"%>
+    <%@include file="components/footer.jsp"%>
 </body>
 </html>
-
