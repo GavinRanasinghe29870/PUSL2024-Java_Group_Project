@@ -32,20 +32,15 @@
             </div>
             <div class="col-md-4 mt-5">
                 <div>
-                    <h5 class="footer-title">Tell Us about your Experience</h5>
-                    <form>
+                    <form action="FeedbackServlet" method="post">
+                        <h5 class="footer-title">Tell Us about your Experience</h5>
                         <div class="mb-3">
-                            <textarea class="form-control" id="message" rows="4"
-                                      placeholder="Your message..."></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your message..."></textarea>
                         </div>
-                        <div class=" d-flex">
-                            <h5 class="rate">Rate Us: </h5>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                        <div class="d-flex align-items-center mb-2">
+                            <h5 class="rate mt-2">Rate Us: </h5>
+                            <div class="mb-2" id="rating">
+                                <input type="hidden" id="hdrating" name="hdrating">
                             </div>
                         </div>
                         <div class="mb-3 text-end">
@@ -75,3 +70,26 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(function () {
+        $("#rating").rateYo({
+           rating: 0,
+           numStars: 5,
+           maxValue: 5,
+           halfStar: true,
+           onChange: function (rating, rateYoInstance) {
+               $('#hdrating').val(rating);
+               console.log("Rating set to: " + rating);
+           }
+        });
+    });
+</script>
+
+<script>
+    function checkRating() {
+        var rating = $('#hdrating').val();
+        console.log("Rating before submission: " + rating); // Debug statement
+        return true;
+    }
+</script>
