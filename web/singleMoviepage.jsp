@@ -35,7 +35,7 @@
             
             <!-- Movie description -->
             
-            <div class="row">
+            <div class="desc">
                 <div class="col">Gru, Lucy, Margo, Edith, and Agnes welcome a new member to the family, Gru Jr,who is intent on tormenting his dad. 
                  Gru faces a new nemesis in Maxime Le Mal and his girlfriend Valentina, and the family is forced to go on the run.</div>
             </div>
@@ -43,23 +43,21 @@
             <!-- Genres Section -->
             
             <div class="row2">
-                <div class="col">GENRES :</div>
-                <div class="col2">
-                    <button type="comedy" class="btn1">Comedy</button>
-                    <button type="animation" class="btn1">Animation</button>
-                    <button type="fam" class="btn1">Family</button>
-                    <button type="scifi" class="btn1">Sci-Fi</button>
+                <div class="col">GENRES : </div>
+      
+                <div style="background-color:#D4AF37; margin-right:77%; text-align: center;">
+                    <h6>Comedy</h6>
+<!--                <button>Animation</button>
+                <button>Family</button>
+                <button>Sci-Fi</button>-->
                 </div>
             </div>
             
-            <button type="btn" class="btn4">comedy</button>
-            <div class="row3"
-                <div class="col-6"></div>
-            </div>
-            </div> 
             
-      
-        
+        </div>
+            
+            
+           
 </body>
 </html>
 
