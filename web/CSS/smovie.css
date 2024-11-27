@@ -50,13 +50,75 @@ body{
     cursor: pointer;
 }
 .movie{
-    margin-top: 3%;
+    margin-left: 10px;
+    padding: 5px;
+    position: absolute;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5px;
+    margin-left: 6px;
+}
+
+.movie .row .col{
+    padding-left: 5px;
+    margin-top: 35px;
+    font-family: poppins;
+    font-size: 18px;
+    color: #D4AF37;
+    font-weight: normal;
+}
+
+.row2{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5px;
+    margin-left: 6px;
+
+}
+
+.movie .row2 .col{
+    padding-left: 5px;
+    margin-top: 35px;
+    font-family: poppins;
+    font-size: 20px;
+    color: #D4AF37;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.movie .row2 .col2 .btn1{
+    padding-left: 25px;
+    margin-top: 35px;
+    font-family: poppins;
+    font-size: 20px;
+    color: black;
+    font-weight: normal;
+    text-align: center;
+    padding: 10px 15px;
+    background-color: #D4AF37;
+    margin: 0;
+    position: absolute;
+    top: 75%;
+    left: 0;
+    
+}
+
+
+
+
+
+/*.home{
+    margin-top: 8%;
+    margin-left: 10px;
+    padding-left: 5px;
     width: 150%;
 }
 
-.movie p{
+.home p{
     margin-top: 15px;
-    margin-left: 15px;
+    margin-left: 20px;
     padding-left: 15px;
     font-family: poppins;
     font-size: 20px;
@@ -65,7 +127,16 @@ body{
     position: absolute;
 }
 
-
+.home .fw-bold p{
+    margin-top: 80px;
+    margin-left: 30px;
+    padding-left: 20px;
+    font-family: poppins;
+    font-size: 22px;
+    font-weight: bold;
+    color: #D4AF37;
+    position: absolute;
+}*/
 
 
 

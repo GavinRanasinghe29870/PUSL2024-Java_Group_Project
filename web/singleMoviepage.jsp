@@ -30,12 +30,35 @@
         <button class="btn">BUY TICKETS</button>
     </div>
         
-        <!-- Movie description -->
+       
         <div class="movie">
-        <p>Gru, Lucy, Margo, Edith, and Agnes welcome a new member to the family, Gru Jr., who is intent on tormenting his dad. 
-            Gru faces a new <br> nemesis in Maxime Le Mal and his girlfriend Valentina, and the family is forced to go on the run.</p>
+            
+            <!-- Movie description -->
+            
+            <div class="row">
+                <div class="col">Gru, Lucy, Margo, Edith, and Agnes welcome a new member to the family, Gru Jr,who is intent on tormenting his dad. 
+                 Gru faces a new nemesis in Maxime Le Mal and his girlfriend Valentina, and the family is forced to go on the run.</div>
+            </div>
+            
+            <!-- Genres Section -->
+            
+            <div class="row2">
+                <div class="col">GENRES :</div>
+                <div class="col2">
+                    <button type="comedy" class="btn1">Comedy</button>
+                    <button type="animation" class="btn1">Animation</button>
+                    <button type="fam" class="btn1">Family</button>
+                    <button type="scifi" class="btn1">Sci-Fi</button>
+                </div>
+            </div>
+            
+            <div class="row3"
+                <div class="col-6"></div>
+            </div>
+            </div> 
+            
+      
         
-        </div>
 </body>
 </html>
 
