@@ -34,21 +34,16 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row1">
             <div class="col-12 ">
                 <div class="d-flex justify-content-start align-items-center">
-                    <p class="genre-header">GENRES:</p>
-                    
-                    <div class="genre-tag bg-secondary text-light p-2 me-2">Comedy</div>
-                    <div class="genre-tag bg-secondary text-light p-2 me-2">Animation</div>
-                    <div class="genre-tag bg-secondary text-light p-2 me-2">Family</div>
-                    <div class="genre-tag bg-secondary text-light p-2">Sci-Fi</div>
+                    <p class="genre-header">GENRES: <button class="button button1">Comedy</button> <button class="button button2">Animation</button> <button class="button button3">Family</button> <button class="button button4">Sci-Fi</button> </p> 
                 </div>
             </div>
-             <div class="row">
-            <div class="col-12 p-4 padding-left">
-                <h4 class="text-left">Stars</h4>
-                <p class="text-left">Steve Carell | Pierre Coffin | Kristen Wiig | Sofía Vergara</p>
+             <div class="row2">
+            <div class="col-12">
+                <h4 class="title">Stars : <p class="text text1">Steve Carell | Pierre Coffin | Kristen Wiig | Sofía Vergara</p> </h4>
+                
                 <h4 class="text-left">Directors</h4>
                 <p class="text-left">Zack Snyder | Christopher Nolan | Kristen Wiig</p>
                 <h4 class="text-left">Writers</h4>
@@ -59,11 +54,7 @@
                 <p class="text-left">Cristobal Tapia De Veer</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 bg-dark text-center p-4">
-                <button type="button" class="btn btn-primary">BUY TICKETS</button>
-            </div>
-        </div>
+        
         </div>
 
         <%@include file="components/footer.jsp" %>
