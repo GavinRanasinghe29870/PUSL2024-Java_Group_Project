@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.4/jquery.rateyo.min.css" integrity="sha512-JEUoTOcC35/ovhE1389S9NxeGcVLIqOAEzlpcJujvyUaxvIXJN9VxPX0x1TwSo22jCxz2fHQPS1de8NgUyg+nA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<link rel="stylesheet" type="text/css" href="./CSS/buytickets.css" /> 
-<link rel="stylesheet" type="text/css" href="./CSS/smovie.css" /> 
+<link rel="stylesheet" type="text/css" href="./CSS/buytickets.css" />
 <link rel="stylesheet" type="text/css" href="./components/style.css" /> 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

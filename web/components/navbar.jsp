@@ -14,13 +14,13 @@
                     <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Movies</a>
+                    <a class="nav-link " href="movies.jsp">Movies</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="BuyTickets.jsp">Buy Tickets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="ContactUs.jsp">Contact Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="aboutUs.jsp">About Us</a>
