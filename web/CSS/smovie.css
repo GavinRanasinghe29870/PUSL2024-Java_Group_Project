@@ -3,21 +3,11 @@
     Author     : Vihanga
 */
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    font-family: poppins;
-    
-    
-}
+
 body{
     overflow-x: hidden;
 }
-.container{
+.main{
     margin-top: 10px;
     padding-left: 0px;
     margin-left: 0px;
@@ -74,104 +64,125 @@ body{
     font-weight: normal;
 }
 
-.row1{
-    display: flex;
+.genre{
+    display: inline-block;
     flex-wrap: wrap;
     padding-left: 5px;
-    margin-left: 6px;
-    margin-top: 25px;
-    padding-top: -10px;
-
+    margin-left: 8px;
+    margin-top: 30px;
 }
-
-.row1 .col-12 h4{
-    padding-left: 3px;
-    margin-top: 35px;
-    font-family: poppins;
-    font-size: 20px;
-    color: #D4AF37;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin-left: 3px;
-}
-
-.row1 .col-12 p{
-    padding-left: 1px;
-    margin-top: 35px;
-    font-family: poppins;
-    font-size: 20px;
-    color: #D4AF37;
-    
-    text-transform: capitalize;
-    margin-left: 3px;
-}
-
-.row2{
-    display: flex;
-    flex-wrap: wrap;
+.genre .col1 {
     padding-left: 5px;
-    margin-top: 20px;
+    margin-top: 35px;
+    font-family: poppins;
+    font-size: 20px;
+    color: #D4AF37;
+    text-transform: capitalize;
+    margin-left: 3px;
+}
+
+p{
+    display: inline-block;
+    color: #D4AF37;
+    font-size: 20px;
+    font-weight: bold;
     
 }
-
-.row2 .col-12 h4{
-    padding-left: 3px;
-    margin-top: 35px;
-    font-family: poppins;
-    font-size: 20px;
-    color: #D4AF37;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin-left: 3px;
-}
-
-.row2 .col-12 p{
-    padding-left: 1px;
-    margin-top: 35px;
-    font-family: poppins;
-    font-size: 20px;
-    color: #D4AF37;
-    text-transform: capitalize;
-    margin-left: 3px;
-    font-weight: normal;
-}
-
 
 .genre-header{
     color: #D4AF37;
-    padding-left: 5px;
-    margin-left: 10px;
+    padding-left: 1px;
+    margin-left: 2px;
     font-family: poppins;
-    font-size: 18px;
-    margin-left: 3px;
+    font-size: 20px;
     display: flex;
     font-weight: bold;
+    padding-left: 5px;
 }
 
-.title{
+.genre .col1 .d-flex .justify-content-start {
+    padding-left: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.movie{
+    display: flex;
+    padding-left: 3px;
+    margin-top: 4px;
+    margin-bottom: 30px;
+    
+}
+
+.movie .col2 h4{
+    padding-left: 1px;
+    margin-top: 10px;
+    font-family: poppins;
+    font-size: 20px;
+    color: #D4AF37;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-left:23px;
+    display: inline-block;
+}
+
+.movie .col2 p{
+    padding-left: 5px;
+    margin-top: 10px;
+    font-family: poppins;
+    font-size: 20px;
+    color: #D4AF37;
+    text-transform: capitalize;
+    margin-left: 5px;
+    font-weight: normal;
+}
+
+
+
+h4 .title{
     color: #D4AF37;
     padding-left: 5px;
     font-family: poppins;
     font-size: 18px;
-    margin-left: 10px;
-    display: flex;
+    margin-left: 5px;
+    display: inline-block;
     font-weight: normal;
+    margin-top: 5px;
 }
 
 text{
     color: #D4AF37;
-    padding: 5px 10px;
+    padding: 5px 7px;
     text-align: left;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    margin: 5px 10px;
+    margin: 6px 17px;
     margin-top: -5px;
 }
 
 .text1{
     color: #D4AF37;
     font-weight: normal;
+    display: inline-block;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 6px 5px;
+    margin-top: -5px;
+}
+
+p .text .text1{
+   margin-left: 3px;
+   padding-left: 2px;
+   margin: 5px 7px;
+   display: inline-block;
+   margin-top: 10%;
+   padding: 8px 10px;
+   padding-top: 10px;
 }
 
 .button{
@@ -183,13 +194,18 @@ text{
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    margin: 5px 10px;
+    margin: 7px 10px;
     margin-top: -5px;
-    
+    margin-left: 5px;  
 }
 
 .button1{
+     background-color: #D4AF37;
+}
+.button button1{
     background-color: #D4AF37;
+    margin-left: 5px;
+    padding-left: 6px;
 }
 
 .button2{
@@ -215,24 +231,32 @@ h4{
     padding-left: 3px;
     font-family: poppins;
     margin-left: 3px;
-    display: flex;
-}
-/*.row2 col .box1{
     display: inline-block;
-    width: 50%;
-    height: 50%;
+}
+
+.movie-btn{
+    padding: 0;
+    position: relative;
+    width: 100%;
+    top: 85%;
+    margin-bottom: 100px;
+}
+
+.movie-btn .btn{ 
     background-color: #D4AF37;
     color: black;
     font-size: 19px;
-}*/
-
-/*.col-12 .d-flex justify-content-start align-items-center .genre-tag bg-secondary text-light p-2 me-2{
-    border-radius: 10px;
-    margin-bottom: 10px;
-    color: black;
-    background-color: #D4AF37;
-}*/
-
+    text-transform: capitalize;
+    padding: 12px 25px;
+    margin: 0;
+    margin-left: 40px;
+    position: absolute;
+    top: 80%;
+    left: 0;
+    cursor: pointer;
+    margin-bottom: 35px;
+   
+}
 
 
 

@@ -17,7 +17,7 @@
 
     <body>
 
-        <div class="container">
+        <div class="main">
             <div style="background-color:#D4AF37; margin-right:57.5%; text-align: center;">
                 <h1 class=" fw-bold ps-4">Despicable ME 4</h1>
             </div>
@@ -34,31 +34,33 @@
             </div>
         </div>
 
-        <div class="row1">
-            <div class="col-12 ">
-                <div class="d-flex justify-content-start align-items-center">
-                    <p class="genre-header">GENRES: <button class="button button1">Comedy</button> <button class="button button2">Animation</button> <button class="button button3">Family</button> <button class="button button4">Sci-Fi</button> </p> 
-                </div>
-            </div>
-             <div class="row2">
-            <div class="col-12">
-                <h4 class="title">Stars : <p class="text text1">Steve Carell | Pierre Coffin | Kristen Wiig | Sofía Vergara</p> </h4>
+        <div class="genre">
+            <div class="col1">
                 
-                <h4 class="text-left">Directors</h4>
-                <p class="text-left">Zack Snyder | Christopher Nolan | Kristen Wiig</p>
-                <h4 class="text-left">Writers</h4>
-                <p class="text-left">Steve Carell | Pierre Coffin</p>
-                <h4 class="text-left">Producers</h4>
-                <p class="text-left">Marty Bowen | Cristobal Tapia De Veer</p>
-                <h4 class="text-left">Music</h4>
-                <p class="text-left">Cristobal Tapia De Veer</p>
+                    <p class="genre-header">GENRES:  <button class="button button1">Comedy</button> <button class="button button2">Animation</button> <button class="button button3">Family</button> <button class="button button4">Sci-Fi</button> </p> 
+                
+            </div>
+        </div>
+             <div class="movie">
+            <div class="col2">
+                <h4 class="title">Stars : <p class="text text1">Steve Carell | Pierre Coffin | Kristen Wiig | Sofía Vergara</p> </h4> <br>
+                <h4 class="title">Directors : <p class="text-text2">Zack Snyder | Christopher Nolan | Kristen Wiig</p></h4> <br>
+                <h4 class="title">Writers : <p class="text-text3">Steve Carell | Pierre Coffin</p> </h4> <br>
+                <h4 class="title">Producers : <p class="text-text4">Marty Bowen | Cristobal Tapia De Veer</p></h4> <br>
+                <h4 class="title">Music :  <p class="text-text5">Cristobal Tapia De Veer</p></h4>
+              
             </div>
         </div>
         
+        <div class="movie-btn">
+            <button class="btn">BUY TICKETS</button>
         </div>
+        
+      
 
-        <%@include file="components/footer.jsp" %>
-
+        
+ <!-- Footer -->
+         <%@include file="components/footer.jsp"%>
     </body>
 </html>     
         
