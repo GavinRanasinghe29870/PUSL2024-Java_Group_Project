@@ -21,6 +21,18 @@ public class singleMovie {
     private String producers;
     private String music;
 
+    
+    public singleMovie(String name,String movieDesc,String imageURL,String genres,String stars,String directors,String writers,String producers,String music){
+        this.name = name;
+        this.movieDesc = movieDesc;
+        this.imageURL = imageURL;
+        this.genres = genres;
+        this.stars = stars;
+        this.directors = directors;
+        this.writers = writers;
+        this.producers = producers;
+        this.music = music;
+    }
 
 //Getters and Setters
 public String getName(){
