@@ -5,12 +5,12 @@ public class Testimonials {
     
     private String fullName;
     private String message;
-    private float rating;
+    private String rating;
 
     public Testimonials() {
     }
 
-    public Testimonials(String fullName, String message, float rating) {
+    public Testimonials(String fullName, String message, String rating) {
         this.fullName = fullName;
         this.message = message;
         this.rating = rating;
@@ -24,7 +24,7 @@ public class Testimonials {
         this.message = message;
     }
 
-    public void setRating(float rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
@@ -36,7 +36,7 @@ public class Testimonials {
         return message;
     }
 
-    public float getRating() {
+    public String getRating() {
         return rating;
     }
 
