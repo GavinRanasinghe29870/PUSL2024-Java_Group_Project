@@ -5,6 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList" %>
+<%@page import="net.abccinema.connection.DbCon" %>
+<%@page import="net.abccinema.model.*" %>
+<%@page import="net.abccinema.servlet.*" %>
+
+<%
+    TestimonialsDao td = new TestimonialsDao(DbCon.getConnection());
+    List<Testimonials> testimonials = td.getAllTestimonial();
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -165,87 +176,37 @@
 
                 <div class="col-lg-8 col-md-7">
                     <div class="owl-carousel testimonial-carousel owl-theme">
+                        <%
+                            if (!testimonials.isEmpty()) {
+                                for (int i = 0; i < testimonials.size(); i++) {
+                                    Testimonials t = testimonials.get(i);
+                        %>
                         <div class="item">
                             <div class="card custom-card">
                                 <div class="card-body card-body-test text-left">
-                                    <h4 class="fw-bold">Vihanga Dewindi</h4>
-                                    <p>"The website was incredibly user-friendly, making it easy to find showtimes, select
-                                        seats, and complete my purchase. I especially appreciated the clear movie
-                                        descriptions and trailers, which helped me make my decision. The checkout process
-                                        was smooth and secure, and I received my tickets instantly via email. Overall, it
-                                        was a fantastic online ticketing experience!"</p>
+                                    <h4 class="fw-bold">
+                                        <%= t.getFullName()%>
+                                    </h4>
+                                    <p>"<%= t.getMessage()%>"</p>
                                     <div class="rating-box d-flex">
-                                        <h5 class="rate">Rate: </h5>
-                                        <div class="stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
+                                        <h5 class="rate mt-2">Rate: </h5>
+                                        <div class="mb-2" id="rating-<%= i%>"></div>
+                                        <script>
+                                            $(function () {
+                                                $('#rating-<%= i%>').rateYo({
+                                                    rating: <%= t.getRating()%>,
+                                                    readOnly: true
+                                                });
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="card custom-card">
-                                <div class="card-body card-body-test text-left">
-                                    <h4 class="fw-bold">Udula Dissanayake</h4>
-                                    <p>"Worst experience ever. Not reccomen!"</p>
-                                    <div class="rating-box d-flex">
-                                        <h5 class="rate">Rate: </h5>
-                                        <div class="stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="card custom-card">
-                                <div class="card-body card-body-test text-left">
-                                    <h4 class="fw-bold">Ishara Sandaruwan</h4>
-                                    <p>"I had a great experience with ABC Cinema. The website was easy to navigate, and I
-                                        was able to find showtimes and purchase tickets quickly. The theater was clean and
-                                        comfortable, and the staff was friendly and helpful. I would definitely recommend
-                                        ABC Cinema to others!</p>
-                                    <div class="rating-box d-flex">
-                                        <h5 class="rate">Rate: </h5>
-                                        <div class="stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="card custom-card">
-                                <div class="card-body card-body-test text-left">
-                                    <h4 class="fw-bold">Kavishka Sulochana</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ipsam voluptates
-                                        officiis? Corrupti dicta similique alias corporis quidem, quod non eius? Corrupti
-                                        molestiae quam illo excepturi, totam laudantium explicabo facere?</p>
-                                    <div class="rating-box d-flex">
-                                        <h5 class="rate">Rate: </h5>
-                                        <div class="stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <%
+                                }
+                            }
+                        %>
                     </div>
                 </div>
             </div>
@@ -278,10 +239,10 @@
 
             // Testimonial Carousel
             $('.testimonial-carousel').owlCarousel({
-                loop: true,
+                loop: false,
                 margin: 10,
                 nav: true,
-                autoplay: true,
+                autoplay: false,
                 autoplayTimeout: 6500,
                 responsive: {
                     0: {
