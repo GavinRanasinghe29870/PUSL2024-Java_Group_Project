@@ -256,16 +256,16 @@
             <hr style="border-bottom: 3px solid #D4AF37;">
 
             <div class="ticket-section">
-                <h5><span id="count">1</span> Ticket(s) Selected. Total <span id="total">LKR 1000</span></h5>
+                <h5><span id="count">0</span> Ticket(s) Selected. Total <span id="total">LKR 0</span></h5>
                 <div class="ticket-type">
                     <div>
                         <strong>Adult</strong><br>
                         LKR 1000.00
                     </div>
                     <div class="d-flex align-items-center">
-                        <button class="btn btn-log">-</button>
-                        <span class="mx-3">1</span>
-                        <button class="btn btn-log">+</button>
+                        <button class="btn btn-log" id="adult-decrease">-</button>
+                        <span class="mx-3" id="adult-count">0</span>
+                        <button class="btn btn-log" id="adult-increase">+</button>
                     </div>
                 </div>
                 <div class="ticket-type">
@@ -274,9 +274,9 @@
                         LKR 800.00
                     </div>
                     <div class="d-flex align-items-center">
-                        <button class="btn btn-log">-</button>
-                        <span class="mx-3">0</span>
-                        <button class="btn btn-log">+</button>
+                        <button class="btn btn-log" id="child-decrease">-</button>
+                        <span class="mx-3" id="child-count">0</span>
+                        <button class="btn btn-log" id="child-increase">+</button>
                     </div>
                 </div>
                 <button class="btn btn-log mt-4 px-4 py-2">Check Out</button>
@@ -284,5 +284,83 @@
         </div>
 
         <%@include file="components/footer.jsp"%>
+        <script>
+            const container = document.querySelector(".seat-container");
+            const seats = document.querySelectorAll(".row .seat:not(.occupied)");
+            const count = document.getElementById("count");
+            const total = document.getElementById("total");
+            const adultCountElement = document.getElementById("adult-count");
+            const childCountElement = document.getElementById("child-count");
+            const adultIncreaseButton = document.getElementById("adult-increase");
+            const adultDecreaseButton = document.getElementById("adult-decrease");
+            const childIncreaseButton = document.getElementById("child-increase");
+            const childDecreaseButton = document.getElementById("child-decrease");
+
+            const adultTicketPrice = 1000;
+            const childTicketPrice = 800;
+
+            let adultCount = 0;
+            let childCount = 0;
+
+            // Update total and count
+            function updateSelectedCount() {
+                const selectedSeats = document.querySelectorAll(".row .seat.selected");
+
+                const selectedSeatsCount = selectedSeats.length;
+
+                count.innerText = selectedSeatsCount;
+                total.innerText = "LKR " + (adultCount * adultTicketPrice + childCount * childTicketPrice);
+            }
+
+            // Seat click event
+            container.addEventListener("click", (e) => {
+                if (
+                        e.target.classList.contains("seat") &&
+                        !e.target.classList.contains("occupied")
+                        ) {
+                    e.target.classList.toggle("selected");
+
+                    updateSelectedCount();
+                }
+            });
+
+            // Increase and decrease ticket count
+            adultIncreaseButton.addEventListener("click", () => {
+                const selectedSeats = document.querySelectorAll(".row .seat.selected").length;
+                if (adultCount + childCount < selectedSeats) {
+                    adultCount++;
+                    adultCountElement.innerText = adultCount;
+                    updateSelectedCount();
+                }
+            });
+
+            adultDecreaseButton.addEventListener("click", () => {
+                if (adultCount > 0) {
+                    adultCount--;
+                    adultCountElement.innerText = adultCount;
+                    updateSelectedCount();
+                }
+            });
+
+            childIncreaseButton.addEventListener("click", () => {
+                const selectedSeats = document.querySelectorAll(".row .seat.selected").length;
+                if (adultCount + childCount < selectedSeats) {
+                    childCount++;
+                    childCountElement.innerText = childCount;
+                    updateSelectedCount();
+                }
+            });
+
+            childDecreaseButton.addEventListener("click", () => {
+                if (childCount > 0) {
+                    childCount--;
+                    childCountElement.innerText = childCount;
+                    updateSelectedCount();
+                }
+            });
+
+            // Initial count and total set
+            updateSelectedCount();
+        </script>
     </body>
 </html>
