@@ -5,9 +5,13 @@ package net.abccinema.model;
  * @author gavin
  */
 public class movieinsert {
+
+    private String id;
     private String name;
     private String imageName;
     private String description;
+    private String startDate;
+    private String endDate;
     private String[] timeSlots;
     private String genres;
     private String cast;
@@ -17,6 +21,14 @@ public class movieinsert {
     private String music;
     private String ticketPriceAdult;
     private String ticketPriceChild;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -42,6 +54,22 @@ public class movieinsert {
         this.description = description;
     }
 
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
     public String[] getTimeSlots() {
         return timeSlots;
     }
@@ -49,7 +77,7 @@ public class movieinsert {
     public void setTimeSlots(String[] timeSlots) {
         this.timeSlots = timeSlots;
     }
-
+    
     public String getGenres() {
         return genres;
     }
@@ -106,11 +134,12 @@ public class movieinsert {
         this.ticketPriceAdult = ticketPriceAdult;
     }
 
-    public String getIcketPriceChild() {
+    // Getter and Setter for Ticket Price (Child)
+    public String getTicketPriceChild() {
         return ticketPriceChild;
     }
 
-    public void setIcketPriceChild(String icketPriceChild) {
-        this.ticketPriceChild = icketPriceChild;
-    } 
+    public void setTicketPriceChild(String ticketPriceChild) {
+        this.ticketPriceChild = ticketPriceChild;
+    }
 }

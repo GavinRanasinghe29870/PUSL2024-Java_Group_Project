@@ -21,7 +21,7 @@ public class DbCon {
             } catch (ClassNotFoundException | SQLException e) {
                 System.err.println("Error connecting to database: " + e.getMessage());
                 throw e;
-            }
+            } 
         }
         return connection;
     }

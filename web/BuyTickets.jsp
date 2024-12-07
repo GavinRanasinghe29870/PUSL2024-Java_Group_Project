@@ -7,8 +7,10 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="net.abccinema.connection.DbCon" %>
-<%@page import="net.abccinema.model.*" %>
+<%@page import="net.abccinema.model.buytickets" %>
 <%@page import="net.abccinema.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,65 +27,50 @@
         <hr style="border-top: 3px solid #D4AF37;">
 
         <%--Dropdown Section--%>
-        <div class="cusDrop container d-flex">
-            <div class="cusDrop1 dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
+        <!--        <div class="cusDrop1 dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu"id="dateDropdown">
+                         
+                        <li><a class = "dropdown-item" href="#"></a></li> 
+                    </ul>
+                </div>
+                    <div class="cusDrop1 dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu"id="dateDropdown">
+                         
+                        <li><a class = "dropdown-item" href="#"></a></li> 
+                    </ul>
+                </div>-->
 
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
+        <c:forEach var="movie" items="${movies}">
 
-        <%
-            try {
-                List<buytickets> movies = new buyticketsDao(DbCon.getConnection()).getMovies();
 
-                if (movies != null && !movies.isEmpty()) {
-                    for (buytickets movie : movies) {%>
-        <div class="custom-box box container-fluid" id="hoverBox">
-            <h1><%= movie.getName()%></h1>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <p class="mt-5"> <%= movie.getDescription()%>
-                        </p>
-                        <div class="time-box d-flex">
-                            <div class="container-fluid">
-                                <center>
-                                    <button class="time-text"> <%= movie.getTime()%></button>
-                                </center>
+            <div class="custom-box box container-fluid" id="hoverBox">
+                <h1>${movie.Name}</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <p class="mt-5"> ${movie.Description}
+                            </p>
+                            <div class="time-box d-flex">
+                                <div class="container-fluid">
+                                    <center>
+                                        <button class="time-text"> ${movie.timeSlots}</button>
+                                    </center>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <img src="Images/<%= movie.getImage()%>" width="80%" height="auto" alt="<%= movie.getImage()%>"/>
+                        <div class="col">
+                            <img src="Images/${movie.imageName}" width="80%" height="auto" alt="${movie.imageName}"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <%  }
-                } else {
-                    out.println("No movies found.");
-                }
-            } catch (Exception e) {
-                out.println("Error: " + e.getMessage());
-            }
-        %>
+        </c:forEach>
 
 
 

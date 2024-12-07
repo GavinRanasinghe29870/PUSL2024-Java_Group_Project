@@ -3,51 +3,68 @@ package net.abccinema.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author gavin
  */
 public class movieinsertDAO {
-    
-    private Connection con;
-    private String query;
-    private PreparedStatement pst;
 
-    public movieinsertDAO (Connection con) {
+    private Connection con;
+
+    public movieinsertDAO(Connection con) {
         this.con = con;
     }
-    
-    public boolean insertMovie(movieinsert movie){
-       boolean isSuccess = false; 
-       
-       try{
-           query = "INSERT INTO movies (m_name, m_image, m_description, m_time, m_genres, "
-                   + "m_cast, m_directors, m_writers, m_producers, m_music, m_price_adult, m_price_child)"
-                   + "VALUES(0,'"
-                   + movie.getName()+"', '"
-                   + movie.getImageName()+"','"
-                   + movie.getDescription()+"', '"
-                   + String.join(",", movie.getTimeSlots())+"','"
-                   + movie.getGenres()+"','"
-                   + movie.getCast()+"','"
-                   + movie.getDirectors()+"','"
-                   + movie.getWriters()+"','"
-                   + movie.getProducers()+"','"
-                   + movie.getMusic()+"','"
-                   + movie.getTicketPriceAdult()+"','"
-                   + movie.getIcketPriceChild()+"')";
-           pst = this.con.prepareStatement(query);
-           int rs = pst.executeUpdate(query);
-           
-           if(rs > 0){
-               isSuccess = true;
-           } else{
-               isSuccess = false;
-           }
-       }catch(Exception e){
-           e.printStackTrace();
-       }
-       return isSuccess;
+
+    public boolean insertMovie(movieinsert movie) {
+        boolean isSuccess = false;
+
+        String query = "INSERT INTO movies (m_id, m_name, m_image, m_description, m_start_date, m_end_date, m_genres, "
+                + "m_cast, m_directors, m_writers, m_producers, m_music, m_price_adult, m_price_child) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertTimeSlotsQuery = "INSERT INTO movie_time_slots(m_id, m_time_slot) VALUES(?, ?)";
+        try (PreparedStatement pst = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS); 
+             PreparedStatement timeslotPst = con.prepareStatement(insertTimeSlotsQuery)) {
+            pst.setString(1, movie.getId());
+            pst.setString(2, movie.getName());
+            pst.setString(3, movie.getImageName());
+            pst.setString(4, movie.getDescription());
+            pst.setString(5, movie.getStartDate());
+            pst.setString(6, movie.getEndDate());
+            pst.setString(7, movie.getGenres());
+            pst.setString(8, movie.getCast());
+            pst.setString(9, movie.getDirectors());
+            pst.setString(10, movie.getWriters());
+            pst.setString(11, movie.getProducers());
+            pst.setString(12, movie.getMusic());
+            pst.setDouble(13, Double.parseDouble(movie.getTicketPriceAdult()));
+            pst.setDouble(14, Double.parseDouble(movie.getTicketPriceChild()));
+
+            pst.executeUpdate();
+            ResultSet rs = pst.getGeneratedKeys();
+            if (rs.next()) {
+                String movieId = rs.getString(0001);
+                if (movie.getTimeSlots() != null && movie.getTimeSlots().length > 0) {
+                    for (String timeSlots : movie.getTimeSlots()) {
+                        timeslotPst.setString(1, movieId);
+                        timeslotPst.setString(2, timeSlots);
+                        timeslotPst.addBatch();
+                    }
+                    int[] timeSlotResults = timeslotPst.executeBatch();
+
+                    isSuccess = timeSlotResults.length == movie.getTimeSlots().length;
+                } else {
+                    isSuccess = true;
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error during movie insertion: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return isSuccess;
+
     }
 }

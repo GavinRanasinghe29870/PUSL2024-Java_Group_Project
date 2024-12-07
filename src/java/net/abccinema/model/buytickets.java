@@ -5,23 +5,42 @@ package net.abccinema.model;
  * @author gavin
  */
 public class buytickets {
+
     private int id;
     private String Name;
     private String Description;
-    private String Image;
-    private String Time;
-    private String Date;
-    
-    public buytickets(){
+    private String imageName;
+    private String timeSlots;
+    private String StartDate;
+    private String EndDate;
+    private String genres;
+    private String cast;
+    private String directors;
+    private String writers;
+    private String producers;
+    private String music;
+    private String ticketPriceAdult;
+    private String ticketPriceChild;
+
+    public buytickets() {
     }
 
-    public buytickets(int id, String Name, String Description, String Image, String Time, String Date) {
+    public buytickets(int id, String Name, String Description, String imageName, String timeSlots, String StartDate, String EndDate, String genres, String cast, String directors, String writers, String producers, String music, String ticketPriceAdult, String ticketPriceChild) {
         this.id = id;
         this.Name = Name;
         this.Description = Description;
-        this.Image = Image;
-        this.Time = Time;
-        this.Date = Date;
+        this.imageName = imageName;
+        this.timeSlots = timeSlots;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.genres = genres;
+        this.cast = cast;
+        this.directors = directors;
+        this.writers = writers;
+        this.producers = producers;
+        this.music = music;
+        this.ticketPriceAdult = ticketPriceAdult;
+        this.ticketPriceChild = ticketPriceChild;
     }
 
     public int getId() {
@@ -48,32 +67,106 @@ public class buytickets {
         this.Description = Description;
     }
 
-    public String getImage() {
-        return Image;
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setImage(String Image) {
-        this.Image = Image;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
-    public String getTime() {
-        return Time;
+    public String getTimeSlots() {
+        return timeSlots;
     }
-    
-    public void setTime(String Time) {
-        this.Time = Time;
+
+    public void setTimeSlots(String timeSlots) {
+        this.timeSlots = timeSlots;
     }
-    
-    public String getDate() {
-        return Date;
+
+    public String getStartDate() {
+        return StartDate;
     }
-    
-    public String setDate(String Date) {
-        return Date;
+
+    public void setStartDate(String StartDate) {
+        this.StartDate = StartDate;
+    }
+
+    public String getEndDate() {
+        return EndDate;
+    }
+
+    public void setEndDate(String EndDate) {
+        this.EndDate = EndDate;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
+
+    public String getCast() {
+        return cast;
+    }
+
+    public void setCast(String cast) {
+        this.cast = cast;
+    }
+
+    public String getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(String directors) {
+        this.directors = directors;
+    }
+
+    public String getWriters() {
+        return writers;
+    }
+
+    public void setWriters(String writers) {
+        this.writers = writers;
+    }
+
+    public String getProducers() {
+        return producers;
+    }
+
+    public void setProducers(String producers) {
+        this.producers = producers;
+    }
+
+    public String getMusic() {
+        return music;
+    }
+
+    public void setMusic(String music) {
+        this.music = music;
+    }
+
+    public String getTicketPriceAdult() {
+        return ticketPriceAdult;
+    }
+
+    public void setTicketPriceAdult(String ticketPriceAdult) {
+        this.ticketPriceAdult = ticketPriceAdult;
+    }
+
+    public String getTicketPriceChild() {
+        return ticketPriceChild;
+    }
+
+    public void setTicketPriceChild(String ticketPriceChild) {
+        this.ticketPriceChild = ticketPriceChild;
     }
 
     @Override
     public String toString() {
-        return "buytickets{" + "id=" + id + ", Name=" + Name + ", Description=" + Description + ", Image=" + Image + ", Time=" + Time + ", Date=" + Date + '}';
-    }  
+        return "buytickets{" + "id=" + id + ", Name=" + Name + ", Description=" + Description + ", imageName=" + imageName + ", timeSlots=" + timeSlots + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", genres=" + genres + ", cast=" + cast + ", directors=" + directors + ", writers=" + writers + ", producers=" + producers + ", music=" + music + ", ticketPriceAdult=" + ticketPriceAdult + ", ticketPriceChild=" + ticketPriceChild + '}';
+    }
+
+    
 }

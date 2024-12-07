@@ -50,7 +50,6 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td><img src="path_to_image.jpg" alt="Image" style="width: 50px; height: 50px;"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -63,13 +62,14 @@
                             <td></td>
                             <td></td>
                             <td></td>
-<!--                            <td><a href="#" class="text-white"></a></td>-->
+                            <td></td>
+                            <!--                            <td><a href="#" class="text-white"></a></td>-->
                             <td>
                                 <button class="btn btn-success btn-sm">Edit</button>
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
-                        
+
                         <!-- Repeat similar rows as needed -->
                     </tbody>
                 </table>
@@ -83,7 +83,7 @@
                     <div class="modal-content">
                         <div class="modal-body">
                             <h4 style="margin-bottom: 50px;">Movie ID: 0001</h4>
-                            <form>
+                            <form action="movieinsertServlet" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="movieName">Movie Name:</label>
                                     <input type="text" class="form-control" name="movieName">
@@ -100,21 +100,22 @@
                                     <label for="movieTimeSlots">Time Slots:</label>
                                     <div class="time-slot-group" id="movieTimeSlots">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot1">
+                                            <input class="form-check-input" type="checkbox" name="timeSlots" value="10:30 AM" id="slot1">
                                             <label class="form-check-label" for="slot1">10:30 AM</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot2">
+                                            <input class="form-check-input" type="checkbox" name="timeSlots" value="02:10 PM" id="slot2">
                                             <label class="form-check-label" for="slot2">02:10 PM</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot3">
+                                            <input class="form-check-input" type="checkbox" name="timeSlots" value="06:30 PM" id="slot3">
                                             <label class="form-check-label" for="slot3">06:30 PM</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="timeSlots" id="slot4">
+                                            <input class="form-check-input" type="checkbox" name="timeSlots" value="10:15 PM" id="slot4">
                                             <label class="form-check-label" for="slot4">10:15 PM</label>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="form-group">
