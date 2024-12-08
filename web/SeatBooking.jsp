@@ -255,32 +255,38 @@
             </div>
             <hr style="border-bottom: 3px solid #D4AF37;">
 
-            <div class="ticket-section">
-                <h5><span id="count">0</span> Ticket(s) Selected. Total <span id="total">LKR 0</span></h5>
-                <div class="ticket-type">
-                    <div>
-                        <strong>Adult</strong><br>
-                        LKR 1000.00
+            <form action="checkout.jsp" method="POST">
+                <div class="ticket-section">
+                    <h5><span id="count">0</span> Ticket(s) Selected. Total <span id="total">LKR 0</span></h5>
+                    <div class="ticket-type">
+                        <div>
+                            <strong>Adult</strong><br>
+                            LKR 1000.00
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-log" id="adult-decrease">-</button>
+                            <span class="mx-3" id="adult-count">0</span>
+                            <button type="button" class="btn btn-log" id="adult-increase">+</button>
+                        </div>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <button class="btn btn-log" id="adult-decrease">-</button>
-                        <span class="mx-3" id="adult-count">0</span>
-                        <button class="btn btn-log" id="adult-increase">+</button>
+                    <div class="ticket-type">
+                        <div>
+                            <strong>Child</strong><br>
+                            LKR 800.00
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-log" id="child-decrease">-</button>
+                            <span class="mx-3" id="child-count">0</span>
+                            <button type="button" class="btn btn-log" id="child-increase">+</button>
+                        </div>
                     </div>
+                    <input type="hidden" name="adultCount" id="hidden-adult-count" value="0">
+                    <input type="hidden" name="childCount" id="hidden-child-count" value="0">
+                    <input type="hidden" name="totalPrice" id="hidden-total-price" value="0">
+                    <input type="hidden" name="selectedSeats" id="hidden-selected-seats" value="">
+                    <button type="submit" class="btn btn-log mt-4 px-4 py-2">Check Out</button>
                 </div>
-                <div class="ticket-type">
-                    <div>
-                        <strong>Child</strong><br>
-                        LKR 800.00
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <button class="btn btn-log" id="child-decrease">-</button>
-                        <span class="mx-3" id="child-count">0</span>
-                        <button class="btn btn-log" id="child-increase">+</button>
-                    </div>
-                </div>
-                <button class="btn btn-log mt-4 px-4 py-2">Check Out</button>
-            </div>
+            </form>
         </div>
 
         <%@include file="components/footer.jsp"%>
