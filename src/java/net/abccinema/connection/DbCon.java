@@ -16,7 +16,7 @@ public class DbCon {
         if (connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/abccinema", "root", "gavin123");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/abccinema", "root", "DragonDulith12345");
                 System.out.print("Connected");
             } catch (ClassNotFoundException | SQLException e) {
                 System.err.println("Error connecting to database: " + e.getMessage());

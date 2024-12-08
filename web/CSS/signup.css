@@ -1,0 +1,51 @@
+/*  body 
+  {
+      background-color:#000000;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }*/
+    .sign_container {
+      margin-top: 20px;
+    }
+    .sign_part {
+      flex: 1;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #D4AF37;
+    }
+    .sign_part h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      background-color: #f9f9f9
+    }
+    .sign_header {
+      background-color: #000000;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .sign_header img {
+/*      width: 100px;*/
+      height: auto;
+    }
+    .sign_header h1 {
+      margin: 10px 0;
+    }
+    .cus-radio{
+        width: 50px;
+    }
+   .signup-button {
+  background-color: #D4AF37; /* Gold background */
+  color: white;             /* White text */
+  padding: 10px 20px;       /* Padding for size */
+  font-size: 16px;          /* Font size */
+  border: none;             /* Remove default border */
+  border-radius: 5px;       /* Rounded corners */
+  cursor: pointer;          /* Pointer cursor on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+}
+
+.signup-button:hover {
+  background-color: #b89b30;
+    }
