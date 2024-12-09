@@ -204,28 +204,7 @@
     box-sizing: border-box; 
 
 
-        @media (max-width: 768px) {
-            .box {
-                flex: 1 1 100%; 
-                margin-bottom: 20px; 
-            }
-
-            .button-container button {
-                width: 80%; 
-            }
-
-            #back-button, #paynow-button {
-                width: 45%;
-                margin: 5px 2%;
-            }
-
-            h2 {
-                font-size: 1.5rem; 
-            }
-
-            label, input {
-                font-size: 1rem; 
-            }
+       
             
         
     </style>
