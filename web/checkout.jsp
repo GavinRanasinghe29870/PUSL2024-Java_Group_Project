@@ -246,27 +246,60 @@
 </div>
         <form action="purchaseServlet" method="post">
             <div class="content">
+                 <%-- Dynamic Data Processing --%>
+                    <%
+                        // Retrieve parameters from the previous page
+                        String selectedSeats = request.getParameter("selectedSeats") != null ? request.getParameter("selectedSeats") : "Not Selected";
+                        String adultCount = request.getParameter("adultCount") != null ? request.getParameter("adultCount") : "0";
+                        String childCount = request.getParameter("childCount") != null ? request.getParameter("childCount") : "0";
+                        String totalPrice = request.getParameter("totalPrice") != null ? request.getParameter("totalPrice") : "0";
+
+                        // Convert string parameters to appropriate data types
+                        int adultCountInt = Integer.parseInt(adultCount);
+                        int childCountInt = Integer.parseInt(childCount);
+                        float totalPriceFloat = Float.parseFloat(totalPrice);
+
+                        // Define ticket prices
+                        float adultTicketPrice = 1000.00f;
+                        float childTicketPrice = 800.00f;
+
+                        // Calculate total prices
+                        float adultTotalPrice = adultCountInt * adultTicketPrice;
+                        float childTotalPrice = childCountInt * childTicketPrice;
+
+                        // Format total price for display
+                        java.text.NumberFormat formatter = java.text.NumberFormat.getInstance();
+                        formatter.setGroupingUsed(true);
+                        formatter.setMinimumFractionDigits(2);
+                        formatter.setMaximumFractionDigits(2);
+                        String formattedAdultTotalPrice = formatter.format(adultTotalPrice);
+                        String formattedChildTotalPrice = formatter.format(childTotalPrice);
+                        String formattedTotalPrice = formatter.format(totalPriceFloat);
+                    %>
                 
                 <!-- Box 1: Purchase Summary -->
                 <div class="box">
                     <h2>Purchase Summary</h2>
                     <hr style="border: 1px solid black;">
                     <div class="purchase-summary">
-                        <div class="ticket-item">
-                            <label for="adult-tickets">Adult Tickets:</label>
-                            <input type="text" id="adult-tickets" name="adultTickets" value="0" readonly> LKR 1000.00
-                        </div>
-                        <div class="ticket-item">
-                            <label for="child-tickets">Child Tickets:</label>
-                            <input type="text" id="child-tickets" name="childTickets" value="0" readonly> LKR 00.00
-                        </div>
+                         <div class="ticket-item">
+                        <label for="adult-tickets">Adult Tickets :(x <%= adultCountInt %>)</label>
+                           LKR <%= formattedAdultTotalPrice %>
+                        
+                    </div>
+                        <% if (childCountInt > 0) { %>
+                    <div class="ticket-item">
+                        <label for="child-tickets">Child Tickets :(x <%= childCountInt %>)</label>
+                          LKR <%= formattedChildTotalPrice %>
+                    </div>
+                    <% } %>
                     </div>
                     
                     <br>
-                    
-                    <h5><p>Total Amount: LKR 00.00</p></h5>
-                    <input type="hidden" id="hidden-total-amount" name="totalAmount" value="0.00">
-                    <br>
+                    <div class="ticket-item">
+                        <h5>Total Amount: LKR <%= formattedTotalPrice %></h5>
+                        <input type="hidden" id="hidden-total-amount" name="totalAmount" value="<%= formattedTotalPrice %>">
+                    </div>
                     
                     <hr style="border: 1px solid black;">
                     <div class="payment-method">
