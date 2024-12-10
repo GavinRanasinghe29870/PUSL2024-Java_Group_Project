@@ -4,6 +4,8 @@
  */
 package net.abccinema.model;
 
+import net.abccinema.connection.DbCon;
+
 /**
  * Model class for Single Movie.
  * @author Vihanga
@@ -11,6 +13,7 @@ package net.abccinema.model;
 
 
 public class singleMovie {
+  
     private String name;
     private String movieDesc;
     private String imageURL;
@@ -21,8 +24,11 @@ public class singleMovie {
     private String producers;
     private String music;
 
-    
+   
+
+    //Constructor
     public singleMovie(String name,String movieDesc,String imageURL,String genres,String stars,String directors,String writers,String producers,String music){
+       
         this.name = name;
         this.movieDesc = movieDesc;
         this.imageURL = imageURL;
@@ -32,6 +38,14 @@ public class singleMovie {
         this.writers = writers;
         this.producers = producers;
         this.music = music;
+    }
+
+//    singleMovie() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    public singleMovie() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 //Getters and Setters
@@ -90,4 +104,17 @@ public void setMusic(String music){
     this.music = music;
 }
 
+
+    @Override
+    public String toString() {
+        return "SingleMovie [ name=" + name + 
+               ", movieDesc=" + movieDesc + ", imageURL=" + imageURL + 
+               ", genres=" + genres + ", stars=" + stars + ", directors=" + directors + 
+               ", writers=" + writers + ", producers=" + producers + ", music=" + music + "]";
+    }
+    
+    
+    
+
+    
 }
