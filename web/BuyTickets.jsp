@@ -46,31 +46,42 @@
                     </ul>
                 </div>-->
 
-        <c:forEach var="movie" items="${movies}">
+        <%
+            System.out.println("Movies attribute in JSP: " + request.getAttribute("movies"));
+        %>
+
+        <c:if test="${not empty movies}">
+            <c:forEach var="movie" items="${movies}">
 
 
-            <div class="custom-box box container-fluid" id="hoverBox">
-                <h1>${movie.Name}</h1>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <p class="mt-5"> ${movie.Description}
-                            </p>
-                            <div class="time-box d-flex">
-                                <div class="container-fluid">
-                                    <center>
-                                        <button class="time-text"> ${movie.timeSlots}</button>
-                                    </center>
+
+                <div class="custom-box box container-fluid" id="hoverBox">
+                    <h1>${movie.name}</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <p class="mt-5"> ${movie.description}
+                                </p>
+                                <div class="time-box d-flex">
+                                    <div class="container-fluid">
+                                        <center>
+                                            <button class="time-text"> </button>
+                                        </center>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <img src="Images/${movie.imageName}" width="80%" height="auto" alt="${movie.imageName}"/>
+                            <div class="col">
+                                <img src="Images/${movie.imageName}" width="80%" height="auto" alt="${movie.imageName}"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+        </c:if>
+        <c:if test="${not empty errorMessage}">
+            <p>Error: ${errorMessage}</p>
+        </c:if>
+
 
 
 

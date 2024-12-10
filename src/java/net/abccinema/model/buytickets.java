@@ -7,12 +7,12 @@ package net.abccinema.model;
 public class buytickets {
 
     private int id;
-    private String Name;
-    private String Description;
+    private String name;
+    private String description;
     private String imageName;
     private String timeSlots;
-    private String StartDate;
-    private String EndDate;
+    private String startDate;
+    private String endDate;
     private String genres;
     private String cast;
     private String directors;
@@ -23,16 +23,17 @@ public class buytickets {
     private String ticketPriceChild;
 
     public buytickets() {
+        System.out.println("buytickets object created with default constructor");
     }
 
     public buytickets(int id, String Name, String Description, String imageName, String timeSlots, String StartDate, String EndDate, String genres, String cast, String directors, String writers, String producers, String music, String ticketPriceAdult, String ticketPriceChild) {
         this.id = id;
-        this.Name = Name;
-        this.Description = Description;
+        this.name = Name;
+        this.description = Description;
         this.imageName = imageName;
         this.timeSlots = timeSlots;
-        this.StartDate = StartDate;
-        this.EndDate = EndDate;
+        this.startDate = StartDate;
+        this.endDate = EndDate;
         this.genres = genres;
         this.cast = cast;
         this.directors = directors;
@@ -41,30 +42,36 @@ public class buytickets {
         this.music = music;
         this.ticketPriceAdult = ticketPriceAdult;
         this.ticketPriceChild = ticketPriceChild;
+
+        System.out.println("buytickets object created with parameters: " + this.toString());
     }
 
     public int getId() {
+        System.out.println("Setting id to: " + id);
         return id;
     }
 
     public void setId(int id) {
+        System.out.println("Setting id to: " + id);
         this.id = id;
     }
 
     public String getName() {
-        return Name;
+        System.out.println("Getting Name: " + name);
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        System.out.println("Setting Name to: " + name);
+        this.name = name;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImageName() {
@@ -84,19 +91,19 @@ public class buytickets {
     }
 
     public String getStartDate() {
-        return StartDate;
+        return startDate;
     }
 
-    public void setStartDate(String StartDate) {
-        this.StartDate = StartDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public String getEndDate() {
-        return EndDate;
+        return endDate;
     }
 
-    public void setEndDate(String EndDate) {
-        this.EndDate = EndDate;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public String getGenres() {
@@ -165,8 +172,9 @@ public class buytickets {
 
     @Override
     public String toString() {
-        return "buytickets{" + "id=" + id + ", Name=" + Name + ", Description=" + Description + ", imageName=" + imageName + ", timeSlots=" + timeSlots + ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", genres=" + genres + ", cast=" + cast + ", directors=" + directors + ", writers=" + writers + ", producers=" + producers + ", music=" + music + ", ticketPriceAdult=" + ticketPriceAdult + ", ticketPriceChild=" + ticketPriceChild + '}';
+        String result = "buytickets{" + "id=" + id + ", name=" + name + ", description=" + description + ", imageName=" + imageName + ", timeSlots=" + timeSlots + ", startDate=" + startDate + ", endDate=" + endDate + ", genres=" + genres + ", cast=" + cast + ", directors=" + directors + ", writers=" + writers + ", producers=" + producers + ", music=" + music + ", ticketPriceAdult=" + ticketPriceAdult + ", ticketPriceChild=" + ticketPriceChild + '}';
+        System.out.println("toString called: " + result);
+        return result;
     }
 
-    
 }
