@@ -32,29 +32,72 @@
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
         
+        
         <div class="card-container">
         <div class="card">
             <img src="./Images/venom.jpg" alt="Mufasa">
-            <p>MUFASA: THE LION KING</p>
-            <p>IN THEATERS</p>
-            <p>DECEMBER 20</p>
+            <p>VENOM</p>
             <a href="#">MORE INFO</a>
             <button>BUY TICKETS</button>
         </div>
+        
+        <div class="card">
+            <img src="./Images/venom.jpg" alt="Mufasa">
+            <p>VENOM</p>
+            <a href="#">MORE INFO</a>
+            <button>BUY TICKETS</button>
+        </div>    
 
         <div class="card">
-            </div>
-        </div>    
+            <img src="./Images/venom.jpg" alt="Mufasa">
+            <p>VENOM</p>
+            <a href="#">MORE INFO</a>
+            <button>BUY TICKETS</button>
+        </div>
+            
+        <div class="card">
+            <img src="./Images/venom.jpg" alt="Mufasa">
+            <p>VENOM</p>
+            <a href="#">MORE INFO</a>
+            <button>BUY TICKETS</button>
+        </div>
+                
+        </div>   
+        </div>
         
            
         
-       
+       <div class="container">
         <div style=" padding-top:80px;">
         <p class="Custom-titlem" data-text="Coming Soon">Coming Soon</p>
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
-        
+       
+         <div class="card-container">
+        <div class="card">
+            <img src="./Images/venom.jpg" alt="Mufasa">
+            <p>VENOM</p>
+            <a href="#">MORE INFO</a>
         </div>
+
+        <div class="card">
+            <img src="./Images/venom.jpg" alt="Mufasa">
+            <p>VENOM</p>
+            <a href="#">MORE INFO</a>
+            
+        </div>
+            
+        <div class="card">
+            <img src="./Images/venom.jpg" alt="Mufasa">
+            <p>VENOM</p>
+            <a href="#">MORE INFO</a>
+            
+        </div>
+                
+        </div>
+        </div>
+        
+        
          
    
                     
