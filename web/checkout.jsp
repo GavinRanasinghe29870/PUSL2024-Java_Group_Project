@@ -188,8 +188,6 @@
     border-radius: 5px;
 }
 
-
-        
   input[type="text"] {
   width: 20px;
   height: 20px;
@@ -202,10 +200,12 @@
     width: 90%; 
     height: 30px;
     box-sizing: border-box; 
+}
+p{
+    color: black;
+}
 
-
-       
-            
+           
         
     </style>
 </head>
@@ -262,6 +262,8 @@
                     <hr style="border: 1px solid black;">
                     <div class="purchase-summary">
                          <div class="ticket-item">
+                             <p>Seat Numbers: <%= selectedSeats %></p><br>
+
                         <label for="adult-tickets">Adult Tickets :(x <%= adultCountInt %>)</label>
                            LKR <%= formattedAdultTotalPrice %>
                         
@@ -316,6 +318,12 @@
                     <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
                 </div>
             </div>
+
+                      <!-- Pass Hidden Fields -->
+                <input type="hidden" name="selectedSeats" value="<%= selectedSeats %>">
+                <input type="hidden" name="adultCount" value="<%= adultCount %>">
+                <input type="hidden" name="childCount" value="<%= childCount %>">
+                <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
 
             <!-- Buttons -->
             <div class="button-container">
