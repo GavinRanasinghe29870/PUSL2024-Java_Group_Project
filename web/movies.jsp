@@ -24,25 +24,37 @@
         <p class="Custom-title" data-text="Movies">Movies</p>
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
-        <div class="custom-margin" >
-            <div class="container">
-
         
+
+        <div class="container">
         <div style="padding-top:20px;">
         <p class="Custom-titlem" data-text="Now Showing">Now Showing</p>
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
         
-       
-          
-                
+        <div class="card-container">
+        <div class="card">
+            <img src="./Images/venom.jpg" alt="Mufasa">
+            <p>MUFASA: THE LION KING</p>
+            <p>IN THEATERS</p>
+            <p>DECEMBER 20</p>
+            <a href="#">MORE INFO</a>
+            <button>BUY TICKETS</button>
+        </div>
+
+        <div class="card">
+            </div>
+        </div>    
         
+           
+        
+       
         <div style=" padding-top:80px;">
         <p class="Custom-titlem" data-text="Coming Soon">Coming Soon</p>
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
         
-       
+        </div>
          
    
                     

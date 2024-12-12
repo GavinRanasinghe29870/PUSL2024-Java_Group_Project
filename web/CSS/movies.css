@@ -29,7 +29,63 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     white-space: nowrap;
    
 }
-.cardm-color {
-    background-color: #0D0D0C;
-    color: white;
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+    width: 100%;
+    margin: 20px auto;
+}
+
+.card {
+    background-color: #D4AF37;
+    color: #fff;
+    width: 25%;
+    padding:0px;
+    margin: 10px;
+    border-radius: 0px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+   
+}
+
+.card img {
+    width: 100%;
+    border-radius: 0px;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+
+.card h4 {
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.card p {
+    margin-bottom: 5px;
+    
+}
+
+.card a, .card button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 0px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card a {
+    background-color: #000000; 
+    
+}
+
+.card button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
 }
