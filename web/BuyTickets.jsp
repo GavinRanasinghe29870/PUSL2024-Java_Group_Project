@@ -45,28 +45,28 @@
                         <li><a class = "dropdown-item" href="#"></a></li> 
                     </ul>
                 </div>-->
-        <h1>Test123</h1>
         <%
-            System.out.println("Movies attribute in JSP: " + request.getAttribute("movies"));
+            List<buytickets> movies = (List<buytickets>) request.getAttribute("movies");
+            if (movies == null) {
+                System.out.println("Movies attribute is null in JSP");
+            } else {
+                System.out.println("Movies attribute in JSP: " + movies);
+            }
         %>
 
         <c:if test="${not empty movies}">
             <c:forEach var="movie" items="${movies}">
-
-
-
                 <div class="custom-box box container-fluid" id="hoverBox">
                     <h1>${movie.name}</h1>
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <p class="mt-5"> ${movie.description}
-                                </p>
+                                <p class="mt-5"> ${movie.description}</p>
                                 <div class="time-box d-flex">
                                     <div class="container-fluid">
-                                        <center>
-                                            <button class="time-text"> </button>
-                                        </center>
+<!--                                        <center>
+                                            <button class="time-text"> -</button>
+                                        </center>-->
                                     </div>
                                 </div>
                             </div>
@@ -78,9 +78,13 @@
                 </div>
             </c:forEach>
         </c:if>
-        <c:if test="${not empty errorMessage}">
-            <p>Error: ${errorMessage}</p>
+
+        <c:if test="${empty movies}">
+            <div class="container">
+                <h2 style="color: white; text-align: center;">No movies available at the moment.</h2>
+            </div>
         </c:if>
+
 
 
 

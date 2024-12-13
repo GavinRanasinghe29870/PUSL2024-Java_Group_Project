@@ -1,18 +1,14 @@
 package net.abccinema.servlet;
 
 import jakarta.servlet.RequestDispatcher;
-import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import net.abccinema.connection.DbCon;
 import net.abccinema.model.buytickets;
 import net.abccinema.model.buyticketsDao;
@@ -21,7 +17,7 @@ import net.abccinema.model.buyticketsDao;
  *
  * @author gavin
  */
-@WebServlet(name = "buyticketsServlet", urlPatterns = {"/buyticketsServlet"})
+@WebServlet(name = "buyticketsServlet", value = "/buyticketsServlet")
 public class buyticketsServlet extends HttpServlet {
 
     //    private buyticketsDao buyticketsDao;
@@ -42,22 +38,30 @@ public class buyticketsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            System.out.println("Connecting to database...");
-            buyticketsDao dao = new buyticketsDao(DbCon.getConnection());
-            System.out.println("Fetching movies from database...");
+            // Establish connection
+            Connection con = DbCon.getConnection();
+            System.out.println("Database connection established.");
+
+            // Instantiate DAO and fetch movies
+            buyticketsDao dao = new buyticketsDao(con);
             List<buytickets> movies = dao.getAllMovies();
-            System.out.println("Movies fetched: " + movies);
+
+            // Log the retrieved movies
+            System.out.println("Fetched movies: " + movies);
+
+            // Set the movies list as a request attribute
             request.setAttribute("movies", movies);
-            System.out.println("Setting movies attribute for request...");
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/BuyTickets.jsp");
+            // Forward the request to the JSP page
+            RequestDispatcher dispatcher = request.getRequestDispatcher("BuyTickets.jsp");
             dispatcher.forward(request, response);
-            System.out.println("Forwarding to BuyTickets.jsp...");
         } catch (Exception e) {
-            System.out.println("An error occurred in doGet: " + e.getMessage());
+            // Handle and log exceptions
+            System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
-
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error fetching movies.");
         }
+    
 // List<buytickets> movies = new ArrayList<>(); 
 //        try {
 //            movies = buyticketsDao.getAllMovies();
