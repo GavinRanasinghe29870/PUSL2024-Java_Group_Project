@@ -1,3 +1,12 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    String currentURL = request.getRequestURI();
+    String contextPath = request.getContextPath();
+    
+    System.out.println("Current URL: " + currentURL);
+    System.out.println("Context Path: " + contextPath);
+%>
+
 <nav class="navbar sticky-top navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.jsp">
@@ -11,19 +20,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+                    <a class="nav-link <%= currentURL.equals(contextPath + "/") || currentURL.contains("index.jsp") ? "active" : "" %>" aria-current="page" href="index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="movies.jsp">Movies</a>
+                    <a class="nav-link <%= currentURL.contains("movies.jsp") ? "active" : "" %>" href="movies.jsp">Movies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="BuyTickets.jsp">Buy Tickets</a>
+                    <a class="nav-link <%= currentURL.contains("BuyTickets.jsp") || currentURL.contains("SeatBooking.jsp") || currentURL.contains("checkout.jsp") ? "active" : "" %>" href="BuyTickets.jsp">Buy Tickets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="ContactUs.jsp">Contact Us</a>
+                    <a class="nav-link <%= currentURL.contains("ContactUs.jsp") ? "active" : "" %>" href="ContactUs.jsp">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.jsp">About Us</a>
+                    <a class="nav-link <%= currentURL.contains("aboutUs.jsp") ? "active" : "" %>" href="aboutUs.jsp">About Us</a>
                 </li>
             </ul>
             <a href="login.html" class="btn btn-login">Sign in | Sign up</a>
