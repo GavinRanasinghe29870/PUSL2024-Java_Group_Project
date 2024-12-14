@@ -22,6 +22,24 @@ public class movieinsert {
     private String ticketPriceAdult;
     private String ticketPriceChild;
 
+//    public movieinsert(String id, String name, String imageName, String description, String startDate, String endDate, String[] timeSlots, String genres, String cast, String directors, String writers, String producers, String music, String ticketPriceAdult, String ticketPriceChild) {
+//        this.id = id;
+//        this.name = name;
+//        this.imageName = imageName;
+//        this.description = description;
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//        this.timeSlots = timeSlots;
+//        this.genres = genres;
+//        this.cast = cast;
+//        this.directors = directors;
+//        this.writers = writers;
+//        this.producers = producers;
+//        this.music = music;
+//        this.ticketPriceAdult = ticketPriceAdult;
+//        this.ticketPriceChild = ticketPriceChild;
+//    }
+
     public String getId() {
         return id;
     }

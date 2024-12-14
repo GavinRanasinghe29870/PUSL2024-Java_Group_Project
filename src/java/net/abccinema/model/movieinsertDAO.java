@@ -1,5 +1,7 @@
 package net.abccinema.model;
 
+//import net.abccinema.connection.DbCon;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,10 +14,10 @@ import java.sql.Statement;
  */
 public class movieinsertDAO {
 
-    private Connection con;
+    private Connection connection;
 
-    public movieinsertDAO(Connection con) {
-        this.con = con;
+    public movieinsertDAO(Connection connection) {
+        this.connection = connection;
     }
 
     public boolean insertMovie(movieinsert movie) {
@@ -25,8 +27,8 @@ public class movieinsertDAO {
                 + "m_cast, m_directors, m_writers, m_producers, m_music, m_price_adult, m_price_child) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String insertTimeSlotsQuery = "INSERT INTO movie_time_slots(m_id, m_time_slot) VALUES(?, ?)";
-        try (PreparedStatement pst = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS); 
-             PreparedStatement timeslotPst = con.prepareStatement(insertTimeSlotsQuery)) {
+        try (PreparedStatement pst = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS); 
+             PreparedStatement timeslotPst = connection.prepareStatement(insertTimeSlotsQuery)) {
             pst.setString(1, movie.getId());
             pst.setString(2, movie.getName());
             pst.setString(3, movie.getImageName());

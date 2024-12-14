@@ -16,25 +16,6 @@ public class buytickets {
     private String ticketPriceAdult;
     private String ticketsPriceChild;
 
-    public buytickets() {
-    }
-
-    public buytickets(int id, String name, String imageName, String description, String startDate, String endDate, String genres, String cast, String directors, String writers, String producers, String music, String ticketPriceAdult, String ticketsPriceAdult) {
-        this.id = id;
-        this.name = name;
-        this.imageName = imageName;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.genres = genres;
-        this.cast = cast;
-        this.directors = directors;
-        this.writers = writers;
-        this.producers = producers;
-        this.music = music;
-        this.ticketPriceAdult = ticketPriceAdult;
-        this.ticketsPriceChild = ticketsPriceChild;
-    }
 
     public int getId() {
         return id;
@@ -148,8 +129,8 @@ public class buytickets {
         this.ticketsPriceChild = ticketsPriceChild;
     }
 
-    @Override
-    public String toString() {
-        return "buytickets{" + "id=" + id + ", name=" + name + ", imageName=" + imageName + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", genres=" + genres + ", cast=" + cast + ", directors=" + directors + ", writers=" + writers + ", producers=" + producers + ", music=" + music + ", ticketPriceAdult=" + ticketPriceAdult + ", ticketsPriceChild=" + ticketsPriceChild + '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "buytickets{" + "id=" + id + ", name=" + name + ", imageName=" + imageName + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", genres=" + genres + ", cast=" + cast + ", directors=" + directors + ", writers=" + writers + ", producers=" + producers + ", music=" + music + ", ticketPriceAdult=" + ticketPriceAdult + ", ticketsPriceChild=" + ticketsPriceChild + '}';
+//    }
 }
