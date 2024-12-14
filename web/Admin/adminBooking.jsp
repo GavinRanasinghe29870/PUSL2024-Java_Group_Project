@@ -5,6 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList" %>
+<%@page import="net.abccinema.connection.DbCon" %>
+<%@page import="net.abccinema.model.*" %>
+
+<%
+    adminBookingDAO booking = new adminBookingDAO(DbCon.getConnection());
+    List<adminBooking> ab = booking.getAllBooking();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,40 +39,30 @@
                         <tr>
                             <th>Booking ID</th>
                             <th>Name</th>
-                            <th>Seat Quantity</th>
+                            <th>Adult Seats</th>
+                            <th>Child Seats</th>
                             <th>Movie Name</th>
                             <th>Total Amount LKR</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>ABC00001</td>
-                            <td>name</td>
-                            <td>N/A</td>
-                            <td>movie name</td>
-                            <td>price</td>
-                        </tr>
-                        <tr>
-                            <td>ABC00002</td>
-                            <td>Name</td>
-                            <td>N/A</td>
-                            <td>movie name</td>
-                            <td>price</td>
-                        </tr>
-                        <tr>
-                            <td>ABC00003</td>
-                            <td>Name</td>
-                            <td>N/A</td>
-                            <td>movie name</td>
-                            <td>price</td>
-                        </tr>
-                        <tr>
-                            <td>ABC00004</td>
-                            <td>Name</td>
-                            <td>N/A</td>
-                            <td>movie name</td>
-                            <td>price</td>
-                        </tr>
+                        <%
+                            if (!ab.isEmpty()) {
+                                for (int i = 0; i < ab.size(); i++) {
+                                    adminBooking b = ab.get(i);
+                        %>
+                            <tr>
+                                <td><%= b.getBookingId()%></td>
+                                <td><%= b.getName()%></td>
+                                <td><%= b.getAdultSeat()%></td>
+                                <td><%= b.getChildSeat()%></td>
+                                <td><%= b.getMovieName()%></td>
+                                <td><%= b.getTotalPrice()%></td> 
+                            </tr>
+                        <%
+                                }
+                            }
+                        %>
                     </tbody>
                 </table>
             </div>
