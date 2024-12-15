@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class SignupDao {
     // Method to insert a Signup object into the database
     public boolean saveSignup(Signup signup) {
-        String query = "INSERT INTO signup (full_name, age, username, password, phone_number, address, email, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users (userId, fullName, age, username, password, phoneNumber, address, email, gender) " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
@@ -33,41 +33,67 @@ public class SignupDao {
         }
         return false; // Returns false if an exception occurred
     }
-
-    // Method to find a user by username
-    public Signup findUserByUsername(String username) {
-        String query = "SELECT * FROM signup WHERE username = ?";
+    //user login
+      public Signup logUser(String email, String password) {
+        Signup user = null;
+        String query = "SELECT * FROM users WHERE email = ? AND password = ?";
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement pst = connection.prepareStatement(query)) {
 
-            preparedStatement.setString(1, username);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            pst.setString(1, email);
+            pst.setString(2, password);
 
-            if (resultSet.next()) {
-                return new Signup(
-                    resultSet.getString("full_name"),
-                    resultSet.getInt("age"),
-                    resultSet.getString("username"),
-                    resultSet.getString("password"),
-                    null, // Not fetching the re-entered password as it's not stored in the database
-                    resultSet.getString("phone_number"),
-                    resultSet.getString("address"),
-                    resultSet.getString("email"),
-                    resultSet.getString("gender")
-                );
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                user = new Signup();
+                user.setId(rs.getInt("userId")); // Ensure `userId` matches your table's primary key
+                user.setFullName(rs.getString("fullName"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setPhoneNumber(rs.getString("phoneNumber"));
+                user.setAddress(rs.getString("address"));
+                user.setGender(rs.getString("gender"));
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return null; // Returns null if the user is not found or an exception occurred
+        return user; // Returns the user object or null if not found
     }
+}
+    // Method to find a user by username
+////    public Signup findUserByUsername(String username) {
+////        String query = "SELECT * FROM signup WHERE username = ?";
+////        try (Connection connection = DatabaseConnection.getConnection();
+////             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+////
+////            preparedStatement.setString(1, username);
+////            ResultSet resultSet = preparedStatement.executeQuery();
+////
+////            if (resultSet.next()) {
+////                return new Signup(
+////                    resultSet.getString("full_name"),
+////                    resultSet.getInt("age"),
+////                    resultSet.getString("username"),
+////                    resultSet.getString("password"),
+////                    null, // Not fetching the re-entered password as it's not stored in the database
+////                    resultSet.getString("phone_number"),
+////                    resultSet.getString("address"),
+////                    resultSet.getString("email"),
+////                    resultSet.getString("gender")
+////                );
+////            }
+////        } catch (SQLException e) {
+////        }
+//        return null; // Returns null if the user is not found or an exception occurred
+//    }
 
-    private static class DatabaseConnection {
+    class DatabaseConnection {
 
-        private static Connection getConnection() {
+        static Connection getConnection() {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         public DatabaseConnection() {
         }
     }
-}

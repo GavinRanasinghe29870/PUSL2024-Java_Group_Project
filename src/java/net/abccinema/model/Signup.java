@@ -112,5 +112,9 @@ public class Signup {
         return "Signup{" + "fullName=" + fullName + ", age=" + age + ", username=" + username + ", password=" + password + ", rePassword=" + rePassword + ", phoneNumber=" + phoneNumber + ", address=" + address + ", email=" + email + ", gender=" + gender + '}';
     }
 
+    void setId(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
 }

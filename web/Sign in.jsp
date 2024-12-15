@@ -9,9 +9,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Sign In</title>
+        <%@include file="components/allCdn.jsp"%>
+        <link href="CSS/sign in.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>TEST123</h1>
+        <!-- Sign In Container -->
+        <div class="sign_container">
+            <!-- Left Side: Logo -->
+            <div class="logo_section">
+                <img src="Images/navbarlogo.png" alt="Logo">
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="form_section">
+                <h2>Sign In</h2>
+                <form action="SigninServlet" method="post">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                   
+                 
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

@@ -38,7 +38,7 @@ public class DbCon {
     public static Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/abccinema", "root", "gavin123");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/abccinema", "root", "DragonDulith12345");
         } catch (ClassNotFoundException | SQLException e) {
             throw new SQLException("Error connecting to database", e);
         }

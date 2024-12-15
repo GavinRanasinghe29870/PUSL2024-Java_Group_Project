@@ -4,6 +4,7 @@
  */
 package net.abccinema.servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,7 +30,7 @@ public class SignupServlet extends HttpServlet {
             age = Integer.parseInt(ageParam);
         } catch (NumberFormatException e) {
             request.setAttribute("errorMessage", "Invalid age format.");
-            request.getRequestDispatcher("Sign up.jsp").forward(request, response);
+            request.getRequestDispatcher("Signup.jsp").forward(request, response);
             return;
         }
 
@@ -44,7 +45,8 @@ public class SignupServlet extends HttpServlet {
         // Validate form data
         if (!password.equals(rePassword)) {
             request.setAttribute("errorMessage", "Passwords do not match!");
-            request.getRequestDispatcher("Sign up.jsp").forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Signup.jsp");
+        dispatcher.forward(request, response);
             return;
         }
 
@@ -60,7 +62,8 @@ public class SignupServlet extends HttpServlet {
             request.getRequestDispatcher("success.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Signup failed! Please try again.");
-            request.getRequestDispatcher("Sign up.jsp").forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Signup.jsp");
+        dispatcher.forward(request, response);
         }
     }
 }

@@ -1,0 +1,81 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 14, 2024, 8:45:50 AM
+    Author     : dulit
+*/
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+/* Container for the layout */
+.sign_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full-screen height */
+}
+
+/* Left side for the logo */
+.logo_section {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo_section img {
+    max-width: 50%; /* Adjust logo size */
+    height: auto;
+}
+
+/* Right side for the form */
+.form_section {
+    flex: 1;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.form_section h2 {
+    color: #D4AF37;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form_section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form_section input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form_section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #D4AF37;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form_section button:hover {
+    background-color: #b89230;
+}
+

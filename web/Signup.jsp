@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-    <%@include file="components/allCdn.jsp"%>
-
+        <%@include file="components/allCdn.jsp"%>
+        <link href="CSS/signup.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- Header Section with Logo and Title -->
@@ -42,7 +42,7 @@
 
             <!-- Right Side -->
             <div class="sign_part">
-                <form action="SignupServlet" method="post">
+                <form action="SignupServlet" method="POST">
                     <label for="id">Phone Number</label> 
                     <input type="tel" class="form-control" id="phonenumber" name="phone number">
                     <label for="id">Address</label> 
@@ -58,14 +58,17 @@
                         <input class="form-check-input" type="radio" name="gender"  id="female" value="female">
                         <label class="form-check-label" for="female">Female</label>
                     </div>
-                    </form>
-                
+                    <br>
+                    <center></center>
+                    
+                        <button type="submit" style="background-color: #D4AF37; color: white; padding: 10px 110px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Sign up
+                            </center>
+                                  </form>
+                 <center>
+       </center>
             </div>
         </div>
-    <center> 
-        <br>
-         <button type="submit" style="background-color: #D4AF37; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Sign up
-           </center>
-</body>
+
+    </body>
 
 </html>
