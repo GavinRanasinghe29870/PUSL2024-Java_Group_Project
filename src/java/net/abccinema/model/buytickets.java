@@ -1,5 +1,7 @@
 package net.abccinema.model;
 
+import java.util.List;
+
 public class buytickets {
     private int id;
     private String name;
@@ -15,6 +17,7 @@ public class buytickets {
     private String music;
     private String ticketPriceAdult;
     private String ticketsPriceChild;
+    private List<String> timeSlots;
 
 
     public int getId() {
@@ -129,8 +132,11 @@ public class buytickets {
         this.ticketsPriceChild = ticketsPriceChild;
     }
 
-//    @Override
-//    public String toString() {
-//        return "buytickets{" + "id=" + id + ", name=" + name + ", imageName=" + imageName + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", genres=" + genres + ", cast=" + cast + ", directors=" + directors + ", writers=" + writers + ", producers=" + producers + ", music=" + music + ", ticketPriceAdult=" + ticketPriceAdult + ", ticketsPriceChild=" + ticketsPriceChild + '}';
-//    }
+    public List<String> getTimeSlots() {
+        return timeSlots;
+    }
+
+    public void setTimeSlots(List<String> timeSlots) {
+        this.timeSlots = timeSlots;
+    }
 }

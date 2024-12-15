@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class buyticketsDao {
+
     private Connection con;
     private String query1;
     private PreparedStatement pst;
@@ -34,7 +35,7 @@ public class buyticketsDao {
                 movie.setEndDate(rs.getString("m_end_date"));
                 movie.setGenres(rs.getString("m_genres"));
                 movie.setCast(rs.getString("m_cast"));
-                
+
                 movie.setDirectors(rs.getString("m_directors"));
                 movie.setWriters(rs.getString("m_writers"));
                 movie.setProducers(rs.getString("m_producers"));
@@ -46,11 +47,11 @@ public class buyticketsDao {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
 
         return movies;
     }
-    
+
     public buytickets getMovieById(int id) {
         buytickets movie = null;
         try {

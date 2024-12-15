@@ -11,6 +11,11 @@
     display: inline-block;
     overflow: hidden;
 }
+.customBox-text{
+    color: #000000;
+    text-decoration: none;
+    /*color: inherit;*/
+}
 
 .Custom-title::before {
     content: attr(data-text);
@@ -87,6 +92,6 @@
     animation-range: entry 0% cover 40%;
 }
 .cusDrop1{
- margin-right: 20px !important;
- margin-left: 20px;
+    margin-right: 20px !important;
+    margin-left: 20px;
 }

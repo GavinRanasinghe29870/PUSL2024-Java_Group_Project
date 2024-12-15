@@ -13,20 +13,22 @@ $(document).ready(function () {
 
             if (data.length > 0) {
                 data.forEach(movie => {
+                    
                     let movieHTML = `
                         
                     
-                    <a href="/PUSL2024_Group_Project/SeatBooking.jsp?id=${movie.id}">
+                    <a href="/PUSL2024_Group_Project/SeatBooking.jsp?id=${movie.id}&name=${movie.name}">
                     <div class="custom-box box container-fluid" id="hoverBox">
-                        <h1>${movie.name}</h1>
+                        <h1 class = "customBox-text">${movie.name}</h1>
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <h5>${movie.description}</h5>
+                                    <p class = "customBox-text">${movie.description}</p>
                                 </div>
                                 <div class="col">
-                                    <img src="Images/${movie.imageName}" width="80%" alt="${movie.name}" />
+                                    <img src="Images/${movie.imageName}" width="80%" alt="${movie.imageName}" />
                                 </div>
+                   
                             </div>
                         </div>
                     </div>
@@ -37,10 +39,12 @@ $(document).ready(function () {
             } else {
                 movieContainer.append('<p>No movies available.</p>');
             }
+           
         },
         error: function (xhr, status, error) {
             console.log("Error:", error);
             $('.error-message').text('Failed to fetch data: ' + error);
         }
+
     });
 });

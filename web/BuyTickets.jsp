@@ -44,7 +44,10 @@
 
        
 
-        <div id="movie-container"></div>
+        <div id="movie-container">
+<!--            <div id="time-container"></div>-->
+            
+        </div>
         <div class="error-message" style="color: red;"></div>
 
         <script src="./js/buyticketsjavascript.js"></script>
