@@ -64,7 +64,7 @@ public class GmailService {
     public static Message createMessage(String to, String subject, String bodyText) throws MessagingException {
         Session session = Session.getDefaultInstance(System.getProperties(), null);
         MimeMessage email = new MimeMessage(session);
-        email.setFrom(new InternetAddress("your_email@gmail.com"));
+        email.setFrom(new InternetAddress("gavinkisara@gmail.com"));
         email.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(to));
         email.setSubject(subject);
         email.setText(bodyText);
@@ -77,9 +77,7 @@ public class GmailService {
         }
         byte[] rawBytes = buffer.toByteArray();
         return new Message().setRaw(Base64.getUrlEncoder().encodeToString(rawBytes));
-    }
-
-    public static void sendEmail(String to, String subject, String bodyText) throws Exception {
+    }public static void sendEmail(String to, String subject, String bodyText) throws Exception {
         Gmail service = getService();
         Message message = createMessage(to, subject, bodyText);
         service.users().messages().send("me", message).execute();

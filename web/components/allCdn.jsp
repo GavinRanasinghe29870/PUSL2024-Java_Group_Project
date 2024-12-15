@@ -10,8 +10,7 @@
 
 <link rel="stylesheet" type="text/css" href="./CSS/buytickets.css" />
 <link rel="stylesheet" type="text/css" href="./components/style.css" /> 
-<link rel="stylesheet" type="text/css" href="./CSS/smovie.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/movies.css" /> 
+
 
  
 
@@ -20,4 +19,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.4/jquery.rateyo.min.js" integrity="sha512-09bUVOnphTvb854qSgkpY/UGKLW9w7ISXGrN0FR/QdXTkjs0D+EfMFMTB+CGiIYvBoFXexYwGUD5FD8xVU89mw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
