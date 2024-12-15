@@ -4,10 +4,22 @@
     Author     : kavis
 --%>
 
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="net.abccinema.model.buytickets"%>
 <%@page import="net.abccinema.model.buyticketsDao"%>
 <%@page import="net.abccinema.connection.DbCon"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    List<String> confirmedSeats = (List<String>) request.getAttribute("confirmedSeats");
+    if (confirmedSeats == null) {
+        confirmedSeats = new ArrayList<>();
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,7 +49,9 @@
     <body>
         <%@include file="components/navbar.jsp"%>
 
-        <%            int m_id = Integer.parseInt(request.getParameter("m_id"));
+        <%  
+            int m_id = Integer.parseInt(request.getParameter("id"));
+            String m_name = request.getParameter("name");
             buyticketsDao dao = new buyticketsDao(DbCon.getConnection());
             buytickets b = dao.getMovieById(m_id);
         %>
@@ -57,7 +71,14 @@
             <div class="row">
                 <div class="show-date col-md-6 col-sm-12 d-flex">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <h5 class="text-md-center" style="color: #D4AF37;"> Tuesday, 07, Nov</h5>
+                    <h5 class="text-md-center" style="color: #D4AF37;">
+                        <%
+                            Date today = new Date();
+                            SimpleDateFormat formatter = new SimpleDateFormat("EEEE, dd, MMM");
+                            String formattedDate = formatter.format(today);
+                            out.print(formattedDate);
+                        %>
+                    </h5>
                 </div>
                 <div class="show-time col-md-6 col-sm-12 d-flex justify-content-center justify-content-sm-center">
                     <h5 class="text-center" style="color: #D4AF37; padding-right: 15px">Show Time</h5>
@@ -69,20 +90,20 @@
             <!-- Seat Select -->
             <div class="container seat-container">
                 <div class="row">
-                    <div class="seat occupied">A1</div>
-                    <div class="seat" id="A2" data-name="A2">A2</div>
-                    <div class="seat">A3</div>
-                    <div class="seat">A4</div>
-                    <div class="seat">A5</div>
-                    <div class="seat">A6</div>
-                    <div class="seat">A7</div>
-                    <div class="seat">A8</div>
-                    <div class="seat">A9</div>
-                    <div class="seat">A10</div>
-                    <div class="seat">A11</div>
-                    <div class="seat">A12</div>
-                    <div class="seat">A13</div>
-                    <div class="seat">A14</div>
+                    <div class="seat <%= confirmedSeats.contains("A1") ? "occupied" : ""%>">A1</div>
+                    <div class="seat <%= confirmedSeats.contains("A2") ? "occupied" : ""%>">A2</div>
+                    <div class="seat <%= confirmedSeats.contains("A3") ? "occupied" : ""%>">A3</div>
+                    <div class="seat <%= confirmedSeats.contains("A4") ? "occupied" : ""%>">A4</div>
+                    <div class="seat <%= confirmedSeats.contains("A5") ? "occupied" : ""%>">A5</div>
+                    <div class="seat <%= confirmedSeats.contains("A6") ? "occupied" : ""%>">A6</div>
+                    <div class="seat <%= confirmedSeats.contains("A7") ? "occupied" : ""%>">A7</div>
+                    <div class="seat <%= confirmedSeats.contains("A8") ? "occupied" : ""%>">A8</div>
+                    <div class="seat <%= confirmedSeats.contains("A9") ? "occupied" : ""%>">A9</div>
+                    <div class="seat <%= confirmedSeats.contains("A10") ? "occupied" : ""%>">A10</div>
+                    <div class="seat <%= confirmedSeats.contains("A11") ? "occupied" : ""%>">A11</div>
+                    <div class="seat <%= confirmedSeats.contains("A12") ? "occupied" : ""%>">A12</div>
+                    <div class="seat <%= confirmedSeats.contains("A13") ? "occupied" : ""%>">A13</div>
+                    <div class="seat <%= confirmedSeats.contains("A14") ? "occupied" : ""%>">A14</div>
                 </div>
                 <div class="row">
                     <div class="seat">B1</div>
@@ -276,7 +297,7 @@
             </div>
             <hr style="border-bottom: 3px solid #D4AF37;">
 
-            <form action="checkout.jsp" method="POST">
+            <form action="SeatBookingServlet" method="POST">
                 <div class="ticket-section">
                     <h5><span id="count">0</span> Ticket(s) Selected. Total <span id="total">LKR 0</span></h5>
                     <div class="ticket-type">
@@ -301,10 +322,15 @@
                             <button type="button" class="btn btn-log" id="child-increase">+</button>
                         </div>
                     </div>
+                    <input type="hidden" name="m_id" value="<%= m_id%>">
                     <input type="hidden" name="adultCount" id="hidden-adult-count" value="0">
                     <input type="hidden" name="childCount" id="hidden-child-count" value="0">
                     <input type="hidden" name="totalPrice" id="hidden-total-price" value="0">
                     <input type="hidden" name="selectedSeats" id="hidden-selected-seats" value="">
+                    <c:if test="${not empty bookedMsg}">
+                        <p class="text-center text-danger">${bookedMsg}</p>
+                        <c:remove var="bookedMsg" scope="session" />
+                    </c:if>
                     <button type="submit" class="btn btn-log mt-4 px-4 py-2">Check Out</button>
                 </div>
             </form>
@@ -314,10 +340,10 @@
         <script src="${pageContext.request.contextPath}/js/SeatTotalCount.js"></script>
 
         <script>
-// Set the countdown time in seconds (1 minute)
+            // Set the countdown time in seconds (1 minute)
             var countdownTime = 299;
 
-// Update the countdown every 1 second
+            // Update the countdown every 1 second
             var x = setInterval(function () {
 
                 // Time calculations for minutes and seconds
