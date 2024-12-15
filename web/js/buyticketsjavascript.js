@@ -7,26 +7,30 @@ $(document).ready(function () {
         success: function (data) {
             console.log("Movies:", data);
 
-            // Ensure the container exists and clear its content
-            let movieContainer = $('#movie-container'); // Ensure this ID exists in your HTML
+          
+            let movieContainer = $('#movie-container');
             movieContainer.empty();
 
             if (data.length > 0) {
                 data.forEach(movie => {
-                    // Initialize an empty string for time slots
+                    
                     let timeSlotsHTML = '';
+                    let timeSlotsParams = ''; 
 
-                    // Loop through the timeSlots array and create HTML for each slot
+                    
                     movie.timeSlots.forEach(slot => {
                         timeSlotsHTML += `<span class="time-slot">${slot}</span>, `;
+                        timeSlotsParams += encodeURIComponent(slot) + '&'; 
                     });
 
-                    // Remove the trailing comma and space
+                 
                     timeSlotsHTML = timeSlotsHTML.slice(0, -2);
+                    
+                    timeSlotsParams = timeSlotsParams.slice(0, -1);
 
                     // Create the movie card HTML
                     let movieHTML = `
-                    <a href="/PUSL2024_Group_Project/SeatBooking.jsp?id=${movie.id}&name=${movie.name}">
+                    <a href="/PUSL2024_Group_Project/SeatBooking.jsp?id=${movie.id}&name=${movie.name}&timeSlots=${timeSlotsParams}">
                         <div class="custom-box box container-fluid" id="hoverBox">
                             <h1 class="customBox-text">${movie.name}</h1>
                             <div class="container">
