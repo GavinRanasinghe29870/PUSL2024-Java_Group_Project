@@ -205,9 +205,8 @@ p{
     color: black;
 }
 
-           
-        
     </style>
+     <script src="https://www.paypal.com/sdk/js?client-id=AZfRPFT4-YtqJdzbSx12ZL2kvjGo4nkIiUnZkXvoUlSe6AJuRcEp3yeGHk9gg4Apk4xolVCO1QlKePrfa"></script>
 </head>
 <body>
     <div class="container">
@@ -294,8 +293,9 @@ p{
                                 <div data-value="Master Card">
                                     <img src="Images/mastercard.png" alt="MasterCard" class="logo"> Master Card
                                 </div>
-                                <div data-value="Cash">
-                                    <img src="Images/cash.png" alt="Cash" class="logo"> Cash
+                                
+                                  <div data-value="PayPal">
+                                    <img src="Images/paypal.png" alt="PayPal" class="logo"> PayPal
                                 </div>
                             </div>
                             <input type="hidden" id="paymentMethod" name="paymentMethod" required>
@@ -361,8 +361,68 @@ p{
         if (!dropdown.contains(e.target)) {
             options.style.display = 'none';
         }
+        
+        
+         const dropdown = document.querySelector('.custom-dropdown');
+        const selected = dropdown.querySelector('.selected');
+        const options = dropdown.querySelector('.dropdown-options');
+        const hiddenInput = document.getElementById('paymentMethod');
+        const payNowButton = document.getElementById('paynow-button');
+
+        selected.addEventListener('click', () => {
+            options.style.display = options.style.display === 'block' ? 'none' : 'block';
+        });
+
+        options.addEventListener('click', (e) => {
+            if (e.target.closest('div')) {
+                const selectedOption = e.target.closest('div');
+                selected.innerHTML = selectedOption.innerHTML;
+                hiddenInput.value = selectedOption.getAttribute('data-value');
+                options.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                options.style.display = 'none';
+            }
+        });
+
+        // Handle PayPal redirection
+        payNowButton.addEventListener('click', function (event) {
+            const paymentMethod = hiddenInput.value;
+
+            if (paymentMethod === 'PayPal') {
+                // Prevent form submission
+                event.preventDefault();
+
+                // Trigger PayPal payment initiation
+                fetch('initiatePaypalPayment', {
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(document.querySelector('form'))),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.redirectUrl) {
+                        // Redirect to PayPal
+                        window.location.href = data.redirectUrl;
+                    } else {
+                        alert("Error: Unable to initiate PayPal payment.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Error occurred while processing PayPal payment.");
+                });
+            } else {
+                // Proceed with the form submission for other payment methods
+                document.querySelector('form').submit();
+            }
+        });
+        
     });
 </script>
+
 
 </body>
 </html>
