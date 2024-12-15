@@ -85,6 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .card a {
     
+    background-color: transparent;
     color: #000000;
     font-weight: normal;
     text-decoration: none;
@@ -93,7 +94,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .card a:hover {
+  background-color: transparent;
   text-decoration: underline;
+  color: #000000;
+  font-weight: bold;
 }
 
 .card button {

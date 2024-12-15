@@ -36,6 +36,7 @@
                 <div class="card">
                     <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
                     <h5><%= movie.getTitle() %></h5>
+                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp" class="transparent-button">More</a>
                     <button class="btn btn-warning" onclick="buyTickets('<%= movie.getTitle() %>')">BUY TICKETS</button>
                 </div>
                 <%
@@ -55,6 +56,8 @@
                 <div class="card">
                     <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
                     <h5><%= movie.getTitle() %></h5>
+                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp" class="transparent-button">More</a>
+                    
                 </div>
                 <%
                         }
