@@ -11,10 +11,12 @@
         <%@include file="components/allCdn.jsp"%>
         <%@include file="components/navbar.jsp" %>
         <script>
-            function buyTickets(movieName) {
-                alert("Redirecting to buy tickets for: " + movieName);
-                // Here you can send the movie name to the backend using a fetch request
-                // Example: fetch('/BuyTicketsServlet?movie=' + encodeURIComponent(movieName));
+            function buyTickets(movieId, movieName) {
+                // Redirect to the SeatBooking page with id and name as query parameters
+                window.location.href = "http://localhost:8080/PUSL2024_Group_Project/SeatBooking.jsp?id=" 
+                                        + encodeURIComponent(movieId) 
+                                        + "&name=" 
+                                        + encodeURIComponent(movieName);
             }
         </script>
     </head>
@@ -36,9 +38,12 @@
                 <div class="card">
                     <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
                     <h5><%= movie.getTitle() %></h5>
-                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp" class="transparent-button">More</a>
-                    <button class="btn btn-warning" onclick="buyTickets('<%= movie.getTitle() %>')">BUY TICKETS</button>
+                    <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
+                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?movie=<%= java.net.URLEncoder.encode(movie.getTitle(), "UTF-8") %>" 
+                       class="transparent-button">More</a>
+                    <button class="btn btn-warning" onclick="buyTickets('<%= movie.getId() %>', '<%= movie.getTitle() %>')">BUY TICKETS</button>
                 </div>
+
                 <%
                         }
                     }
@@ -56,7 +61,9 @@
                 <div class="card">
                     <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
                     <h5><%= movie.getTitle() %></h5>
-                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp" class="transparent-button">More</a>
+                    <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
+                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?movie=<%= java.net.URLEncoder.encode(movie.getTitle(), "UTF-8") %>" 
+                       class="transparent-button">More</a>
                     
                 </div>
                 <%
