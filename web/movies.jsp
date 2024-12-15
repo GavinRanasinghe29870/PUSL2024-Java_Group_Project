@@ -6,10 +6,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Movies</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/movies.css" />
         <%@include file="components/allCdn.jsp"%>
         <%@include file="components/navbar.jsp" %>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/movies.css" />        
         <script>
             function buyTickets(movieId, movieName) {
                 // Redirect to the SeatBooking page with id and name as query parameters
