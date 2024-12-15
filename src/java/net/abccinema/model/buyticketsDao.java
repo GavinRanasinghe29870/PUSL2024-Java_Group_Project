@@ -50,4 +50,22 @@ public class buyticketsDao {
 
         return movies;
     }
+    
+    public buytickets getMovieById(int id) {
+        buytickets movie = null;
+        try {
+            query1 = "SELECT m_id, m_name FROM movies WHERE m_id=?";
+            pst = this.con.prepareStatement(query1);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                movie = new buytickets();
+                movie.setId(rs.getInt("m_id"));
+                movie.setName(rs.getString("m_name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return movie;
+    }
 }
