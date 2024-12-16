@@ -18,14 +18,28 @@
     if (confirmedSeats == null) {
         confirmedSeats = new ArrayList<>();
     }
+
+    buyticketsDao dao = new buyticketsDao(DbCon.getConnection());
+    List<buytickets> movies = dao.getAllMovies();
+    // Retrieve parameters from the request
+    int m_id = Integer.parseInt(request.getParameter("id"));
+    String m_name = request.getParameter("name");
+    String timeSlots = request.getParameter("timeSlots");
+    buyticketsDao ticket = new buyticketsDao(DbCon.getConnection());
+    buytickets ticketP = ticket.getMovieById(m_id);
 %>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ABC Cinema - Buy Movie Tickets Online for the Latest Movies</title>
-        <%@include file="components/allCdn.jsp"%>
+        <title>ABC Cinema - Buy Movie Tickets Online for the Latest Movies</title><link link-style href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link link-style rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+        <link link-style rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.4/jquery.rateyo.min.css" integrity="sha512-JEUoTOcC35/ovhE1389S9NxeGcVLIqOAEzlpcJujvyUaxvIXJN9VxPX0x1TwSo22jCxz2fHQPS1de8NgUyg+nA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/seatbooking.css" />
         <style>
             .yellow-box {
@@ -49,18 +63,11 @@
     <body>
         <%@include file="components/navbar.jsp"%>
 
-        <%  
-            int m_id = Integer.parseInt(request.getParameter("id"));
-            String m_name = request.getParameter("name");
-            buyticketsDao dao = new buyticketsDao(DbCon.getConnection());
-            buytickets b = dao.getMovieById(m_id);
-        %>
-
         <div class="container">
             <div class="row">
                 <div class="col-9">
                     <div class="d-flex justify-content-between align-items-center my-4">
-                        <h1 style="color: #D4AF37; padding-top: 20px"><%=b.getName()%></h1>
+                        <h1 style="color: #D4AF37; padding-top: 20px"><%= m_name%></h1>
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-between align-items-center my-4">
@@ -82,28 +89,32 @@
                 </div>
                 <div class="show-time col-md-6 col-sm-12 d-flex justify-content-center justify-content-sm-center">
                     <h5 class="text-center" style="color: #D4AF37; padding-right: 15px">Show Time</h5>
-                    <div class="yellow-box">10:30 AM</div>
+                    <div class="yellow-box"><%= timeSlots%></div>
                 </div>
             </div>
 
 
+            <c:if test="${not empty bookedMsg}">
+                <p class="text-center text-danger">${bookedMsg}</p>
+                <c:remove var="bookedMsg" scope="session" />
+            </c:if>
             <!-- Seat Select -->
             <div class="container seat-container">
                 <div class="row">
-                    <div class="seat <%= confirmedSeats.contains("A1") ? "occupied" : ""%>">A1</div>
-                    <div class="seat <%= confirmedSeats.contains("A2") ? "occupied" : ""%>">A2</div>
-                    <div class="seat <%= confirmedSeats.contains("A3") ? "occupied" : ""%>">A3</div>
-                    <div class="seat <%= confirmedSeats.contains("A4") ? "occupied" : ""%>">A4</div>
-                    <div class="seat <%= confirmedSeats.contains("A5") ? "occupied" : ""%>">A5</div>
-                    <div class="seat <%= confirmedSeats.contains("A6") ? "occupied" : ""%>">A6</div>
-                    <div class="seat <%= confirmedSeats.contains("A7") ? "occupied" : ""%>">A7</div>
-                    <div class="seat <%= confirmedSeats.contains("A8") ? "occupied" : ""%>">A8</div>
-                    <div class="seat <%= confirmedSeats.contains("A9") ? "occupied" : ""%>">A9</div>
-                    <div class="seat <%= confirmedSeats.contains("A10") ? "occupied" : ""%>">A10</div>
-                    <div class="seat <%= confirmedSeats.contains("A11") ? "occupied" : ""%>">A11</div>
-                    <div class="seat <%= confirmedSeats.contains("A12") ? "occupied" : ""%>">A12</div>
-                    <div class="seat <%= confirmedSeats.contains("A13") ? "occupied" : ""%>">A13</div>
-                    <div class="seat <%= confirmedSeats.contains("A14") ? "occupied" : ""%>">A14</div>
+                    <div class="seat ">A1</div>
+                    <div class="seat ">A2</div>
+                    <div class="seat ">A3</div>
+                    <div class="seat ">A4</div>
+                    <div class="seat ">A5</div>
+                    <div class="seat ">A6</div>
+                    <div class="seat ">A7</div>
+                    <div class="seat ">A8</div>
+                    <div class="seat ">A9</div>
+                    <div class="seat ">A10</div>
+                    <div class="seat ">A11</div>
+                    <div class="seat ">A12</div>
+                    <div class="seat ">A13</div>
+                    <div class="seat ">A14</div>
                 </div>
                 <div class="row">
                     <div class="seat">B1</div>
@@ -303,7 +314,7 @@
                     <div class="ticket-type">
                         <div>
                             <strong>Adult</strong><br>
-                            LKR 1000.00
+                            LKR <%= ticketP.getTicketPriceAdult()%>
                         </div>
                         <div class="d-flex align-items-center">
                             <button type="button" class="btn btn-log" id="adult-decrease">-</button>
@@ -314,7 +325,7 @@
                     <div class="ticket-type">
                         <div>
                             <strong>Child</strong><br>
-                            LKR 800.00
+                            LKR <%= ticketP.getTicketsPriceChild()%>
                         </div>
                         <div class="d-flex align-items-center">
                             <button type="button" class="btn btn-log" id="child-decrease">-</button>
@@ -323,21 +334,111 @@
                         </div>
                     </div>
                     <input type="hidden" name="m_id" value="<%= m_id%>">
+                    <input type="hidden" name="m_name" value="<%= m_name%>">
+                    <input type="hidden" name="timeSlots" value="<%= timeSlots%>">
                     <input type="hidden" name="adultCount" id="hidden-adult-count" value="0">
                     <input type="hidden" name="childCount" id="hidden-child-count" value="0">
                     <input type="hidden" name="totalPrice" id="hidden-total-price" value="0">
                     <input type="hidden" name="selectedSeats" id="hidden-selected-seats" value="">
-                    <c:if test="${not empty bookedMsg}">
-                        <p class="text-center text-danger">${bookedMsg}</p>
-                        <c:remove var="bookedMsg" scope="session" />
-                    </c:if>
                     <button type="submit" class="btn btn-log mt-4 px-4 py-2">Check Out</button>
                 </div>
             </form>
         </div>
 
         <%@include file="components/footer.jsp"%>
-        <script src="${pageContext.request.contextPath}/js/SeatTotalCount.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.4/jquery.rateyo.min.js" integrity="sha512-09bUVOnphTvb854qSgkpY/UGKLW9w7ISXGrN0FR/QdXTkjs0D+EfMFMTB+CGiIYvBoFXexYwGUD5FD8xVU89mw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            const container = document.querySelector(".seat-container");
+            const seats = document.querySelectorAll(".row .seat:not(.occupied)");
+            const count = document.getElementById("count");
+            const total = document.getElementById("total");
+            const adultCountElement = document.getElementById("adult-count");
+            const childCountElement = document.getElementById("child-count");
+            const adultIncreaseButton = document.getElementById("adult-increase");
+            const adultDecreaseButton = document.getElementById("adult-decrease");
+            const childIncreaseButton = document.getElementById("child-increase");
+            const childDecreaseButton = document.getElementById("child-decrease");
+            const hiddenAdultCount = document.getElementById("hidden-adult-count");
+            const hiddenChildCount = document.getElementById("hidden-child-count");
+            const hiddenTotalPrice = document.getElementById("hidden-total-price");
+            const hiddenSelectedSeats = document.getElementById("hidden-selected-seats");
+            const adultTicketPrice = <%= ticketP.getTicketPriceAdult()%>;
+            const childTicketPrice = <%= ticketP.getTicketsPriceChild()%>;
+            let adultCount = 0;
+            let childCount = 0;
+            // Update total and count
+            function updateSelectedCount() {
+                const selectedSeats = document.querySelectorAll(".row .seat.selected");
+                const selectedSeatsCount = selectedSeats.length;
+                const selectedSeatsArray = [...selectedSeats].map(seat => seat.textContent);
+                count.innerText = selectedSeatsCount;
+                const totalPrice = adultCount * adultTicketPrice + childCount * childTicketPrice;
+                total.innerText = "LKR " + totalPrice;
+                hiddenAdultCount.value = adultCount;
+                hiddenChildCount.value = childCount;
+                hiddenTotalPrice.value = totalPrice;
+                hiddenSelectedSeats.value = selectedSeatsArray.join(", ");
+            }
+            // Seat click event
+            container.addEventListener("click", (e) => {
+                if (
+                        e.target.classList.contains("seat") &&
+                        !e.target.classList.contains("occupied")
+                        ) {
+                    e.target.classList.toggle("selected");
+                    const selectedSeats = document.querySelectorAll(".row .seat.selected").length;
+                    if (selectedSeats > adultCount + childCount) {
+                        adultCount++;
+                    } else if (selectedSeats < adultCount + childCount) {
+                        if (childCount > 0) {
+                            childCount--;
+                        } else {
+                            adultCount--;
+                        }
+                    }
+                    adultCountElement.innerText = adultCount;
+                    childCountElement.innerText = childCount;
+                    updateSelectedCount();
+                }
+            });
+            // Increase and decrease ticket count
+            adultIncreaseButton.addEventListener("click", () => {
+                const selectedSeats = document.querySelectorAll(".row .seat.selected").length;
+                if (adultCount + childCount < selectedSeats) {
+                    adultCount++;
+                    adultCountElement.innerText = adultCount;
+                    updateSelectedCount();
+                }
+            });
+            adultDecreaseButton.addEventListener("click", () => {
+                if (adultCount > 0) {
+                    adultCount--;
+                    adultCountElement.innerText = adultCount;
+                    updateSelectedCount();
+                }
+            });
+            childIncreaseButton.addEventListener("click", () => {
+                const selectedSeats = document.querySelectorAll(".row .seat.selected").length;
+                if (adultCount + childCount < selectedSeats) {
+                    childCount++;
+                    childCountElement.innerText = childCount;
+                    updateSelectedCount();
+                }
+            });
+            childDecreaseButton.addEventListener("click", () => {
+                if (childCount > 0) {
+                    childCount--;
+                    childCountElement.innerText = childCount;
+                    updateSelectedCount();
+                }
+            });
+            // Initial count and total set
+            updateSelectedCount();
+        </script>
 
         <script>
             // Set the countdown time in seconds (1 minute)
