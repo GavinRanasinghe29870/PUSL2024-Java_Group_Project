@@ -261,7 +261,9 @@ p{
                     <hr style="border: 1px solid black;">
                     <div class="purchase-summary">
                          <div class="ticket-item">
-                             <p>Seat Numbers: <%= selectedSeats %></p><br>
+                             
+                             <h5>Seat Numbers: <%= selectedSeats %></h5>
+                        <input type="hidden" id="seat_numbers" name="seat_numbers" value="<%= selectedSeats %>">
 
                         <label for="adult-tickets">Adult Tickets :(x <%= adultCountInt %>)</label>
                            LKR <%= formattedAdultTotalPrice %>
@@ -278,7 +280,7 @@ p{
                     <br>
                     <div class="ticket-item">
                         <h5>Total Amount: LKR <%= formattedTotalPrice %></h5>
-                        <input type="hidden" id="hidden-total-amount" name="totalAmount" value="<%= formattedTotalPrice %>">
+                        <input type="hidden" id="amount" name="amount" value="<%= formattedTotalPrice %>">
                     </div>
                     
                     <hr style="border: 1px solid black;">
@@ -308,11 +310,11 @@ p{
                     <h2>Your Details</h2>
                     <hr style="border: 1px solid black;">
                     <label for="name">Name:</label><br>
-                    <input type="text" id="myTextBox" name="name" required><br>
+                    <input type="text" id="user_name" name="user_name" required><br>
                     <label for="phone">Phone Number:</label><br>
                     <input type="text" id="myTextBox" name="phoneNumber" required><br>
                     <label for="email">Email:</label><br>
-                    <input type="email" id="myTextBox" name="email" required><br>
+                    <input type="email" id="user_email" name="user_email" required><br>
                     <hr style="border: 1px solid black;">
                     <input type="checkbox" id="terms" name="terms" required>
                     <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
@@ -328,13 +330,14 @@ p{
             <!-- Buttons -->
             <div class="button-container">
                 <button type="button" id="back-button" onclick="history.back();">Back</button>
-                <button type="submit" id="paynow-button">Pay Now</button>
+<!--              <button type="submit" id="button">Pay Now</button>-->
+<input type="submit"id="button"value="Pay Now">
             </div>
         </form>
     </div>
 
     <%@include file="components/footer.jsp" %>
-
+    <<script src="./js/gmailService.js"></script>
       <script>
     const dropdown = document.querySelector('.custom-dropdown');
     const selected = dropdown.querySelector('.selected');
