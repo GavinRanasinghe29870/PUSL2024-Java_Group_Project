@@ -1,23 +1,26 @@
+// Ensure the DOM is fully loaded before executing the code
 $(document).ready(function (){
      // Retrieve the movie ID from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const movieId = urlParams.get('id');
+    const movieId = urlParams.get('id'); // Get the 'id' parameter from the URL
 
+// Check if the 'id' parameter is present in the URL
     if (movieId) {
+        // Perform an AJAX GET request to the 'SingleMovieServlet' with the movie ID
     $.ajax({
         url:'/PUSL2024_Group_Project/SingleMovieServlet',
-        type:'GET',
-        data: {id: movieId},
-        headers:{"X-Requested-With": "XMLHttpRequest"},
+        type:'GET', //GET to fetch data
+        data: {id: movieId}, // Send the movie ID as a parameter in the request
+        headers:{"X-Requested-With": "XMLHttpRequest"}, // Indicate that this is an AJAX request
         dataType: 'json',
-        success: function (movie) {
-            console.log("Movies:", movie);
+        success: function (movie) { // If the request is successful, the response is a 'movie' object
+            console.log("Movies:", movie); // Log the received movie details for debugging
 
-            // Display the movies on the webpage
+            // Select the container element in the HTML where it Display the movies on the webpage
             let smovieContainer = $('#smovie-container'); // Ensure this ID exists in your HTML
             smovieContainer.empty(); // Clear any existing content
 
-            
+            // Create the HTML structure to display the movie details
                     let movieHTML = `
                      <div class="main" style="background-color:#D4AF37; margin-right:57.5%; text-align: center;" >
                 <h1 class=" fw-bold ps-4">${movie.name} </h1>
@@ -52,16 +55,17 @@ $(document).ready(function (){
         </div>
                     
                     `;
-                    smovieContainer.append(movieHTML);
+                    smovieContainer.append(movieHTML); // Append the generated HTML to the container on the webpage
         },
-        error: function (xhr, status, error) {
-                console.log("Error:", error);
-                $('.error-message').text('Failed to fetch movie details: ' + error);
+        error: function (xhr, status, error) { // Handle errors if the AJAX request fails
+                console.log("Error:", error); // Log the error for debugging
+                $('.error-message').text('Failed to fetch movie details: ' + error); // Display the error message on the webpage
             }
         });
     } else {
+        // If no 'id' parameter is provided in the URL, log a message and display an error
         console.log("No movie ID provided in the URL.");
-        $('.error-message').text('No movie ID specified.');
+        $('.error-message').text('No movie ID specified.'); // Display an error message to the user
     }
     });
 

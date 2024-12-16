@@ -23,12 +23,13 @@ public class singleMovie {
     private String producers;
     private String music;
 //Getters and Setters
-public int getId() {
-        return id;
+public int getId() { 
+        return id; // Returns the movie's ID
+
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = id; // Sets the movie's ID
     }
 
     public String getName() {

@@ -14,6 +14,7 @@ import net.abccinema.connection.DbCon;
 import net.abccinema.model.singleMovie;
 import net.abccinema.model.singleMovieDAO;
 
+// This annotation maps the servlet to the "/SingleMovieServlet" URL pattern
 @WebServlet(name = "SingleMovieServlet", value = {"/SingleMovieServlet"})
 public class SingleMovieServlet extends HttpServlet {
 
@@ -22,13 +23,14 @@ public class SingleMovieServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json"); // Set the response content type to 'application/json' for JSON data
+        response.setCharacterEncoding("UTF-8"); // Set the character encoding to UTF-8 
         
-        String idParam = request.getParameter("id");
-      try (Connection connection = DbCon.getConnection(); PrintWriter out = response.getWriter()) {
-          int movieId = Integer.parseInt(idParam);
-             singleMovieDAO movieDAO = new singleMovieDAO(connection);
+        String idParam = request.getParameter("id"); // Get the "id" parameter from the request (this is expected to be provided by the client)
+        // Use a try-with-resources block to ensure resources are closed properly
+      try (Connection connection = DbCon.getConnection(); PrintWriter out = response.getWriter())  { // Get the PrintWriter object to send data to the client
+          int movieId = Integer.parseInt(idParam); // Parse the idParam string into an integer, which represents the movie ID
+             singleMovieDAO movieDAO = new singleMovieDAO(connection); // Create an instance of the singleMovieDAO class to interact with the database
             // Fetch the list of movies
          singleMovie movie = movieDAO.getsingleMovieById(movieId);
         
@@ -38,15 +40,15 @@ public class SingleMovieServlet extends HttpServlet {
         
             // Write the JSON response
             out.print(json);
-            out.flush();
+            out.flush(); // Ensure all the data is written to the client
         } catch (Exception e) {
             // Send error response as JSON
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            Gson gson = new Gson();
+            Gson gson = new Gson();// Create a JSON response for the error message using Gson
              String errorJson = gson.toJson("Error fetching movies: " + e.getMessage());
-            try (PrintWriter out = response.getWriter()) {
+            try (PrintWriter out = response.getWriter()) { // Send the error JSON to the client
                 out.print(errorJson);
-                out.flush();
+                out.flush(); //Ensure the error message is sent to the client
             }
             e.printStackTrace(); // Log the exception for debugging
         }
