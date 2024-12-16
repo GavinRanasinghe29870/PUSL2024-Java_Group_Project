@@ -23,7 +23,7 @@ public class SignInServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Retrieve email and password from the request
-        String email = request.getParameter("email");
+        String email = request.getParameter("username");
         String password = request.getParameter("password");
 
         SignupDao signupDao = new SignupDao();
@@ -37,7 +37,7 @@ public class SignInServlet extends HttpServlet {
             session.setAttribute("currentUser", user);
        
             // Redirect to the user's dashboard
-            response.sendRedirect("dashboard.jsp");
+            response.sendRedirect("MovieManage_1.jsp");
         } else {
             // If authentication fails, redirect to the sign-in page with an error message
             request.setAttribute("errorMessage", "Invalid email or password. Please try again.");

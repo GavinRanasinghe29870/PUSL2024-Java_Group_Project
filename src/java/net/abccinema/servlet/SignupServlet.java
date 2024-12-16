@@ -22,7 +22,7 @@ public class SignupServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Retrieve form data
-        String fullName = request.getParameter("full name");
+        String fullName = request.getParameter("gender");
         String ageParam = request.getParameter("age");
         int age = 0;
 
