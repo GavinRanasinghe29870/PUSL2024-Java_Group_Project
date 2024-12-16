@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/style.css" /> 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page isELIgnored="false"%>
 
@@ -48,7 +46,7 @@
                     <form action="FeedbackServlet" method="post">
                         <h5 class="footer-title">Tell Us about your Experience</h5>
                         <div class="mb-3">
-                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your message..." required></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your message..."></textarea>
                         </div>
                         <div class="d-flex align-items-center mb-2">
                             <h5 class="rate mt-2">Rate Us: </h5>

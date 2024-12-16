@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/style.css" /> 
 <%
     String currentURL = request.getRequestURI();
     String contextPath = request.getContextPath();
@@ -24,7 +23,7 @@
                     <a class="nav-link <%= currentURL.equals(contextPath + "/") || currentURL.contains("index.jsp") ? "active" : "" %>" aria-current="page" href="index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= currentURL.contains("movies.jsp") ? "active" : "" %>" href="MovieServlet">Movies</a>
+                    <a class="nav-link <%= currentURL.contains("MovieServlet") ? "active" : "" %>" href="MovieServlet">Movies</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <%= currentURL.contains("BuyTickets.jsp") || currentURL.contains("SeatBooking.jsp") || currentURL.contains("checkout.jsp") ? "active" : "" %>" href="BuyTickets.jsp">Buy Tickets</a>
