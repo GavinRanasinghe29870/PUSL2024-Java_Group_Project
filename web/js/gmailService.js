@@ -1,8 +1,6 @@
-emailjs.init('kVB0utlxfeysWQyzE');
-
 const btn = document.getElementById('paynow-button');
 
-document.getElementById('form')
+document.getElementById('checkoutForm')
  .addEventListener('submit', function(event) {
    event.preventDefault();
 

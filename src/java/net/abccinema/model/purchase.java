@@ -10,9 +10,9 @@ package net.abccinema.model;
 public class purchase {
 
     private int id;            
-    private String name;       
+    private String user_name;       
     private String phoneNumber; 
-    private String email;       
+    private String user_email;       
     private int adultTickets;  
     private int childTickets;   
     private double totalAmount; 
@@ -30,13 +30,23 @@ public class purchase {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
+
+    public String getUser_email() {
+        return user_email;
+    }
+
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
+    }
+
+  
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -46,13 +56,7 @@ public class purchase {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+ 
 
     public int getAdultTickets() {
         return adultTickets;
@@ -86,18 +90,11 @@ public class purchase {
         this.paymentMethod = paymentMethod;
     }
 
-   
     @Override
     public String toString() {
-        return "Purchase{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", adultTickets=" + adultTickets +
-                ", childTickets=" + childTickets +
-                ", totalAmount=" + totalAmount +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                '}';
+        return "purchase{" + "id=" + id + ", user_name=" + user_name + ", phoneNumber=" + phoneNumber + ", user_email=" + user_email + ", adultTickets=" + adultTickets + ", childTickets=" + childTickets + ", totalAmount=" + totalAmount + ", paymentMethod=" + paymentMethod + '}';
     }
+
+   
+
 }

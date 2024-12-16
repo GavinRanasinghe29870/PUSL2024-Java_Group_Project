@@ -25,12 +25,12 @@ public class purchaseServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         // Retrieve parameters from the form
-        String name = request.getParameter("name");
+        String user_name = request.getParameter("user_name");
         String phoneNumber = request.getParameter("phoneNumber");
-        String email = request.getParameter("email");
+        String user_email = request.getParameter("user_email");
         String adultCountStr = request.getParameter("adultCount");
         String childCountStr = request.getParameter("childCount");
-        String totalPriceStr = request.getParameter("totalPrice");
+        String totalPriceStr = request.getParameter("amount");
         String paymentMethod = request.getParameter("paymentMethod");
         
 
@@ -44,7 +44,7 @@ public class purchaseServlet extends HttpServlet {
 
 int adultCount = Integer.parseInt(adultCountStr);
 int childCount = Integer.parseInt(childCountStr);
-float totalPrice = Float.parseFloat(totalPriceStr);
+float amount = Float.parseFloat(totalPriceStr.replace(",", ""));
 
         // Database connection details
         String dbURL = "jdbc:mysql://localhost:3306/abccinema";
@@ -64,12 +64,12 @@ float totalPrice = Float.parseFloat(totalPriceStr);
             preparedStatement = connection.prepareStatement(sql);
 
             // Set query parameters
-            preparedStatement.setString(1, name);
+            preparedStatement.setString(1, user_name);
             preparedStatement.setString(2, phoneNumber);
-            preparedStatement.setString(3, email);
+            preparedStatement.setString(3, user_email);
             preparedStatement.setInt(4, adultCount);
             preparedStatement.setInt(5, childCount);
-            preparedStatement.setFloat(6, totalPrice);
+            preparedStatement.setFloat(6, amount);
             preparedStatement.setString(7, paymentMethod);
 
             // Execute the query

@@ -17,9 +17,9 @@ public class purchaseDao {
     public boolean insertPurchase(purchase purchase) {
         String query = "INSERT INTO purchases (name, phoneNumber, email, adultTickets, childTickets, totalAmount, paymentMethod) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setString(1, purchase.getName());
+            ps.setString(1, purchase.getUser_name());
             ps.setString(2, purchase.getPhoneNumber());
-            ps.setString(3, purchase.getEmail());
+            ps.setString(3, purchase.getUser_email());
             ps.setInt(4, purchase.getAdultTickets());
             ps.setInt(5, purchase.getChildTickets());
             ps.setDouble(6, purchase.getTotalAmount());

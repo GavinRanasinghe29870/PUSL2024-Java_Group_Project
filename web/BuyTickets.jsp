@@ -40,16 +40,16 @@
 //            } else {
 //                System.out.println("Movies attribute in JSP: " + movies);
 //            }
-        %>
+%>
 
-       
+
 
         <div id="movie-container">
-<!--            <div id="time-container"></div>-->
-            
+            <!--            <div id="time-container"></div>-->
+
         </div>
         <div class="error-message" style="color: red;"></div>
-
+        <%@include file="components/footer.jsp"%>
         <script src="./js/buyticketsjavascript.js"></script>
 
     </body>
