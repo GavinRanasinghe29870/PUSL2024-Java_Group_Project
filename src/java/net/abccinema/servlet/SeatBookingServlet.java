@@ -36,6 +36,8 @@ public class SeatBookingServlet extends HttpServlet {
             int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
             int m_id = Integer.parseInt(request.getParameter("m_id"));
             String m_name = request.getParameter("m_name");
+            float adultTp = Float.parseFloat(request.getParameter("adultTicketPrice"));
+            float childTp = Float.parseFloat(request.getParameter("childTicketPrice"));
             String timeSlots = request.getParameter("timeSlots");
 
             SeatBookingDAO dao = new SeatBookingDAO(DbCon.getConnection());
@@ -54,7 +56,7 @@ public class SeatBookingServlet extends HttpServlet {
             HttpSession session = request.getSession();
             if (seatsAlreadyReserved) {
                 session.setAttribute("bookedMsg", "Apologies, the payment for these seats has already been completed by someone else.");
-                response.sendRedirect("SeatBooking.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&selectedSeats=" + selectedSeats + "&adultCount=" + adultCount + "&childCount=" + childCount + "&totalPrice=" + totalPrice);
+                response.sendRedirect("SeatBooking.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&adultTicketPrice=" + adultTp + "&childTicketPrice=" + childTp );
             } else {
                 response.sendRedirect("checkout.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&selectedSeats=" + selectedSeats + "&adultCount=" + adultCount + "&childCount=" + childCount + "&totalPrice=" + totalPrice);
             }
@@ -62,7 +64,7 @@ public class SeatBookingServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

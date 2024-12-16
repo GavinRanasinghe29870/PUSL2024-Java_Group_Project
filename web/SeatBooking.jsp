@@ -24,9 +24,17 @@
     // Retrieve parameters from the request
     int m_id = Integer.parseInt(request.getParameter("id"));
     String m_name = request.getParameter("name");
+    String adultTpStr = request.getParameter("adultTicketPrice");
+    float adultTp = 0.0f;
+    if (adultTpStr != null && !adultTpStr.trim().isEmpty()) {
+        adultTp = Float.parseFloat(adultTpStr);
+    }
+    String childTpStr = request.getParameter("childTicketPrice");
+    float childTp = 0.0f;
+    if (childTpStr != null && !childTpStr.trim().isEmpty()) {
+        childTp = Float.parseFloat(childTpStr);
+    }
     String timeSlots = request.getParameter("timeSlots");
-    buyticketsDao ticket = new buyticketsDao(DbCon.getConnection());
-    buytickets ticketP = ticket.getMovieById(m_id);
 %>
 
 <!DOCTYPE html>
@@ -316,7 +324,7 @@
                     <div class="ticket-type">
                         <div>
                             <strong>Adult</strong><br>
-                            LKR <%= ticketP.getTicketPriceAdult()%>
+                            LKR <%= adultTp%>
                         </div>
                         <div class="d-flex align-items-center">
                             <button type="button" class="btn btn-log" id="adult-decrease">-</button>
@@ -327,7 +335,7 @@
                     <div class="ticket-type">
                         <div>
                             <strong>Child</strong><br>
-                            LKR <%= ticketP.getTicketsPriceChild()%>
+                            LKR <%= childTp%>
                         </div>
                         <div class="d-flex align-items-center">
                             <button type="button" class="btn btn-log" id="child-decrease">-</button>
@@ -337,11 +345,13 @@
                     </div>
                     <input type="hidden" name="m_id" value="<%= m_id%>">
                     <input type="hidden" name="m_name" value="<%= m_name%>">
+                    <input type="hidden" name="adultTicketPrice" value="<%= adultTp%>">
+                    <input type="hidden" name="childTicketPrice" value="<%= childTp%>">
                     <input type="hidden" name="timeSlots" value="<%= timeSlots%>">
                     <input type="hidden" name="adultCount" id="hidden-adult-count" value="0">
                     <input type="hidden" name="childCount" id="hidden-child-count" value="0">
                     <input type="hidden" name="totalPrice" id="hidden-total-price" value="0">
-                    <input type="hidden" name="selectedSeats" id="hidden-selected-seats" value="">
+                    <input type="hidden" name="selectedSeats" id="hidden-selected-seats" value="" required>
                     <button type="submit" class="btn btn-log mt-4 px-4 py-2">Check Out</button>
                 </div>
             </form>
@@ -368,8 +378,8 @@
             const hiddenChildCount = document.getElementById("hidden-child-count");
             const hiddenTotalPrice = document.getElementById("hidden-total-price");
             const hiddenSelectedSeats = document.getElementById("hidden-selected-seats");
-            const adultTicketPrice = <%= ticketP.getTicketPriceAdult()%>;
-            const childTicketPrice = <%= ticketP.getTicketsPriceChild()%>;
+            const adultTicketPrice = <%= adultTp%>;
+            const childTicketPrice = <%= childTp%>;
             let adultCount = 0;
             let childCount = 0;
             // Update total and count
