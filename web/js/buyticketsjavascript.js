@@ -30,12 +30,12 @@ $(document).ready(function () {
 
                     // Create the movie card HTML
                     let movieHTML = `
-                    <a href="/PUSL2024_Group_Project/SeatBooking.jsp?id=${movie.id}&name=${movie.name}&timeSlots=${timeSlotsParams}">
+                    <a href="/PUSL2024_Group_Project/SeatBooking.jsp?id=${movie.id}&name=${movie.name}&timeSlots=${timeSlotsParams}&adultTicketPrice=${movie.ticketPriceAdult}&childTicketPrice=${movie.ticketsPriceChild}">
                         <div class="custom-box box container-fluid" id="hoverBox">
                             <h1 class="customBox-text">${movie.name}</h1>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col pt-2">
                                         <p class="customBox-text">${movie.description}</p>
                                     </div>
                                     <div class="col">
