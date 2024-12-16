@@ -38,8 +38,8 @@
                     <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
                     <h5><%= movie.getTitle() %></h5>
                     <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
-                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?movie=<%= java.net.URLEncoder.encode(movie.getTitle(), "UTF-8") %>" 
-                       class="transparent-button">More</a>
+                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?id=<%= movie.getId() %>" 
+                    class="transparent-button">More</a>
                     <button class="btn btn-warning" onclick="buyTickets('<%= movie.getId() %>', '<%= movie.getTitle() %>')">BUY TICKETS</button>
                 </div>
 
@@ -61,9 +61,8 @@
                     <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
                     <h5><%= movie.getTitle() %></h5>
                     <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
-                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?movie=<%= java.net.URLEncoder.encode(movie.getTitle(), "UTF-8") %>" 
-                       class="transparent-button">More</a>
-                    
+                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?id=<%= movie.getId() %>" 
+                    class="transparent-button">More</a>                    
                 </div>
                 <%
                         }
