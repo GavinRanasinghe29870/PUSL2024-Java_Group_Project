@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import net.abccinema.service.GmailService;
 
 @WebServlet("/purchaseServlet")
 public class purchaseServlet extends HttpServlet {
@@ -79,14 +78,7 @@ float totalPrice = Float.parseFloat(totalPriceStr);
             // Generate confirmation message
             if (rowsInserted > 0) {
                 
-                // Email content
-            String subject = "Movie Booking Confirmation";
-            String body = String.format(
-                    "Dear %s,\n\nThank you for your booking.\n\nDetails:\nAdult Tickets: %d\nChild Tickets: %d\nTotal Amount: %.2f\nPayment Method: %s\n\nEnjoy your movie!\n\nRegards,\nCinema Team",
-                    name, adultCount, childCount, totalPrice, paymentMethod);
-
-            // Send the email
-            GmailService.sendEmail(email, subject, body);
+         
                 
                 out.println("<html><body>");
                 out.println("<h1>Booking Successful!</h1>");
