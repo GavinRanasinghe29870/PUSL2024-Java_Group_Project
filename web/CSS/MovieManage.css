@@ -1,3 +1,4 @@
+
 body {
     background-color: #0D0C0C;
     color: #ffffff;
@@ -10,43 +11,45 @@ body {
     color: #d4a017;
 }
 
-.table-container {
-    overflow-x: auto;
-    display: flex;
-    justify-content: center;
+.bookings-container {
+    width: 85%;
+    margin: 30px auto;
+    background-color: #222;
     padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.table {
-    border-collapse: collapse;
-    max-width: 100%;
-    width: 100%;
-    margin: auto;
-}
-
-.table th,
-.table td {
-    border: 2px solid #d4a017;
-    padding: 10px;
-    text-align: left;
-    vertical-align: middle;
-}
-
-.table thead th {
-    background-color: #d4a017;
-    color: white;
-    font-weight: bold;
+.bookings-container h2 {
+    margin-bottom: 20px;
     text-align: center;
+    color: #D4AF37;
 }
 
-.table tbody tr {
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+thead th {
     background-color: #333;
-    color: #fff;
+    color: #BF873E;
 }
 
-.table tbody tr:nth-child(even) {
+tbody tr:nth-child(odd) {
     background-color: #444;
 }
+
+tbody tr:nth-child(even) {
+    background-color: #555;
+}
+
 
 .table td img {
     max-width: 50px;
