@@ -10,7 +10,7 @@
 
 <link rel="stylesheet" type="text/css" href="./CSS/buytickets.css" />
 <link rel="stylesheet" type="text/css" href="./components/style.css" /> 
-
+<link rel="stylesheet" type="text/css" href="./CSS/smovie.css"/>
 
  
 

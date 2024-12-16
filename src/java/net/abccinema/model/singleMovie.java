@@ -9,7 +9,7 @@ package net.abccinema.model;
  * @author Vihanga
  */
 
-
+//Declaration of a class
 public class singleMovie {
   
     private int id;
