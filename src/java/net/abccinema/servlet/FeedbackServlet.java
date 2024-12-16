@@ -39,10 +39,10 @@ public class FeedbackServlet extends HttpServlet {
             
             if (isSuccess) {
                 session.setAttribute("succMsg", "Thank You for your Review");
-                response.sendRedirect("index.jsp?success=true");
+                response.sendRedirect("Home");
             }else {
                 session.setAttribute("failedMsg", "Something Wrong on Server");
-                response.sendRedirect("index.jsp?error=insertFailed");
+                response.sendRedirect("Home");
             }
             
             

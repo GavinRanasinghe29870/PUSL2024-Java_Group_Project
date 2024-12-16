@@ -95,7 +95,9 @@
 
 
             <c:if test="${not empty bookedMsg}">
-                <p class="text-center text-danger">${bookedMsg}</p>
+                <div class="alert alert-primary text-center" role="alert" style="width: 70%; margin: 0 auto;">
+                    ${bookedMsg}
+                </div>
                 <c:remove var="bookedMsg" scope="session" />
             </c:if>
             <!-- Seat Select -->

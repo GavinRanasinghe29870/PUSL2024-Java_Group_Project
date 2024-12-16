@@ -33,10 +33,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.4/jquery.rateyo.min.js" integrity="sha512-09bUVOnphTvb854qSgkpY/UGKLW9w7ISXGrN0FR/QdXTkjs0D+EfMFMTB+CGiIYvBoFXexYwGUD5FD8xVU89mw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/index.css" /> 
+        <style>
+            .card-img-top {
+                height: 175px;
+                object-fit: cover;
+            }
+        </style>
     </head>
     <body>
         <%@include file="components/navbar.jsp"%>
-        
+
         <!-- Carousel -->
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -98,78 +104,26 @@
                 <h5 class="text-center fw-bold display-4" style="color: #0D0C0C;">Now <span style="color: white;">Showing</span></h5>
 
                 <div class="owl-carousel card-carousel owl-theme">
+                    <%                        List<Movie> nowShowing = (List<Movie>) request.getAttribute("nowShowing");
+                        if (nowShowing != null) {
+                            for (Movie movie : nowShowing) {
+                    %>
                     <div class="item">
                         <div class="card card-color">
-                            <img src="./Images/venom.jpg" alt="" class="card-img-top">
+                            <img src="./Images/<%= movie.getImageUrl()%>" alt="<%= movie.getTitle()%>" class="card-img-top">
                             <div class="card-body text-center">
-                                <div class="card-title">VENOM: THE LAST DANCE</div>
+                                <div class="card-title"><%= movie.getTitle()%></div>
                                 <div class="card-body text-center">
-                                    <a href="#" class="card-link link-style">MORE INFO</a>
+                                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?id=<%= movie.getId()%>" class="card-link link-style">MORE INFO</a>
                                 </div>
-                                <a href="#" class="btn btn-lg btn-card">Buy Ticket</a>
+                                <a href="BuyTickets.jsp" class="btn btn-lg btn-card">Buy Ticket</a>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="card card-color">
-                            <img src="./Images/venom.jpg" alt="" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="card-title">RED ONE</div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link link-style">MORE INFO</a>
-                                </div>
-                                <a href="#" class="btn btn-lg btn-card">Buy Ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card card-color">
-                            <img src="./Images/venom.jpg" alt="" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="card-title">BHOOL BHULAIYAA 3</div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link link-style">MORE INFO</a>
-                                </div>
-                                <a href="#" class="btn btn-lg btn-card">Buy Ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card card-color">
-                            <img src="./Images/venom.jpg" alt="" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="card-title">SINGHAM AGAIN (HINDI)</div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link link-style">MORE INFO</a>
-                                </div>
-                                <a href="#" class="btn btn-lg btn-card">Buy Ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card card-color">
-                            <img src="./Images/venom.jpg" alt="" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="card-title">AMARAN (TAMIL)</div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link link-style">MORE INFO</a>
-                                </div>
-                                <a href="#" class="btn btn-lg btn-card">Buy Ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card card-color">
-                            <img src="./Images/venom.jpg" alt="" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="card-title">IT ENDS WITH US</div>
-                                <div class="card-body text-center">
-                                    <a href="#" class="card-link link-style">MORE INFO</a>
-                                </div>
-                                <a href="#" class="btn btn-lg btn-card">Buy Ticket</a>
-                            </div>
-                        </div>
-                    </div>
+                    <%
+                            }
+                        }
+                    %>
                 </div>
             </div>
         </div>

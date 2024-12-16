@@ -38,13 +38,25 @@
             <div class="col-md-4 mt-5">
                 <div>
                     <c:if test="${not empty succMsg}">
-                        <p class="text-start text-success">${succMsg}</p>
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                            <div>
+                                ${succMsg}
+                            </div>
+                        </div>
                         <c:remove var="succMsg" scope="session" />
                     </c:if>
+
                     <c:if test="${not empty failedMsg}">
-                        <p class="text-start text-danger">${failedMsg}</p>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                            <div>
+                                ${failedMsg}
+                            </div>
+                        </div>
                         <c:remove var="failedMsg" scope="session" />
                     </c:if>
+                        
                     <form action="FeedbackServlet" method="post">
                         <h5 class="footer-title">Tell Us about your Experience</h5>
                         <div class="mb-3">
