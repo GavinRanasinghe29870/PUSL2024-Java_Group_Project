@@ -1,5 +1,6 @@
 package net.abccinema.servlet;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.util.List;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import net.abccinema.connection.DbCon;
 import net.abccinema.model.SeatBookingDAO;
 
@@ -31,9 +35,11 @@ public class SeatBookingServlet extends HttpServlet {
             int childCount = Integer.parseInt(request.getParameter("childCount"));
             int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
             int m_id = Integer.parseInt(request.getParameter("m_id"));
+            String m_name = request.getParameter("m_name");
+            String timeSlots = request.getParameter("timeSlots");
 
             SeatBookingDAO dao = new SeatBookingDAO(DbCon.getConnection());
-            List<String> confirmedSeats = dao.getConfirmedSeats(m_id);
+            List<String> confirmedSeats = dao.getConfirmedSeats(m_id, timeSlots);
 
             // Check if any of the selected seats are already reserved
             String[] seatsArray = selectedSeats.split(",");
@@ -48,25 +54,29 @@ public class SeatBookingServlet extends HttpServlet {
             HttpSession session = request.getSession();
             if (seatsAlreadyReserved) {
                 session.setAttribute("bookedMsg", "Apologies, the payment for these seats has already been completed by someone else.");
-                response.sendRedirect("SeatBooking.jsp?id=" + m_id);
+                response.sendRedirect("SeatBooking.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&selectedSeats=" + selectedSeats + "&adultCount=" + adultCount + "&childCount=" + childCount + "&totalPrice=" + totalPrice);
             } else {
-                response.sendRedirect("checkout.jsp?id=" + m_id + "&selectedSeats=" + selectedSeats + "&adultCount=" + adultCount + "&childCount=" + childCount + "&totalPrice=" + totalPrice);
+                response.sendRedirect("checkout.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&selectedSeats=" + selectedSeats + "&adultCount=" + adultCount + "&childCount=" + childCount + "&totalPrice=" + totalPrice);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
             int m_id = Integer.parseInt(request.getParameter("m_id"));
+            String timeSlots = request.getParameter("timeSlots");
+
             SeatBookingDAO dao = new SeatBookingDAO(DbCon.getConnection());
-            List<String> confirmedSeats = dao.getConfirmedSeats(m_id);
-            request.setAttribute("confirmedSeats", confirmedSeats);
-            request.getRequestDispatcher("SeatBooking.jsp").forward(request, response);
+            List<String> confirmedSeats = dao.getConfirmedSeats(m_id, timeSlots);
+
+            String json = new Gson().toJson(confirmedSeats);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
         } catch (Exception e) {
             e.printStackTrace();
         }

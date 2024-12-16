@@ -19,11 +19,12 @@ public class SeatBookingDAO {
         this.con = con;
     }
     
-    public List<String> getConfirmedSeats(int m_id) {
+    public List<String> getConfirmedSeats(int m_id, String timeSlots) {
         List<String> confirmedSeats = new ArrayList<>();
-        String query = "SELECT seats FROM reservations WHERE movie_id = ? AND status = 'confirmed'";
+        String query = "SELECT seats FROM reservations WHERE movie_id = ? AND timeSlots = ? AND status = 'confirmed'";
         try (PreparedStatement pst = this.con.prepareStatement(query)) {
             pst.setInt(1, m_id);
+            pst.setString(2, timeSlots);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 String[] seats = rs.getString("seats").split(",");

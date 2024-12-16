@@ -11,7 +11,7 @@
 
 <nav class="navbar sticky-top navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.jsp">
+        <a class="navbar-brand" href="Home">
             <img src="Images/navbarlogo.png" alt="" width="100px" class="d-inline-block align-text-top">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

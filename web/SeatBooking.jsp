@@ -103,7 +103,7 @@
             <!-- Seat Select -->
             <div class="container seat-container">
                 <div class="row">
-                    <div class="seat ">A1</div>
+                    <div class="seat " id="A1">A1</div>
                     <div class="seat ">A2</div>
                     <div class="seat ">A3</div>
                     <div class="seat ">A4</div>
@@ -469,6 +469,43 @@
                 // Decrease the countdown time by 1 second
                 countdownTime--;
             }, 1000);
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const movieId = <%= m_id%>; // Example movie ID
+                const timeSlot = "<%= timeSlots%>"; // Example time slot
+
+                // Function to fetch confirmed seats from the server
+                async function getConfirmedSeats(movieId, timeSlot) {
+                    try {
+                        const response = await fetch(`/getConfirmedSeats?movieId=${movieId}&timeSlot=${timeSlot}`);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        const data = await response.json();
+                        return data.confirmedSeats;
+                    } catch (error) {
+                        console.error('There was a problem with the fetch operation:', error);
+                    }
+                }
+
+                function markOccupiedSeats(confirmedSeats) {
+                    confirmedSeats.forEach(seatId => {
+                        const seatElement = document.getElementById(seatId);
+                        if (seatElement) {
+                            seatElement.classList.add('occupied');
+                        }
+                    });
+                }
+
+                // Fetch confirmed seats and mark them as occupied
+                getConfirmedSeats(movieId, timeSlot).then(confirmedSeats => {
+                    if (confirmedSeats) {
+                        markOccupiedSeats(confirmedSeats);
+                    }
+                });
+            });
         </script>
 
     </body>
