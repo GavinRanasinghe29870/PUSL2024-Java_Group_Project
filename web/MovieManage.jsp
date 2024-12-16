@@ -1,40 +1,191 @@
 <%-- 
-    Document   : Sign in
-    Created on : Nov 11, 2024, 11:01:10 AM
-    Author     : dulit
+    Document   : MovieManage
+    Created on : Nov 17, 2024, 8:51:36 PM
+    Author     : KATANA
 --%>
 
+<%@page import="net.abccinema.model.moviereadDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="net.abccinema.model.movieinsert"%>
+<%@page import="net.abccinema.model.movieinsertDAO"%>
+<%@page import="net.abccinema.connection.DbCon"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    moviereadDAO m = new moviereadDAO(DbCon.getConnection());
+    List<movieinsert> movie = m.getAllMovies();
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sign In</title>
-        <%@include file="components/allCdn.jsp"%>
-        <link href="CSS/sign in.css" rel="stylesheet" type="text/css"/>
+        <title>Movie Manage</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/MovieManage.css" /> 
     </head>
     <body>
-        <!-- Sign In Container -->
-        <div class="sign_container">
-            <!-- Left Side: Logo -->
-            <div class="logo_section">
-                <img src="Images/navbarlogo.png" alt="Logo">
-            </div>
-
-            <!-- Right Side: Form -->
-            <div class="form_section">
-                <h2>Sign In</h2>
-                <form action="SigninServlet" method="post">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                   
-                 
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-
-                    <button type="submit">Sign In</button>
-                </form>
+        <hr style="border-top: 3px solid #D4AF37;">
+        <div style="background-color: #000000; padding-top:20px;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="my-heading" style="padding-left: 25px; font-weight: bold;">Movie Manage</h1>
             </div>
         </div>
+        <hr style="border-top: 3px solid #D4AF37;">
+        <div class="container-fluid mt-4">
+
+            <div class="bookings-container">
+                <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#basicmodal">Add
+                    Movie</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Genres</th>
+                            <th>Cast</th>
+                            <th>Directors</th>
+                            <th>Writers</th>
+                            <th>Producers</th>
+                            <th>Music</th>
+                            <th>Price(Adult)</th>
+                            <th>Price(Child)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            if (!movie.isEmpty()) {
+                                for (int i = 0; i < movie.size(); i++) {
+                                    movieinsert mr = movie.get(i);
+                        %>
+                        <tr>
+                            <td><%= mr.getId()%></td>
+                            <td><%= mr.getName()%></td>
+                            <td><%= mr.getImageName()%></td>
+                            <td><%= mr.getDescription()%></td>
+                            <td><%= mr.getStartDate()%></td>
+                            <td><%= mr.getEndDate()%></td>
+                            <td><%= mr.getGenres()%></td>
+                            <td><%= mr.getCast()%></td>
+                            <td><%= mr.getDirectors()%></td>
+                            <td><%= mr.getWriters()%></td>
+                            <td><%= mr.getProducers()%></td>
+                            <td><%= mr.getMusic()%></td>
+                            <td><%= mr.getTicketPriceAdult()%></td>
+                            <td><%= mr.getTicketPriceChild()%></td>
+                            <td>
+                                <button class="btn btn-success btn-sm">Edit</button>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </td>
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>
+                    </tbody>
+                </table>
+
+                <!-- Modal -->
+                <div class="modal fade" tabindex="-1" role="dialog" id="basicmodal">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h4 style="margin-bottom: 50px;">Movie ID: 0001</h4>
+                                <form action="movieinsertServlet" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="movieName">Movie Name:</label>
+                                        <input type="text" class="form-control" name="movieName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieImage">Upload Movie Picture:</label>
+                                        <input type="file" class="form-control" name="movieImage" accept=".jpg, .jpeg, .png">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieDescription">Movie Description:</label>
+                                        <textarea class="form-control" name="movieDescription" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieTimeSlots">Time Slots:</label>
+                                        <div class="time-slot-group" id="movieTimeSlots">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="timeSlots" value="10:30 AM" id="slot1">
+                                                <label class="form-check-label" for="slot1">10:30 AM</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="timeSlots" value="02:10 PM" id="slot2">
+                                                <label class="form-check-label" for="slot2">02:10 PM</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="timeSlots" value="06:30 PM" id="slot3">
+                                                <label class="form-check-label" for="slot3">06:30 PM</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="timeSlots" value="10:15 PM" id="slot4">
+                                                <label class="form-check-label" for="slot4">10:15 PM</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date1">Start Date:</label>
+                                        <input type="date" class="form-control" name="startDate" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date2">End Date:</label>
+                                        <input type="date" class="form-control" name="endDate" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieGenres">Genres:</label>
+                                        <input type="text" class="form-control" name="movieGenres">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieStars">Cast:</label>
+                                        <input type="text" class="form-control" name="movieStars">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieDirectors">Directors:</label>
+                                        <input type="text" class="form-control" name="movieDirectors">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieWriters">Writers:</label>
+                                        <input type="text" class="form-control" name="movieWriters">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieProducers">Producers:</label>
+                                        <input type="text" class="form-control" name="movieProducers">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieMusic">Music:</label>
+                                        <input type="text" class="form-control" name="movieMusic">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieTicketPriceAdult">Ticket Price (Adult):</label>
+                                        <input type="number" class="form-control" name="movieTicketPriceAdult">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movieTicketPriceChild">Ticket Price (Child):</label>
+                                        <input type="number" class="form-control" name="movieTicketPriceChild">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-primary">Add Movie</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Closing bookings-container div -->
+        </div> <!-- Closing container div -->
+
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     </body>
 </html>
