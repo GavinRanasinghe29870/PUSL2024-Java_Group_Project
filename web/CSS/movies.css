@@ -42,10 +42,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     background-color: #D4AF37;
     color: #000000;
     width:24.2%;
-    padding:0px;
+    aspect-ratio: 4/3;
+    padding: 0;
     margin: 5px;
     border-radius: 0px;
     text-align: center;
+    
     
 }
 
@@ -62,6 +64,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .card h4 {
     font-size: 18px;
     margin-bottom: 0px;
+}
+
+.card h5 {
+    font-size: 1.5rem; 
+    margin: 10px 0; 
 }
 
 .card p {
