@@ -8,6 +8,7 @@
         <title>Movies</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <%@include file="components/navbar.jsp" %>
+        <link rel="stylesheet" type="text/css" href="./CSS/buytickets.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/movies.css" />
         <script>
             function buyTickets(movieId, movieName, timeSlots, adultTicketPrice, childTicketPrice) {
