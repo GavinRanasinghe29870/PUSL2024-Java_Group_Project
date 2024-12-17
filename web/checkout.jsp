@@ -11,8 +11,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Checkout Page</title>
-        <%@include file="components/navbar.jsp" %>
-        <%@include file="components/allCdn.jsp" %>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+        <%@include file = "components/navbar.jsp" %>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -196,10 +196,21 @@
                 text-align: center;
                 font-size: 12px;
             }
-            #myTextBox {
+            #user_name{
                 width: 90%;
                 height: 30px;
                 box-sizing: border-box;
+                  }
+            #user_email{
+                width: 90%;
+                height: 30px;
+                box-sizing: border-box;
+                  }
+            #myTextBox{
+                width: 90%;
+                height: 30px;
+                box-sizing: border-box;
+                
             }
             p{
                 color: black;
@@ -296,7 +307,7 @@
                                     </div>
 
                                     <div data-value="PayPal">
-                                        <img src="Images/paypal.png" alt="PayPal" class="logo"> PayPal
+                                        <img src="Images/Paypal.png" alt="PayPal" class="logo"> PayPal
                                     </div>
                                 </div>
                                 <input type="hidden" id="paymentMethod" name="paymentMethod" required>
@@ -344,17 +355,19 @@
         </script>
         
         <script>
+            
+            // Select the dropdown container
             const dropdown = document.querySelector('.custom-dropdown');
             const selected = dropdown.querySelector('.selected');
             const options = dropdown.querySelector('.dropdown-options');
             const hiddenInput = document.getElementById('paymentMethod');
 
-
+// Event listener for toggling the dropdown options visibility
             selected.addEventListener('click', () => {
                 options.style.display = options.style.display === 'block' ? 'none' : 'block';
             });
 
-
+// Event listener for handling option selection 
             options.addEventListener('click', (e) => {
                 if (e.target.closest('div')) {
                     const selectedOption = e.target.closest('div');
@@ -364,7 +377,7 @@
                 }
             });
 
-
+// Event listener for closing the dropdown
             document.addEventListener('click', (e) => {
                 if (!dropdown.contains(e.target)) {
                     options.style.display = 'none';
