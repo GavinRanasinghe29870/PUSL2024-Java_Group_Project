@@ -21,7 +21,7 @@ public class SeatBookingDAO {
     
     public List<String> getConfirmedSeats(int m_id, String timeSlots) {
         List<String> confirmedSeats = new ArrayList<>();
-        String query = "SELECT seats FROM reservations WHERE movie_id = ? AND timeSlots = ? AND status = 'confirmed'";
+        String query = "SELECT seats FROM reservations WHERE m_id = ? AND timeSlots = ? AND paymentStatus = 'confirmed'";
         try (PreparedStatement pst = this.con.prepareStatement(query)) {
             pst.setInt(1, m_id);
             pst.setString(2, timeSlots);

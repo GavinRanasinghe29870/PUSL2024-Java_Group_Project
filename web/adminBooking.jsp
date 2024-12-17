@@ -24,6 +24,7 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/adminBooking.css" /> 
     </head>
     <body>
+        <%@include file="components/adminNavbar.jsp"%>
         <!-- Bookings Table -->
         <hr style="border-top: 3px solid #D4AF37;">
         <div style="background-color: #000000; padding-top:20px;">
