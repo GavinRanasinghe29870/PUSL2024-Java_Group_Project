@@ -37,7 +37,7 @@
                     <a class="nav-link <%= currentURL.contains("aboutUs.jsp") ? "active" : "" %>" href="aboutUs.jsp">About Us</a>
                 </li>
             </ul>
-            <a href="login.html" class="btn btn-login">Sign in | Sign up</a>
+            <a href="Sign in.jsp" class="btn btn-login">Sign in | Sign up</a>
             <style>
                 .btn-login {
                     background-color: #D4AF37;

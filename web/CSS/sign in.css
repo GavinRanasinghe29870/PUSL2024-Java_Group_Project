@@ -41,19 +41,23 @@ body {
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    background: #fff;
+    background: #D4AF37;
+    color: #fff;
 }
 
 .form_section h2 {
-    color: #D4AF37;
+    color: #000;
     text-align: center;
     margin-bottom: 20px;
+    
 }
 
 .form_section label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #000;
+    
 }
 
 .form_section input {
@@ -62,12 +66,13 @@ body {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    
 }
 
 .form_section button {
     width: 100%;
     padding: 10px;
-    background-color: #D4AF37;
+    background-color:#D4AF37;
     color: white;
     border: none;
     border-radius: 5px;
