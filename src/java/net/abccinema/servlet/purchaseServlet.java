@@ -1,114 +1,79 @@
 package net.abccinema.servlet;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import net.abccinema.connection.DbCon;
+import net.abccinema.model.purchase;
+import net.abccinema.model.purchaseDao;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+@WebServlet(name = "purchaseServlet", urlPatterns = {"/purchaseServlet"})
 
-@WebServlet("/purchaseServlet")
 public class purchaseServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        // Retrieve parameters from the form
-        String user_name = request.getParameter("user_name");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String user_email = request.getParameter("user_email");
-        String adultCountStr = request.getParameter("adultCount");
-        String childCountStr = request.getParameter("childCount");
-        String totalPriceStr = request.getParameter("amount");
-        String paymentMethod = request.getParameter("paymentMethod");
-        
-
-        // Validate input parameters
-        if (adultCountStr == null || adultCountStr.isEmpty() || childCountStr == null || childCountStr.isEmpty() || totalPriceStr == null || totalPriceStr.isEmpty()) {
-    out.println("<html><body>");
-    out.println("<h1>Invalid input data. Please try again.</h1>");
-    out.println("</body></html>");
-    return;
-}
-
-int adultCount = Integer.parseInt(adultCountStr);
-int childCount = Integer.parseInt(childCountStr);
-float amount = Float.parseFloat(totalPriceStr.replace(",", ""));
-
-        // Database connection details
-        String dbURL = "jdbc:mysql://localhost:3306/abccinema";
-        String dbUser = "root";
-        String dbPassword = "agasthi";
-
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-
         try {
-            // Establish database connection
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
+            // Retrieve form parameters
+            String user_name = request.getParameter("user_name");
+            String phoneNumber = request.getParameter("phoneNumber");
+            String user_email = request.getParameter("user_email");
+            String adultCountStr = request.getParameter("adultCount");
+            String childCountStr = request.getParameter("childCount");
+            String totalPriceStr = request.getParameter("amount");
+            String paymentMethod = request.getParameter("paymentMethod");
 
-            // SQL query to insert purchase details
-            String sql = "INSERT INTO purchases (name, phoneNumber, email, adultTickets, childTickets, totalAmount, paymentMethod) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            preparedStatement = connection.prepareStatement(sql);
+            // Validate inputs
+            if (user_name == null || phoneNumber == null || user_email == null 
+                    || adultCountStr == null || childCountStr == null || totalPriceStr == null 
+                    || user_name.isEmpty() || phoneNumber.isEmpty() || user_email.isEmpty()
+                    || adultCountStr.isEmpty() || childCountStr.isEmpty() || totalPriceStr.isEmpty()) {
+                response.sendRedirect("checkout.jsp?error=invalidInput");
+                return;
+            }
 
-            // Set query parameters
-            preparedStatement.setString(1, user_name);
-            preparedStatement.setString(2, phoneNumber);
-            preparedStatement.setString(3, user_email);
-            preparedStatement.setInt(4, adultCount);
-            preparedStatement.setInt(5, childCount);
-            preparedStatement.setFloat(6, amount);
-            preparedStatement.setString(7, paymentMethod);
+            // Convert string inputs to appropriate data types
+            int adultCount = Integer.parseInt(adultCountStr);
+            int childCount = Integer.parseInt(childCountStr);
+            double amount = Double.parseDouble(totalPriceStr.replace(",", ""));
 
-            // Execute the query
-            int rowsInserted = preparedStatement.executeUpdate();
+            // Handle any file upload (optional if needed for purchase receipts, etc.)
+            // Part filePart = request.getPart("receipt"); // Uncomment if you need to handle file uploads
 
-            // Generate confirmation message
-            if (rowsInserted > 0) {
-                
-         
-                
-                out.println("<html><body>");
-                out.println("<h1>Booking Successful!</h1>");
-                out.println("<a href='index.jsp'>Go to Home Page</a>");
-                out.println("</body></html>");
+            // Create a purchase object
+            purchase newPurchase = new purchase();
+            newPurchase.setUser_name(user_name);
+            newPurchase.setPhoneNumber(phoneNumber);
+            newPurchase.setUser_email(user_email);
+            newPurchase.setAdultTickets(adultCount);
+            newPurchase.setChildTickets(childCount);
+            newPurchase.setTotalAmount(amount);
+            newPurchase.setPaymentMethod(paymentMethod);
+
+            // Insert the purchase into the database
+//            purchaseDao purchaseDao = new purchaseDao(DbCon.getConnection());
+//            boolean isInserted = purchaseDao.insertPurchase(newPurchase);
+
+            // Handle response based on success or failure
+            purchaseDao dao = new purchaseDao(DbCon.getConnection());
+            if (dao.insertPurchase(newPurchase)) {
+                response.sendRedirect("checkout.jsp?success=true");
             } else {
-                out.println("<html><body>");
-                out.println("<h1>Something went wrong!</h1>");
-                out.println("<p>We couldn't process your booking. Please try again later.</p>");
-                out.println("<a href='index.jsp'>Go to Home Page</a>");
-                out.println("</body></html>");
+                response.sendRedirect("checkout.jsp?error=insertFailed");
             }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            out.println("<html><body>");
-            out.println("<h1>Error!</h1>");
-            out.println("<p>An error occurred: " + e.getMessage() + "</p>");
-            out.println("<a href='index.jsp'>Go to Home Page</a>");
-            out.println("</body></html>");
+
         } catch (Exception ex) {
-            Logger.getLogger(purchaseServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            // Close resources
-            try {
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            out.close();
+            ex.printStackTrace();
+            response.sendRedirect("checkout.jsp?error=exception");
         }
     }
 }
