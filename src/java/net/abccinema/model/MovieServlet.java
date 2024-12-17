@@ -1,7 +1,5 @@
 package net.abccinema.model;
 
-
-
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
@@ -27,16 +25,26 @@ public class MovieServlet extends HttpServlet {
         try (Connection con = DbCon.getConnection();
              Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT * FROM movies")) {
+
             while (rs.next()) {
                 LocalDate startDate = rs.getDate("m_start_date").toLocalDate();
                 LocalDate endDate = rs.getDate("m_end_date").toLocalDate();
+
+                // Mocked data for time slots and ticket prices
+                String timeSlots = "10:30 AM,02:10 PM";
+                double adultTicketPrice = 2000.0;
+                double childTicketPrice = 1000.0;
+
                 Movie movie = new Movie(
                         rs.getInt("m_id"),
                         rs.getString("m_name"),
-                        rs.getString("m_image"), // Image file name only
-                        startDate.isAfter(today) ? "coming_soon" : "now_showing" // Categorize by date
+                        rs.getString("m_image"),
+                        startDate.isAfter(today) ? "coming_soon" : "now_showing",
+                        timeSlots,
+                        adultTicketPrice,
+                        childTicketPrice
                 );
-                
+
                 if (!startDate.isAfter(today) && !endDate.isBefore(today)) {
                     nowShowing.add(movie);
                 } else if (startDate.isAfter(today)) {
@@ -44,7 +52,6 @@ public class MovieServlet extends HttpServlet {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         request.setAttribute("nowShowing", nowShowing);

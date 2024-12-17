@@ -45,7 +45,6 @@ public class Home extends HttpServlet {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         request.setAttribute("nowShowing", nowShowing);

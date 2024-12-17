@@ -6,16 +6,17 @@
     <head>
         <meta charset="UTF-8">
         <title>Movies</title>
-        <link link-style href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <%@include file="components/navbar.jsp" %>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/movies.css" />        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/movies.css" />
         <script>
-            function buyTickets(movieId, movieName) {
-                // Redirect to the SeatBooking page with id and name as query parameters
-                window.location.href = "http://localhost:8080/PUSL2024_Group_Project/SeatBooking.jsp?id=" 
-                                        + encodeURIComponent(movieId) 
-                                        + "&name=" 
-                                        + encodeURIComponent(movieName);
+            function buyTickets(movieId, movieName, timeSlots, adultTicketPrice, childTicketPrice) {
+                window.location.href = "http://localhost:8080/PUSL2024_Group_Project/SeatBooking.jsp?id="
+                                        + encodeURIComponent(movieId)
+                                        + "&name=" + encodeURIComponent(movieName)
+                                        + "&timeSlots=" + encodeURIComponent(timeSlots)
+                                        + "&adultTicketPrice=" + encodeURIComponent(adultTicketPrice)
+                                        + "&childTicketPrice=" + encodeURIComponent(childTicketPrice);
             }
         </script>
     </head>
@@ -37,32 +38,16 @@
                 <div class="card">
                     <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
                     <h5><%= movie.getTitle() %></h5>
-                    <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
                     <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?id=<%= movie.getId() %>" 
-                    class="transparent-button">More</a>
-                    <button class="btn btn-warning" onclick="buyTickets('<%= movie.getId() %>', '<%= movie.getTitle() %>')">BUY TICKETS</button>
-                </div>
-
-                <%
-                        }
-                    }
-                %>
-            </div>
-
-            <h2 style="color: #D4AF37; margin-top: 50px;">Coming Soon</h2>
-            <hr style="border-top: 3px solid #D4AF37;">
-            <div class="card-container">
-                <%
-                    List<Movie> comingSoon = (List<Movie>) request.getAttribute("comingSoon");
-                    if (comingSoon != null) {
-                        for (Movie movie : comingSoon) {
-                %>
-                <div class="card">
-                    <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
-                    <h5><%= movie.getTitle() %></h5>
-                    <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
-                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?id=<%= movie.getId() %>" 
-                    class="transparent-button">More</a>                    
+                       class="transparent-button">More</a>
+                    <button class="btn btn-warning" 
+                        onclick="buyTickets('<%= movie.getId() %>', 
+                                            '<%= movie.getTitle() %>', 
+                                            '<%= movie.getTimeSlots() %>', 
+                                            '<%= movie.getAdultTicketPrice() %>', 
+                                            '<%= movie.getChildTicketPrice() %>')">
+                        BUY TICKETS
+                    </button>
                 </div>
                 <%
                         }
