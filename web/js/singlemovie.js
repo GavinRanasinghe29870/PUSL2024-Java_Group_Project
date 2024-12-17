@@ -27,7 +27,7 @@ $(document).ready(function (){
             </div>
        
                     <div class="content">
-                <img src="Images/${movie.imageName}" class="img-fluid"/>
+                <img src="Images/${movie.imageName}" height: "175px"; object-fit: "cover;"/>
                 <button class="btn">BUY TICKETS</button>
         </div>
                     <div class="desc">
