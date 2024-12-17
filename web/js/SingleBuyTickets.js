@@ -16,40 +16,41 @@ $(document).ready(function (){
             // Displaying the movies on the webpage
             let sbmoviecontainer = $('#sbmoviecontainer'); 
             sbmoviecontainer.empty();
+            
+            let timeSlotsHTML = '';
+                    let timeSlotsParams = ''; 
+
+                    
+                    sbmovie.timeSlots.forEach(slot => {
+                        timeSlotsHTML += `<span class="time-slot">${slot}</span>, `;
+                        timeSlotsParams += encodeURIComponent(slot) + '&'; 
+                    });
+
+                 
+                    timeSlotsHTML = timeSlotsHTML.slice(0, -2);
+                    
+                    timeSlotsParams = timeSlotsParams.slice(0, -1);
 
             
                     let movieHTML = `
-                     <div class="main" style="background-color:#D4AF37; margin-right:57.5%; text-align: center;" >
-                <h1 class=" fw-bold ps-4">${sbmovie.name} </h1>
-            </div>
-       
-                    <div class="content">
-                <img src="Images/${sbmovie.imageName}" class="img-fluid"/>
-                <button class="btn">BUY TICKETS</button>
-        </div>
-                    <div class="desc">
-            <div class="col">
-               <p>${sbmovie.description}</p>
-            </div>
-        </div>
-                    <div class="genre">
-            <div class="col1">
-                
-                <p class="genre-header">GENRES:  <button class="button button1">${sbmovie.genres} </button> </p> 
-                
-            </div>
-        </div>
-                    <div class="movie">
-            <div class="col2">
-                <h4 class="title">Stars :  <p class="text-text2">${sbmovie.cast} </p></h4> <br>
-                <h4 class="title">Directors :  <p class="text-text2">${sbmovie.directors} </p></h4> <br>
-                <h4 class="title">Writers :  <p class="text-text2">${sbmovie.writers} </p> </h4> <br>
-                <h4 class="title">Producers :   <p class="text-text2">${sbmovie.producers} </p></h4> <br>
-                <h4 class="title">Music :   <p class="text-text2">${sbmovie.music} </p></h4>
-              
-            </div>
-           
-        </div>
+                     <a href="/PUSL2024_Group_Project/SeatBooking.jsp?id=${sbmovie.id}&name=${sbmovie.name}&timeSlots=${timeSlotsParams}&adultTicketPrice=${movie.ticketPriceAdult}&childTicketPrice=${movie.ticketsPriceChild}">
+                        <div style="background-color: #fff; class="sbcustom-box box container-fluid">
+                            <h1 class="sbcustomBox-text">${sbmovie.name}</h1>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col pt-2">
+                                        <p class="sbcustomBox-text">${sbmovie.description}</p>
+                                    </div>
+                                    <div class="col">
+                                        <img src="Images/${sbmovie.imageName}" width="80%" alt="${sbmovie.imageName}" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="customBox-text">Time Slots: ${timeSlotsHTML}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                     
                     `;
                     sbmoviecontainer.append(movieHTML);

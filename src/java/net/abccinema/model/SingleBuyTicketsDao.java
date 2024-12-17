@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -33,22 +34,23 @@ public class SingleBuyTicketsDao {
              "WHERE movies.m_id = ? " +
              "GROUP BY movies.m_id;";
          stmt =this.connection.prepareStatement(query2);
+         stmt.setInt(1, id);
          rs =stmt.executeQuery();
          
         while (rs.next()) {
-            SingleBuyTickets row = new SingleBuyTickets();
-             row.setId(rs.getInt("m_id"));
-                row.setName(rs.getString("m_name"));
-                row.setDescription(rs.getString("m_description"));
-                row.setImageName(rs.getString("m_image"));
-                row.setDescription(rs.getString("m_description"));
-                row.setGenres(rs.getString("m_genres"));
-                row.setCast(rs.getString("m_cast"));
-                row.setDirectors(rs.getString("m_directors"));
-                row.setWriters(rs.getString("m_writers"));
-                row.setProducers(rs.getString("m_producers"));
-                row.setMusic(rs.getString("m_music"));
-            
+            sbmovie = new SingleBuyTickets();
+             sbmovie.setId(rs.getInt("m_id"));
+                sbmovie.setName(rs.getString("m_name"));
+                sbmovie.setDescription(rs.getString("m_description"));
+                sbmovie.setImageName(rs.getString("m_image"));
+                sbmovie.setDescription(rs.getString("m_description"));
+                sbmovie.setGenres(rs.getString("m_genres"));
+                sbmovie.setCast(rs.getString("m_cast"));
+                sbmovie.setDirectors(rs.getString("m_directors"));
+                sbmovie.setWriters(rs.getString("m_writers"));
+                sbmovie.setProducers(rs.getString("m_producers"));
+                sbmovie.setMusic(rs.getString("m_music"));
+            sbmovie.setTimeSlots(Arrays.asList(rs.getString("time_slots").split(", ")));
                
         }
         
