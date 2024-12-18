@@ -30,6 +30,7 @@
         <div class="container">
             <h2 style="color: #D4AF37;">Now Showing</h2>
             <hr style="border-top: 3px solid #D4AF37;">
+        
             <div class="card-container">
                 <%
                     List<Movie> nowShowing = (List<Movie>) request.getAttribute("nowShowing");
@@ -50,12 +51,39 @@
                         BUY TICKETS
                     </button>
                 </div>
+            </div>
+                    
                 <%
                         }
                     }
                 %>
-            </div>
         </div>
+            <div class="container">
+            <h2 style="color: #D4AF37;">Coming Soon</h2>
+            <hr style="border-top: 3px solid #D4AF37;">
+        
+            <div class="card-container">
+                <%
+                    List<Movie> comingSoon = (List<Movie>) request.getAttribute("comingSoon");
+                    if (comingSoon != null) {
+                        for (Movie movie : comingSoon) {
+                %>
+                <div class="card">
+                    <img src="./Images/<%= movie.getImageUrl() %>" alt="<%= movie.getTitle() %>" />
+                    <h5><%= movie.getTitle() %></h5>
+                    <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
+                    <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?id=<%= movie.getId() %>" 
+                       class="transparent-button">More</a>
+                    
+                </div>
+            </div>
+                      
+                <%
+                        }
+                    }
+                %>
+            </div> 
+       
         <%@include file="components/footer.jsp" %>
     </body>
 </html>
