@@ -79,7 +79,7 @@ public class SignupServlet extends HttpServlet {
             boolean success = signupDao.saveSignup(user);
 
             if (success) {
-                response.sendRedirect("success.jsp?message=signupSuccess");
+                response.sendRedirect("Sign in.jsp?message=signupSuccess");
             } else {
                 response.sendRedirect("Signup.jsp?error=signupFailed");
             }
