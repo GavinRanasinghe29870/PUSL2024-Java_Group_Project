@@ -12,8 +12,6 @@ body {
 }
 
 .bookings-container {
-    width: 85%;
-    margin: 30px auto;
     background-color: #222;
     padding: 20px;
     border-radius: 20px;

@@ -49,4 +49,20 @@ public class moviereadDAO {
         
         return movie;
     }
+    
+    public boolean deleteMovies(int id) {
+        boolean f  = false;
+        try {
+            query = "DELETE FROM movies WHERE m_id=?";
+            pst = this.con.prepareStatement(query);
+            pst.setInt(1, id);
+            int i = pst.executeUpdate();
+            if (i == 1){
+                f = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return f;
+    }
 }

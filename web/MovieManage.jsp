@@ -23,6 +23,17 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/MovieManage.css" /> 
+        <style>
+            .truncate {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 50px;
+            }
+            td {
+                font-size: 13px;
+            }
+        </style>
     </head>
     <body>
         <%@include file="components/adminNavbar.jsp"%>
@@ -33,11 +44,30 @@
             </div>
         </div>
         <hr style="border-top: 3px solid #D4AF37;">
+        <c:if test="${not empty succMsg}">
+            <div class="alert alert-success text-center" role="alert" style="width: 20%; margin: 0 auto;">
+                <div>
+                    ${succMsg}
+                </div>
+            </div>
+            <c:remove var="succMsg" scope="session" />
+        </c:if>
+
+        <c:if test="${not empty failedMsg}">
+            <div class="alert alert-danger text-center" role="alert" style="width: 20%; margin: 0 auto;">
+                <div>
+                    ${failedMsg}
+                </div>
+            </div>
+            <c:remove var="failedMsg" scope="session" />
+        </c:if>
         <div class="container-fluid mt-4">
 
             <div class="bookings-container">
-                <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#basicmodal">Add
-                    Movie</button>
+
+                <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#addmoviemodal">
+                    Add Movie
+                </button>
                 <table>
                     <thead>
                         <tr>
@@ -59,29 +89,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%
-                            if (!movie.isEmpty()) {
+                        <%                            if (!movie.isEmpty()) {
                                 for (int i = 0; i < movie.size(); i++) {
                                     movieinsert mr = movie.get(i);
                         %>
                         <tr>
                             <td><%= mr.getId()%></td>
-                            <td><%= mr.getName()%></td>
-                            <td><%= mr.getImageName()%></td>
-                            <td><%= mr.getDescription()%></td>
-                            <td><%= mr.getStartDate()%></td>
-                            <td><%= mr.getEndDate()%></td>
-                            <td><%= mr.getGenres()%></td>
-                            <td><%= mr.getCast()%></td>
-                            <td><%= mr.getDirectors()%></td>
-                            <td><%= mr.getWriters()%></td>
-                            <td><%= mr.getProducers()%></td>
-                            <td><%= mr.getMusic()%></td>
-                            <td><%= mr.getTicketPriceAdult()%></td>
-                            <td><%= mr.getTicketPriceChild()%></td>
+                            <td class="truncate"><%= mr.getName()%></td>
+                            <td class="truncate"><%= mr.getImageName()%></td>
+                            <td class="truncate"><%= mr.getDescription()%></td>
+                            <td class="truncate"><%= mr.getStartDate()%></td>
+                            <td class="truncate"><%= mr.getEndDate()%></td>
+                            <td class="truncate"><%= mr.getGenres()%></td>
+                            <td class="truncate"><%= mr.getCast()%></td>
+                            <td class="truncate"><%= mr.getDirectors()%></td>
+                            <td class="truncate"><%= mr.getWriters()%></td>
+                            <td class="truncate"><%= mr.getProducers()%></td>
+                            <td class="truncate"><%= mr.getMusic()%></td>
+                            <td class="truncate"><%= mr.getTicketPriceAdult()%></td>
+                            <td class="truncate"><%= mr.getTicketPriceChild()%></td>
                             <td>
-                                <button class="btn btn-success btn-sm">Edit</button>
-                                <button class="btn btn-danger btn-sm">Delete</button>
+                                <a href="movieUpdate.jsp?id=<%=mr.getId()%>" class="btn btn-success btn-sm" style="font-size: 11px;">Edit</a>
+                                <a href="delete?id=<%=mr.getId()%>" class="btn btn-danger btn-sm" style="font-size: 11px;">Delete</a>
                             </td>
                         </tr>
                         <%
@@ -91,12 +120,12 @@
                     </tbody>
                 </table>
 
-                <!-- Modal -->
-                <div class="modal fade" tabindex="-1" role="dialog" id="basicmodal">
+                <!--Add Movie Modal -->
+                <div class="modal fade" tabindex="-1" role="dialog" id="addmoviemodal">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
-                                <h4 style="margin-bottom: 50px;">Movie ID: 0001</h4>
+                                <h4 style="margin-bottom: 50px;">Add New Movie</h4>
                                 <form action="movieinsertServlet" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="movieName">Movie Name:</label>
@@ -181,6 +210,8 @@
                         </div>
                     </div>
                 </div>
+                <!-- Add Movie Modal -->
+
             </div> <!-- Closing bookings-container div -->
         </div> <!-- Closing container div -->
 
@@ -188,5 +219,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
     </body>
 </html>
