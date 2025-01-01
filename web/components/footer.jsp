@@ -17,17 +17,17 @@
                 <div>
                     <h5 class="footer-title">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="footer-item">Home</a></li>
-                        <li><a href="#" class="footer-item">Movies</a></li>
-                        <li><a href="#" class="footer-item">Buy Tickets</a></li>
-                        <li><a href="#" class="footer-item">Contact Us</a></li>
+                        <li><a href="Home" class="footer-item">Home</a></li>
+                        <li><a href="MovieServlet" class="footer-item">Movies</a></li>
+                        <li><a href="BuyTickets.jsp" class="footer-item">Buy Tickets</a></li>
+                        <li><a href="ContactUs.jsp" class="footer-item">Contact Us</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="footer-title">Company</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="footer-item">Careers</a></li>
-                        <li><a href="#" class="footer-item">About Us</a></li>
+                        <li><a href="aboutUs.jsp" class="footer-item">About Us</a></li>
                         <li><a href="#" class="footer-item">Terms and Conditions</a></li>
                     </ul>
                 </div>

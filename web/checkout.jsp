@@ -5,12 +5,69 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%-- Dynamic Data Processing --%>
+<%
+    // Retrieve parameters from the previous page
+    String selectedSeats = request.getParameter("selectedSeats") != null ? request.getParameter("selectedSeats") : "Not Selected";
+    String adultCount = request.getParameter("adultCount") != null ? request.getParameter("adultCount") : "0";
+    String childCount = request.getParameter("childCount") != null ? request.getParameter("childCount") : "0";
+    String totalPrice = request.getParameter("totalPrice") != null ? request.getParameter("totalPrice") : "0";
+
+    // Convert string parameters to appropriate data types
+    int adultCountInt = Integer.parseInt(adultCount);
+    int childCountInt = Integer.parseInt(childCount);
+    float totalPriceFloat = Float.parseFloat(totalPrice);
+
+    // Retrieve parameters from the request
+    String m_idStr = request.getParameter("id");
+    int m_id = 0; // Default value in case 'id' is missing or invalid
+    if (m_idStr != null && !m_idStr.trim().isEmpty()) {
+        try {
+            m_id = Integer.parseInt(m_idStr);
+        } catch (NumberFormatException e) {
+            // Handle invalid ID format (optional logging or showing error message)
+            System.out.println("Invalid ID parameter: " + m_idStr);
+        }
+    }
+//    String m_name = request.getParameter("name");
+    String adultTpStr = request.getParameter("adultTicketPrice");
+    float adultTp = 0.0f;
+    if (adultTpStr != null && !adultTpStr.trim().isEmpty()) {
+        adultTp = Float.parseFloat(adultTpStr);
+    }
+    String childTpStr = request.getParameter("childTicketPrice");
+    float childTp = 0.0f;
+    if (childTpStr != null && !childTpStr.trim().isEmpty()) {
+        childTp = Float.parseFloat(childTpStr);
+    }
+    String timeSlots = request.getParameter("timeSlots");
+
+    // Calculate total prices
+    float adultTotalPrice = adultCountInt * adultTp;
+    float childTotalPrice = childCountInt * childTp;
+
+    // Format total price for display
+    java.text.NumberFormat formatter = java.text.NumberFormat.getInstance();
+    formatter.setGroupingUsed(true);
+    formatter.setMinimumFractionDigits(2);
+    formatter.setMaximumFractionDigits(2);
+    String formattedAdultTotalPrice = formatter.format(adultTotalPrice);
+    String formattedChildTotalPrice = formatter.format(childTotalPrice);
+    String formattedTotalPrice = formatter.format(totalPriceFloat);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Checkout Page</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.4/jquery.rateyo.min.js" integrity="sha512-09bUVOnphTvb854qSgkpY/UGKLW9w7ISXGrN0FR/QdXTkjs0D+EfMFMTB+CGiIYvBoFXexYwGUD5FD8xVU89mw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
         <%@include file = "components/navbar.jsp" %>
         <style>
@@ -200,70 +257,44 @@
                 width: 90%;
                 height: 30px;
                 box-sizing: border-box;
-                  }
+            }
             #user_email{
                 width: 90%;
                 height: 30px;
                 box-sizing: border-box;
-                  }
+            }
             #myTextBox{
                 width: 90%;
                 height: 30px;
                 box-sizing: border-box;
-                
+
             }
             p{
                 color: black;
             }
 
         </style>
-        <script src="https://www.paypal.com/sdk/js?client-id=AZfRPFT4-YtqJdzbSx12ZL2kvjGo4nkIiUnZkXvoUlSe6AJuRcEp3yeGHk9gg4Apk4xolVCO1QlKePrfa"></script>
+
     </head>
     <body>
         <div class="container">
+            <c:if test="${not empty failedMsg}">
+                <div class="alert alert-danger text-center" role="alert" style="width: 35%; margin: 0 auto;">
+                    ${failedMsg}
+                </div>
+            </c:if>
             <div class="show-time-container">
                 <div class="date-container">
-
                     <i class="fa-solid fa-calendar-days"></i>
-
                     <span class="date">Tuesday, 07, Nov</span>
                 </div>
                 <div class="time-container">
                     <span class="show-time-label">Show Time</span>
-                    <span class="show-time">10:30 AM</span>
+                    <span class="show-time"><%= timeSlots%></span>
                 </div>
             </div>
-            <form action="purchaseServlet" method="post" id ="checkoutForm">
+            <form action="purchaseServlet" method="post" id="checkoutForm">
                 <div class="content">
-                    <%-- Dynamic Data Processing --%>
-                    <%                        // Retrieve parameters from the previous page
-                        String selectedSeats = request.getParameter("selectedSeats") != null ? request.getParameter("selectedSeats") : "Not Selected";
-                        String adultCount = request.getParameter("adultCount") != null ? request.getParameter("adultCount") : "0";
-                        String childCount = request.getParameter("childCount") != null ? request.getParameter("childCount") : "0";
-                        String totalPrice = request.getParameter("totalPrice") != null ? request.getParameter("totalPrice") : "0";
-
-                        // Convert string parameters to appropriate data types
-                        int adultCountInt = Integer.parseInt(adultCount);
-                        int childCountInt = Integer.parseInt(childCount);
-                        float totalPriceFloat = Float.parseFloat(totalPrice);
-
-                        // Define ticket prices
-                        float adultTicketPrice = 1000.00f;
-                        float childTicketPrice = 800.00f;
-
-                        // Calculate total prices
-                        float adultTotalPrice = adultCountInt * adultTicketPrice;
-                        float childTotalPrice = childCountInt * childTicketPrice;
-
-                        // Format total price for display
-                        java.text.NumberFormat formatter = java.text.NumberFormat.getInstance();
-                        formatter.setGroupingUsed(true);
-                        formatter.setMinimumFractionDigits(2);
-                        formatter.setMaximumFractionDigits(2);
-                        String formattedAdultTotalPrice = formatter.format(adultTotalPrice);
-                        String formattedChildTotalPrice = formatter.format(childTotalPrice);
-                        String formattedTotalPrice = formatter.format(totalPriceFloat);
-                    %>
 
                     <!-- Box 1: Purchase Summary -->
                     <div class="box">
@@ -271,13 +302,10 @@
                         <hr style="border: 1px solid black;">
                         <div class="purchase-summary">
                             <div class="ticket-item">
-
                                 <h5>Seat Numbers: <%= selectedSeats%></h5>
                                 <input type="hidden" id="seat_numbers" name="seat_numbers" value="<%= selectedSeats%>">
-
                                 <label for="adult-tickets">Adult Tickets :(x <%= adultCountInt%>)</label>
                                 LKR <%= formattedAdultTotalPrice%>
-
                             </div>
                             <% if (childCountInt > 0) {%>
                             <div class="ticket-item">
@@ -336,59 +364,125 @@
                 <input type="hidden" name="adultCount" value="<%= adultCount%>">
                 <input type="hidden" name="childCount" value="<%= childCount%>">
                 <input type="hidden" name="amount" value="<%= totalPrice%>">
+                <input type="hidden" name="id" value="<%= m_id%>">
+                <input type="hidden" name="timeSlots" value="<%= timeSlots%>">
 
                 <!-- Buttons -->
                 <div class="button-container">
-                    <button type="button" id="back-button" onclick="history.back();">Back</button>
-                    <!--              <button type="submit" id="button">Pay Now</button>-->
-                    <input type="submit" id="paynow-button" value="Pay Now">
+
+                    <div type="submit" id ="paypal-button-container" value="Pay Now"></div>
                 </div>
             </form>
         </div>
 
         <%@include file="components/footer.jsp" %>
-        <script src="${pageContext.request.contextPath}/js/gmailService.js"></script>
+
         <script type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
         <script type="text/javascript">
-                        emailjs.init('kVB0utlxfeysWQyzE');
+            emailjs.init('kVB0utlxfeysWQyzE');
         </script>
-        
+
+        <script src="https://www.paypal.com/sdk/js?client-id=AZMxxYqMstivHkisTNvOcXCL9soXa50N78B5kj03gUSARVsQPOC8iOp5hDZ3wcd6AQCZW59-ZPd3fsZW&currency=USD&components=buttons"></script>
+
+
         <script>
-            
-            // Select the dropdown container
-            const dropdown = document.querySelector('.custom-dropdown');
-            const selected = dropdown.querySelector('.selected');
-            const options = dropdown.querySelector('.dropdown-options');
-            const hiddenInput = document.getElementById('paymentMethod');
+            document.addEventListener("DOMContentLoaded", function () {
+                paypal.Buttons({
+                    onClick: function () {
+                        // Fetch user inputs and validate them
+                        const userName = $('#user_name').val().trim();
+                        const phoneNumber = $('#myTextBox').val().trim();
+                        const userEmail = $('#user_email').val().trim();
+                        let valid = true;
 
-// Event listener for toggling the dropdown options visibility
-            selected.addEventListener('click', () => {
-                options.style.display = options.style.display === 'block' ? 'none' : 'block';
+                        // Validation
+                        if (userName.length === 0) {
+                            $('.name').text("This field is required");
+                            valid = false;
+                        } else {
+                            $('.name').text("");
+                        }
+
+                        if (phoneNumber.length === 0) {
+                            $('.myTextBox').text("This field is required");
+                            valid = false;
+                        } else {
+                            $('.myTextBox').text("");
+                        }
+
+                        if (userEmail.length === 0) {
+                            $('.user_email').text("This field is required");
+                            valid = false;
+                        } else {
+                            $('.user_email').text("");
+                        }
+
+                        // Check if user is logged in
+                        const isLoggedIn = <%= (session.getAttribute("currentUser") != null)%>;
+                        if (!isLoggedIn) {
+                            // Set error message in session and reload the page
+            <% session.setAttribute("failedMsg", "You have to login first");%>
+                            valid = false;
+                            location.reload();
+                        }
+
+                        return valid;
+                    },
+
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [
+                                {
+                                    amount: {
+                                        value: "<%= totalPrice%>"
+
+                                    }
+                                }
+                            ]
+                        });
+                    },
+
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (orderData) {
+                            const transaction = orderData.purchase_units[0].payments.captures[0];
+                            alert(`Transaction ${transaction.status}: ${transaction.id}`);
+
+                            $('#checkoutForm').submit();
+                            //                            const serviceID = 'service_0rfopse';
+                            //                            const templateID = 'template_g7367ka';
+                            //                            const form = document.getElementById('checkoutForm');
+                            //                            const formData = new FormData(form);
+                            //
+                            //                            // Send email using EmailJS
+                            //                            emailjs.sendForm(serviceID, templateID, form)
+                            //                                    .then(() => {
+                            //                                        alert('Email Sent!');
+                            //
+                            //
+                            //                                        form.submit();
+                            //                                    })
+                            //                                    .catch((err) => {
+                            //                                        alert('Error sending email: ' + JSON.stringify(err));
+                            //                                      });
+
+
+                        });
+                    },
+
+                    onError: function (err) {
+                        console.error('PayPal Button Error:', err);
+                    }
+                }).render('#paypal-button-container');
             });
 
-// Event listener for handling option selection 
-            options.addEventListener('click', (e) => {
-                if (e.target.closest('div')) {
-                    const selectedOption = e.target.closest('div');
-                    selected.innerHTML = selectedOption.innerHTML;
-                    hiddenInput.value = selectedOption.getAttribute('data-value');
-                    options.style.display = 'none';
-                }
-            });
 
-// Event listener for closing the dropdown
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target)) {
-                    options.style.display = 'none';
-                }
-
-
+            // Dropdown for Payment Method
+            document.addEventListener("DOMContentLoaded", function () {
                 const dropdown = document.querySelector('.custom-dropdown');
                 const selected = dropdown.querySelector('.selected');
                 const options = dropdown.querySelector('.dropdown-options');
                 const hiddenInput = document.getElementById('paymentMethod');
-                const payNowButton = document.getElementById('paynow-button');
 
                 selected.addEventListener('click', () => {
                     options.style.display = options.style.display === 'block' ? 'none' : 'block';
@@ -408,39 +502,6 @@
                         options.style.display = 'none';
                     }
                 });
-
-                // Handle PayPal redirection
-                payNowButton.addEventListener('click', function (event) {
-                    const paymentMethod = hiddenInput.value;
-
-                    if (paymentMethod === 'PayPal') {
-                        // Prevent form submission
-                        event.preventDefault();
-
-                        // Trigger PayPal payment initiation
-                        fetch('initiatePaypalPayment', {
-                            method: 'POST',
-                            body: new URLSearchParams(new FormData(document.querySelector('form'))),
-                        })
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.redirectUrl) {
-                                        // Redirect to PayPal
-                                        window.location.href = data.redirectUrl;
-                                    } else {
-                                        alert("Error: Unable to initiate PayPal payment.");
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                    alert("Error occurred while processing PayPal payment.");
-                                });
-                    } else {
-                        // Proceed with the form submission for other payment methods
-                        document.querySelector('form').submit();
-                    }
-                });
-
             });
         </script>
 

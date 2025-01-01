@@ -42,7 +42,7 @@ public class SignInServlet extends HttpServlet {
             if (user != null) {
                 // Successful login
                 session.setAttribute("currentUser", user);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("Home");
             } else {
                 // Authentication failed
                 response.sendRedirect("signin.jsp?error=invalidCredentials");

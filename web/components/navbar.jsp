@@ -30,7 +30,7 @@
                     <a class="nav-link <%= currentURL.equals(contextPath + "/") || currentURL.contains("index.jsp") ? "active" : ""%>" aria-current="page" href="Home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= currentURL.contains("movies.jsp") ? "active" : ""%>" href="MovieServlet">Movies</a>
+                    <a class="nav-link <%= currentURL.contains("movies.jsp") || currentURL.contains("singleMoviepage.jsp") ? "active" : ""%>" href="MovieServlet">Movies</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <%= currentURL.contains("BuyTickets.jsp") || currentURL.contains("SeatBooking.jsp") || currentURL.contains("checkout.jsp") ? "active" : ""%>" href="BuyTickets.jsp">Buy Tickets</a>
@@ -51,7 +51,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="profile.jsp?id=<%= user.getUserId() %>">View Profile</a></li>
-                            <li><a class="dropdown-item" href="Sign in.jsp">Logout</a></li>
+                            <li><a class="dropdown-item" href="logout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
