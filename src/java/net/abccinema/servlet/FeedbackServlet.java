@@ -1,9 +1,6 @@
 package net.abccinema.servlet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,11 +10,8 @@ import jakarta.servlet.http.HttpSession;
 import net.abccinema.connection.DbCon;
 import net.abccinema.model.FeedbackDAO;
 import net.abccinema.model.Testimonials;
+import net.abccinema.model.User;
 
-/**
- *
- * @author kavis
- */
 @WebServlet(name = "FeedbackServlet", urlPatterns = {"/FeedbackServlet"})
 public class FeedbackServlet extends HttpServlet {
 
@@ -25,29 +19,33 @@ public class FeedbackServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String message = request.getParameter("message");
-            String rating = request.getParameter("hdrating");
-            String fullName = "Anonymous";
-            
-            Testimonials fb = new Testimonials(fullName, message, rating);
-            
-            FeedbackDAO dao = new FeedbackDAO(DbCon.getConnection());
-            
-            boolean isSuccess = dao.addReview(fb);
-            
             HttpSession session = request.getSession();
+            User currentUser = (User) session.getAttribute("currentUser");
             
-            if (isSuccess) {
-                session.setAttribute("succMsg", "Thank You for your Review");
-                response.sendRedirect("Home");
-            }else {
-                session.setAttribute("failedMsg", "Something Wrong on Server");
-                response.sendRedirect("Home");
+            if (currentUser == null) {
+                session.setAttribute("failedMsg", "You Have to Login First");
             }
             
-            
+            String message = request.getParameter("message");
+            String rating = request.getParameter("hdrating");
+            String fullName = currentUser.getFullName();
+
+            Testimonials fb = new Testimonials(fullName, message, rating);
+
+            FeedbackDAO dao = new FeedbackDAO(DbCon.getConnection());
+
+            boolean isSuccess = dao.addReview(fb);
+
+            if (isSuccess) {
+                session.setAttribute("succMsg", "Thank You for your Review");
+            } else {
+                session.setAttribute("failedMsg", "Something Wrong on Server");
+            }
+            response.sendRedirect("Home");
+
         } catch (Exception e) {
             e.printStackTrace();
+            response.sendRedirect("Home");
         }
     }
 }

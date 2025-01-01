@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page isELIgnored="false"%>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/style.css" /> 
@@ -37,25 +37,25 @@
             </div>
             <div class="col-md-4 mt-5">
                 <div>
-                    <c:if test="${not empty succMsg}">
+                    <f:if test="${not empty succMsg}">
                         <div class="alert alert-success d-flex align-items-center" role="alert">
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
                             <div>
                                 ${succMsg}
                             </div>
                         </div>
-                        <c:remove var="succMsg" scope="session" />
-                    </c:if>
+                        <f:remove var="succMsg" scope="session" />
+                    </f:if>
 
-                    <c:if test="${not empty failedMsg}">
+                    <f:if test="${not empty failedMsg}">
                         <div class="alert alert-danger d-flex align-items-center" role="alert">
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                             <div>
                                 ${failedMsg}
                             </div>
                         </div>
-                        <c:remove var="failedMsg" scope="session" />
-                    </c:if>
+                        <f:remove var="failedMsg" scope="session" />
+                    </f:if>
                         
                     <form action="FeedbackServlet" method="post">
                         <h5 class="footer-title">Tell Us about your Experience</h5>
@@ -65,7 +65,7 @@
                         <div class="d-flex align-items-center mb-2">
                             <h5 class="rate mt-2">Rate Us: </h5>
                             <div class="mb-2" id="rating">
-                                <input type="hidden" id="hdrating" name="hdrating">
+                                <input type="hidden" name="hdrating" id="hdrating">
                             </div>
                         </div>
                         <div class="mb-3 text-end">
@@ -103,18 +103,9 @@
             numStars: 5,
             maxValue: 5,
             halfStar: true,
-            onChange: function (rating, rateYoInstance) {
+            onSet: function (rating, rateYoInstance) {
                 $('#hdrating').val(rating);
-                console.log("Rating set to: " + rating);
             }
         });
     });
-</script>
-
-<script>
-    function checkRating() {
-        var rating = $('#hdrating').val();
-        console.log("Rating before submission: " + rating); // Debug statement
-        return true;
-    }
 </script>

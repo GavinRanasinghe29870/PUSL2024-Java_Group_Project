@@ -4,23 +4,22 @@
     Author     : kavis
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="net.abccinema.model.buytickets"%>
 <%@page import="net.abccinema.model.buyticketsDao"%>
+<%@page import="net.abccinema.model.SeatBookingDAO"%>
 <%@page import="net.abccinema.connection.DbCon"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="com.google.gson.Gson" %>
 
 <%
-    List<String> confirmedSeats = (List<String>) request.getAttribute("confirmedSeats");
-    if (confirmedSeats == null) {
-        confirmedSeats = new ArrayList<>();
-    }
-
     buyticketsDao dao = new buyticketsDao(DbCon.getConnection());
     List<buytickets> movies = dao.getAllMovies();
+    
     // Retrieve parameters from the request
     int m_id = Integer.parseInt(request.getParameter("id"));
     String m_name = request.getParameter("name");
@@ -35,6 +34,9 @@
         childTp = Float.parseFloat(childTpStr);
     }
     String timeSlots = request.getParameter("timeSlots");
+    
+    SeatBookingDAO DAO = new SeatBookingDAO(DbCon.getConnection());
+    List<String> confirmedSeats = DAO.getConfirmedSeats(m_id, timeSlots);
 %>
 
 <!DOCTYPE html>
@@ -112,39 +114,41 @@
                 </div>
                 <c:remove var="bookedMsg" scope="session" />
             </c:if>
+
+
             <!-- Seat Select -->
             <div class="container seat-container">
                 <div class="row">
-                    <div class="seat " id="A1">A1</div>
-                    <div class="seat ">A2</div>
-                    <div class="seat ">A3</div>
-                    <div class="seat ">A4</div>
-                    <div class="seat ">A5</div>
-                    <div class="seat ">A6</div>
-                    <div class="seat ">A7</div>
-                    <div class="seat ">A8</div>
-                    <div class="seat ">A9</div>
-                    <div class="seat ">A10</div>
-                    <div class="seat ">A11</div>
-                    <div class="seat ">A12</div>
-                    <div class="seat ">A13</div>
-                    <div class="seat ">A14</div>
+                    <div class="seat" id="A1">A1</div>
+                    <div class="seat" id="A2">A2</div>
+                    <div class="seat" id="A3">A3</div>
+                    <div class="seat" id="A4">A4</div>
+                    <div class="seat" id="A5">A5</div>
+                    <div class="seat" id="A6">A6</div>
+                    <div class="seat" id="A7">A7</div>
+                    <div class="seat" id="A8">A8</div>
+                    <div class="seat" id="A9">A9</div>
+                    <div class="seat" id="A10">A10</div>
+                    <div class="seat" id="A11">A11</div>
+                    <div class="seat" id="A12">A12</div>
+                    <div class="seat" id="A13">A13</div>
+                    <div class="seat" id="A14">A14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">B1</div>
-                    <div class="seat">B2</div>
-                    <div class="seat">B3</div>
-                    <div class="seat">B4</div>
-                    <div class="seat">B5</div>
-                    <div class="seat">B6</div>
-                    <div class="seat">B7</div>
-                    <div class="seat">B8</div>
-                    <div class="seat">B9</div>
-                    <div class="seat">B10</div>
-                    <div class="seat">B11</div>
-                    <div class="seat">B12</div>
-                    <div class="seat">B13</div>
-                    <div class="seat">B14</div>
+                    <div class="seat" id="B1">B1</div>
+                    <div class="seat" id="B2">B2</div>
+                    <div class="seat" id="B3">B3</div>
+                    <div class="seat" id="B4">B4</div>
+                    <div class="seat" id="B5">B5</div>
+                    <div class="seat" id="B6">B6</div>
+                    <div class="seat" id="B7">B7</div>
+                    <div class="seat" id="B8">B8</div>
+                    <div class="seat" id="B9">B9</div>
+                    <div class="seat" id="B10">B10</div>
+                    <div class="seat" id="B11">B11</div>
+                    <div class="seat" id="B12">B12</div>
+                    <div class="seat" id="B13">B13</div>
+                    <div class="seat" id="B14">B14</div>
                 </div>
                 <div class="row">
                     <div class="seat">C1</div>
@@ -259,36 +263,36 @@
                     <div class="seat">I14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">J1</div>
-                    <div class="seat">J2</div>
-                    <div class="seat">J3</div>
-                    <div class="seat">J4</div>
-                    <div class="seat">J5</div>
-                    <div class="seat">J6</div>
-                    <div class="seat">J7</div>
-                    <div class="seat">J8</div>
-                    <div class="seat">J9</div>
-                    <div class="seat">J10</div>
-                    <div class="seat">J11</div>
-                    <div class="seat">J12</div>
-                    <div class="seat">J13</div>
-                    <div class="seat">J14</div>
+                    <div class="seat" id="J1">J1</div>
+                    <div class="seat" id="J2">J2</div>
+                    <div class="seat" id="J3">J3</div>
+                    <div class="seat" id="J4">J4</div>
+                    <div class="seat" id="J5">J5</div>
+                    <div class="seat" id="J6">J6</div>
+                    <div class="seat" id="J7">J7</div>
+                    <div class="seat" id="J8">J8</div>
+                    <div class="seat" id="J9">J9</div>
+                    <div class="seat" id="J10">J10</div>
+                    <div class="seat" id="J11">J11</div>
+                    <div class="seat" id="J12">J12</div>
+                    <div class="seat" id="J13">J13</div>
+                    <div class="seat" id="J14">J14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">K1</div>
-                    <div class="seat">K2</div>
-                    <div class="seat">K3</div>
-                    <div class="seat">K4</div>
-                    <div class="seat">K5</div>
-                    <div class="seat">K6</div>
-                    <div class="seat">K7</div>
-                    <div class="seat">K8</div>
-                    <div class="seat">K9</div>
-                    <div class="seat">K10</div>
-                    <div class="seat">K11</div>
-                    <div class="seat">K12</div>
-                    <div class="seat">K13</div>
-                    <div class="seat">K14</div>
+                    <div class="seat" id="K1">K1</div>
+                    <div class="seat" id="K2">K2</div>
+                    <div class="seat" id="K3">K3</div>
+                    <div class="seat" id="K4">K4</div>
+                    <div class="seat" id="K5">K5</div>
+                    <div class="seat" id="K6">K6</div>
+                    <div class="seat" id="K7">K7</div>
+                    <div class="seat" id="K8">K8</div>
+                    <div class="seat" id="K9">K9</div>
+                    <div class="seat" id="K10">K10</div>
+                    <div class="seat" id="K11">K11</div>
+                    <div class="seat" id="K12">K12</div>
+                    <div class="seat" id="K13">K13</div>
+                    <div class="seat" id="K14">K14</div>
                 </div>
             </div>
             <!-- Seat Select -->
@@ -363,7 +367,24 @@
 
         <%@include file="components/footer.jsp"%>
 
-        
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const confirmedSeats = <%= new Gson().toJson(confirmedSeats) %>;
+
+                function markOccupiedSeats(confirmedSeats) {
+                    confirmedSeats.forEach(seatId => {
+                        const seatElement = document.getElementById(seatId.trim());
+                        if (seatElement) {
+                            seatElement.classList.add('occupied');
+                        }
+                    });
+                }
+
+                // Mark confirmed seats as occupied
+                markOccupiedSeats(confirmedSeats);
+            });
+        </script>
+
         <script>
             const container = document.querySelector(".seat-container");
             const seats = document.querySelectorAll(".row .seat:not(.occupied)");
@@ -480,43 +501,6 @@
                 // Decrease the countdown time by 1 second
                 countdownTime--;
             }, 1000);
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const movieId = <%= m_id%>; // Example movie ID
-                const timeSlot = "<%= timeSlots%>"; // Example time slot
-
-                // Function to fetch confirmed seats from the server
-                async function getConfirmedSeats(movieId, timeSlot) {
-                    try {
-                        const response = await fetch(`/getConfirmedSeats?movieId=${movieId}&timeSlot=${timeSlot}`);
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        const data = await response.json();
-                        return data.confirmedSeats;
-                    } catch (error) {
-                        console.error('There was a problem with the fetch operation:', error);
-                    }
-                }
-
-                function markOccupiedSeats(confirmedSeats) {
-                    confirmedSeats.forEach(seatId => {
-                        const seatElement = document.getElementById(seatId);
-                        if (seatElement) {
-                            seatElement.classList.add('occupied');
-                        }
-                    });
-                }
-
-                // Fetch confirmed seats and mark them as occupied
-                getConfirmedSeats(movieId, timeSlot).then(confirmedSeats => {
-                    if (confirmedSeats) {
-                        markOccupiedSeats(confirmedSeats);
-                    }
-                });
-            });
         </script>
 
     </body>

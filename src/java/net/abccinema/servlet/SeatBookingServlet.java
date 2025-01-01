@@ -58,27 +58,8 @@ public class SeatBookingServlet extends HttpServlet {
                 session.setAttribute("bookedMsg", "Apologies, the payment for these seats has already been completed by someone else.");
                 response.sendRedirect("SeatBooking.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&adultTicketPrice=" + adultTp + "&childTicketPrice=" + childTp );
             } else {
-                response.sendRedirect("checkout.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&selectedSeats=" + selectedSeats + "&adultCount=" + adultCount + "&childCount=" + childCount + "&totalPrice=" + totalPrice);
+                response.sendRedirect("checkout.jsp?id=" + m_id + "&name=" + m_name + "&timeSlots=" + timeSlots + "&selectedSeats=" + selectedSeats + "&adultTicketPrice=" + adultTp + "&childTicketPrice=" + childTp + "&adultCount=" + adultCount + "&childCount=" + childCount + "&totalPrice=" + totalPrice);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            int m_id = Integer.parseInt(request.getParameter("m_id"));
-            String timeSlots = request.getParameter("timeSlots");
-
-            SeatBookingDAO dao = new SeatBookingDAO(DbCon.getConnection());
-            List<String> confirmedSeats = dao.getConfirmedSeats(m_id, timeSlots);
-
-            String json = new Gson().toJson(confirmedSeats);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(json);
         } catch (Exception e) {
             e.printStackTrace();
         }

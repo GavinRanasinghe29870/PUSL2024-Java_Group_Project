@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="net.abccinema.model.User"%>
+<%@page import="net.abccinema.model.UserDao"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,7 +25,7 @@
                     <div class="profile-header">
                         <div class="profile-pic mb-4"></div>
                         <div class="mb-4">
-                            <h2>SACHINTHA GIMHAN</h2>
+                            <h2><%= user.getFullName() %></h2>
                         </div>
                     </div>
                     <div class="margin-border">
@@ -32,39 +34,22 @@
 
                     <div class="profile-details">
                         <h5>
-                            Email: <span style="color: #9E9E9E;">vihangaisthebest@gmail.com</span>
+                            Email&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color: #9E9E9E;"><%= user.getEmail() %></span>
                         </h5>
                         <h5>
-                            Phone Number: <span style="color: #9E9E9E;">077 XXXXXXX</span>
+                            Phone Number&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color: #9E9E9E;"><%= user.getPhoneNumber() %></span>
                         </h5>
                         <h5>
-                            Address: <span style="color: #9E9E9E;">No:38, Hunnasgala Road, Kurunagala.</span>
+                            Address&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color: #9E9E9E;"><%= user.getAddress() %></span>
                         </h5>
                         <h5>
-                            Age: <span style="color: #9E9E9E;">23</span>
+                            Age&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color: #9E9E9E;"><%= user.getAge() %></span>
                         </h5>
-                        <button class="btn btn-log mt-4 px-4 py-2" data-bs-toggle="modal" data-bs-target="#basicmodal">Edit Profile</button>
                     </div>
                     <div class="margin-border">
                         <hr style="border-top: 3px solid #D4AF37;">
                     </div>
-
-
-                    <div class="booking-section mb-4">
-                        <h3>My Bookings</h3>
-                        <div class="booking-item mb-1">
-                            <p>Despicable ME 4 - Adult 01 -DFGG001(BookingID) - Rs.1000.00</p>
-                            <button class="btn cancel-btn">Cancel</button>
-                        </div>
-                        <div class="booking-item mb-1">
-                            <p>Despicable ME 4 - Adult 01 -DFGG001(BookingID) - Rs.1000.00</p>
-                            <button class="btn cancel-btn">Cancel</button>
-                        </div>
-                    </div>
-                    <div class="margin-border">
-                        <hr style="border-top: 3px solid #D4AF37;">
-                    </div>
-                    <button class="btn btn-log mt-4 px-4 py-2">Log out</button>
+                    <button class="btn btn-log mt-4 px-4 py-2" data-bs-toggle="modal" data-bs-target="#basicmodal">Edit Profile</button>
                 </div>
             </div>
 
@@ -77,7 +62,7 @@
                             <form>
                                 <div class="form-group">
                                     <label for="movieName">Name:</label>
-                                    <input type="text" class="form-control" id="name">
+                                    <input type="text" class="form-control" id="name" placeholder="<%= user.getFullName() %>">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieImage">Upload Profile Picture:</label>
@@ -85,19 +70,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="movieGenres">Email:</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <input type="text" class="form-control" id="email" placeholder="<%= user.getEmail() %>">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieGenres">Phone Number:</label>
-                                    <input type="text" class="form-control" id="phoneNo">
+                                    <input type="text" class="form-control" id="phoneNo" placeholder="<%= user.getPhoneNumber() %>">
                                 </div>
                                 <div class="form-group">
                                     <label for="movieDescription">Address:</label>
-                                    <textarea class="form-control" id="address" rows="2"></textarea>
+                                    <textarea class="form-control" id="address" rows="2" placeholder="<%= user.getAddress() %>"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="movieGenres">Age:</label>
-                                    <input type="text" class="form-control" id="age">
+                                    <input type="text" class="form-control" id="age" placeholder="<%= user.getAge() %>">
                                 </div>
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn btn-primary">Update Details</button>
