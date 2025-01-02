@@ -34,7 +34,7 @@ public class purchase {
         return userId;
     }
 
-    public void setUserId(int id) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -120,6 +120,6 @@ public class purchase {
 
     @Override
     public String toString() {
-        return "purchase{" + "id=" + id + ", user_Id=" + userId + ", user_name=" + user_name + ", phoneNumber=" + phoneNumber + ", user_email=" + user_email + ", adultTickets=" + adultTickets + ", childTickets=" + childTickets + ", totalAmount=" + totalAmount + ", paymentMethod=" + paymentMethod + ", m_id=" + m_id + ", m_timeslot=" + m_timeslot + ", seat_numbers=" + seat_numbers + '}';
+        return "purchase{" + "id=" + id + ", userId=" + userId + ", user_name=" + user_name + ", phoneNumber=" + phoneNumber + ", user_email=" + user_email + ", adultTickets=" + adultTickets + ", childTickets=" + childTickets + ", totalAmount=" + totalAmount + ", paymentMethod=" + paymentMethod + ", m_id=" + m_id + ", m_timeslot=" + m_timeslot + ", seat_numbers=" + seat_numbers + '}';
     }
 }

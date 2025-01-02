@@ -56,6 +56,9 @@
     String formattedAdultTotalPrice = formatter.format(adultTotalPrice);
     String formattedChildTotalPrice = formatter.format(childTotalPrice);
     String formattedTotalPrice = formatter.format(totalPriceFloat);
+    
+    User currentUser = (User) session.getAttribute("currentUser");
+    int userId = currentUser != null ? currentUser.getUserId() : 0;
 %>
 
 <!DOCTYPE html>
@@ -378,6 +381,7 @@
                 </div>
 
                 <!-- Pass Hidden Fields -->
+                <input type="hidden" name="userId" value="<%= userId %>">
                 <input type="hidden" name="selectedSeats" value="<%= selectedSeats%>">
                 <input type="hidden" name="adultCount" value="<%= adultCount%>">
                 <input type="hidden" name="childCount" value="<%= childCount%>">

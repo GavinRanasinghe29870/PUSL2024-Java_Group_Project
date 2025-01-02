@@ -23,6 +23,7 @@ public class purchaseDao {
 
         String query = "INSERT INTO purchases (userId, name, phoneNumber, email, adultTickets, childTickets, totalAmount, paymentMethod, m_id, m_time_slot, seat_numbers) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
+            System.out.println("Debug: userId = " + purchase.getUserId()); // Debug statement
             ps.setInt(1, purchase.getUserId());
             ps.setString(2, purchase.getUser_name());
             ps.setString(3, purchase.getPhoneNumber());

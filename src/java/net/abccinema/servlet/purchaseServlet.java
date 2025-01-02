@@ -28,7 +28,7 @@ public class purchaseServlet extends HttpServlet {
             User currentUser = (User) session.getAttribute("currentUser");
 
             // Retrieve form parameters
-            int userId = currentUser.getUserId();
+            int userId = Integer.parseInt(request.getParameter("userId"));
             String user_name = request.getParameter("user_name");
             String phoneNumber = request.getParameter("phoneNumber");
             String user_email = request.getParameter("user_email");
