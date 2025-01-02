@@ -63,7 +63,7 @@
                         <h5>
                             Age&nbsp;&nbsp;:&nbsp;&nbsp;<span style="color: #9E9E9E;"><%= user.getAge()%></span>
                         </h5>
-                        <button class="btn btn-log mt-4 px-4 py-2" data-bs-toggle="modal" data-bs-target="#basicmodal">Edit Profile</button>
+<!--                        <button class="btn btn-log mt-4 px-4 py-2" data-bs-toggle="modal" data-bs-target="#basicmodal">Edit Profile</button>-->
                     </div>
                     <div class="margin-border">
                         <hr style="border-top: 3px solid #D4AF37;">
@@ -87,7 +87,7 @@
             </div>
 
             <!-- Cancel Confirmation Modal -->
-            <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+<!--            <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -103,10 +103,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <!-- Modal -->
-            <div class="modal fade" tabindex="-1" role="dialog" id="basicmodal">
+<!--            <div class="modal fade" tabindex="-1" role="dialog" id="basicmodal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

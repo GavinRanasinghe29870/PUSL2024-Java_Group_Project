@@ -500,23 +500,22 @@
                             const transaction = orderData.purchase_units[0].payments.captures[0];
                             alert(`Transaction ${transaction.status}: ${transaction.id}`);
 
-                            $('#checkoutForm').submit();
-                            //                            const serviceID = 'service_0rfopse';
-                            //                            const templateID = 'template_g7367ka';
-                            //                            const form = document.getElementById('checkoutForm');
-                            //                            const formData = new FormData(form);
-                            //
-                            //                            // Send email using EmailJS
-                            //                            emailjs.sendForm(serviceID, templateID, form)
-                            //                                    .then(() => {
-                            //                                        alert('Email Sent!');
-                            //
-                            //
-                            //                                        form.submit();
-                            //                                    })
-                            //                                    .catch((err) => {
-                            //                                        alert('Error sending email: ' + JSON.stringify(err));
-                            //                                      });
+                            const serviceID = 'service_0rfopse';
+                            const templateID = 'template_g7367ka';
+                            const form = document.getElementById('checkoutForm');
+                            const formData = new FormData(form);
+
+                            // Send email using EmailJS
+                            emailjs.sendForm(serviceID, templateID, form)
+                                    .then(() => {
+                                        alert('Email Sent!');
+
+
+                                        form.submit();
+                                    })
+                                    .catch((err) => {
+                                        alert('Error sending email: ' + JSON.stringify(err));
+                                      });
 
 
                         });

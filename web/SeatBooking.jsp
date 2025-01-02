@@ -19,7 +19,7 @@
 <%
     buyticketsDao dao = new buyticketsDao(DbCon.getConnection());
     List<buytickets> movies = dao.getAllMovies();
-    
+
     // Retrieve parameters from the request
     int m_id = Integer.parseInt(request.getParameter("id"));
     String m_name = request.getParameter("name");
@@ -34,7 +34,7 @@
         childTp = Float.parseFloat(childTpStr);
     }
     String timeSlots = request.getParameter("timeSlots");
-    
+
     SeatBookingDAO DAO = new SeatBookingDAO(DbCon.getConnection());
     List<String> confirmedSeats = DAO.getConfirmedSeats(m_id, timeSlots);
 %>
@@ -151,116 +151,116 @@
                     <div class="seat" id="B14">B14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">C1</div>
-                    <div class="seat">C2</div>
-                    <div class="seat">C3</div>
-                    <div class="seat">C4</div>
-                    <div class="seat">C5</div>
-                    <div class="seat">C6</div>
-                    <div class="seat">C7</div>
-                    <div class="seat">C8</div>
-                    <div class="seat">C9</div>
-                    <div class="seat">C10</div>
-                    <div class="seat">C11</div>
-                    <div class="seat">C12</div>
-                    <div class="seat">C13</div>
-                    <div class="seat">C14</div>
+                    <div class="seat" id="C1">C1</div>
+                    <div class="seat" id="C2">C2</div>
+                    <div class="seat" id="C3">C3</div>
+                    <div class="seat" id="C4">C4</div>
+                    <div class="seat" id="C5">C5</div>
+                    <div class="seat" id="C6">C6</div>
+                    <div class="seat" id="C7">C7</div>
+                    <div class="seat" id="C8">C8</div>
+                    <div class="seat" id="C9">C9</div>
+                    <div class="seat" id="C10">C10</div>
+                    <div class="seat" id="C11">C11</div>
+                    <div class="seat" id="C12">C12</div>
+                    <div class="seat" id="C13">C13</div>
+                    <div class="seat" id="C14">C14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">D1</div>
-                    <div class="seat">D2</div>
-                    <div class="seat">D3</div>
-                    <div class="seat">D4</div>
-                    <div class="seat">D5</div>
-                    <div class="seat">D6</div>
-                    <div class="seat">D7</div>
-                    <div class="seat">D8</div>
-                    <div class="seat">D9</div>
-                    <div class="seat">D10</div>
-                    <div class="seat">D11</div>
-                    <div class="seat">D12</div>
-                    <div class="seat">D13</div>
-                    <div class="seat">D14</div>
+                    <div class="seat" id="D1">D1</div>
+                    <div class="seat" id="D2">D2</div>
+                    <div class="seat" id="D3">D3</div>
+                    <div class="seat" id="D4">D4</div>
+                    <div class="seat" id="D5">D5</div>
+                    <div class="seat" id="D6">D6</div>
+                    <div class="seat" id="D7">D7</div>
+                    <div class="seat" id="D8">D8</div>
+                    <div class="seat" id="D9">D9</div>
+                    <div class="seat" id="D10">D10</div>
+                    <div class="seat" id="D11">D11</div>
+                    <div class="seat" id="D12">D12</div>
+                    <div class="seat" id="D13">D13</div>
+                    <div class="seat" id="D14">D14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">E1</div>
-                    <div class="seat">E2</div>
-                    <div class="seat">E3</div>
-                    <div class="seat">E4</div>
-                    <div class="seat">E5</div>
-                    <div class="seat">E6</div>
-                    <div class="seat">E7</div>
-                    <div class="seat">E8</div>
-                    <div class="seat">E9</div>
-                    <div class="seat">E10</div>
-                    <div class="seat">E11</div>
-                    <div class="seat">E12</div>
-                    <div class="seat">E13</div>
-                    <div class="seat">E14</div>
+                    <div class="seat" id="E1">E1</div>
+                    <div class="seat" id="E2">E2</div>
+                    <div class="seat" id="E3">E3</div>
+                    <div class="seat" id="E4">E4</div>
+                    <div class="seat" id="E5">E5</div>
+                    <div class="seat" id="E6">E6</div>
+                    <div class="seat" id="E7">E7</div>
+                    <div class="seat" id="E8">E8</div>
+                    <div class="seat" id="E9">E9</div>
+                    <div class="seat" id="E10">E10</div>
+                    <div class="seat" id="E11">E11</div>
+                    <div class="seat" id="E12">E12</div>
+                    <div class="seat" id="E13">E13</div>
+                    <div class="seat" id="E14">E14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">F1</div>
-                    <div class="seat">F2</div>
-                    <div class="seat">F3</div>
-                    <div class="seat">F4</div>
-                    <div class="seat">F5</div>
-                    <div class="seat">F6</div>
-                    <div class="seat">F7</div>
-                    <div class="seat">F8</div>
-                    <div class="seat">F9</div>
-                    <div class="seat">F10</div>
-                    <div class="seat">F11</div>
-                    <div class="seat">F12</div>
-                    <div class="seat">F13</div>
-                    <div class="seat">F14</div>
+                    <div class="seat" id="F1">F1</div>
+                    <div class="seat" id="F2">F2</div>
+                    <div class="seat" id="F3">F3</div>
+                    <div class="seat" id="F4">F4</div>
+                    <div class="seat" id="F5">F5</div>
+                    <div class="seat" id="F6">F6</div>
+                    <div class="seat" id="F7">F7</div>
+                    <div class="seat" id="F8">F8</div>
+                    <div class="seat" id="F9">F9</div>
+                    <div class="seat" id="F10">F10</div>
+                    <div class="seat" id="F11">F11</div>
+                    <div class="seat" id="F12">F12</div>
+                    <div class="seat" id="F13">F13</div>
+                    <div class="seat" id="F14">F14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">G1</div>
-                    <div class="seat">G2</div>
-                    <div class="seat">G3</div>
-                    <div class="seat">G4</div>
-                    <div class="seat">G5</div>
-                    <div class="seat">G6</div>
-                    <div class="seat">G7</div>
-                    <div class="seat">G8</div>
-                    <div class="seat">G9</div>
-                    <div class="seat">G10</div>
-                    <div class="seat">G11</div>
-                    <div class="seat">G12</div>
-                    <div class="seat">G13</div>
-                    <div class="seat">G14</div>
+                    <div class="seat" id="G1">G1</div>
+                    <div class="seat" id="G2">G2</div>
+                    <div class="seat" id="G3">G3</div>
+                    <div class="seat" id="G4">G4</div>
+                    <div class="seat" id="G5">G5</div>
+                    <div class="seat" id="G6">G6</div>
+                    <div class="seat" id="G7">G7</div>
+                    <div class="seat" id="G8">G8</div>
+                    <div class="seat" id="G9">G9</div>
+                    <div class="seat" id="G10">G10</div>
+                    <div class="seat" id="G11">G11</div>
+                    <div class="seat" id="G12">G12</div>
+                    <div class="seat" id="G13">G13</div>
+                    <div class="seat" id="G14">G14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">H1</div>
-                    <div class="seat">H2</div>
-                    <div class="seat">H3</div>
-                    <div class="seat">H4</div>
-                    <div class="seat">H5</div>
-                    <div class="seat">H6</div>
-                    <div class="seat">H7</div>
-                    <div class="seat">H8</div>
-                    <div class="seat">H9</div>
-                    <div class="seat">H10</div>
-                    <div class="seat">H11</div>
-                    <div class="seat">H12</div>
-                    <div class="seat">H13</div>
-                    <div class="seat">H14</div>
+                    <div class="seat" id="H1">H1</div>
+                    <div class="seat" id="H2">H2</div>
+                    <div class="seat" id="H3">H3</div>
+                    <div class="seat" id="H4">H4</div>
+                    <div class="seat" id="H5">H5</div>
+                    <div class="seat" id="H6">H6</div>
+                    <div class="seat" id="H7">H7</div>
+                    <div class="seat" id="H8">H8</div>
+                    <div class="seat" id="H9">H9</div>
+                    <div class="seat" id="H10">H10</div>
+                    <div class="seat" id="H11">H11</div>
+                    <div class="seat" id="H12">H12</div>
+                    <div class="seat" id="H13">H13</div>
+                    <div class="seat" id="H14">H14</div>
                 </div>
                 <div class="row">
-                    <div class="seat">I1</div>
-                    <div class="seat">I2</div>
-                    <div class="seat">I3</div>
-                    <div class="seat">I4</div>
-                    <div class="seat">I5</div>
-                    <div class="seat">I6</div>
-                    <div class="seat">I7</div>
-                    <div class="seat">I8</div>
-                    <div class="seat">I9</div>
-                    <div class="seat">I10</div>
-                    <div class="seat">I11</div>
-                    <div class="seat">I12</div>
-                    <div class="seat">I13</div>
-                    <div class="seat">I14</div>
+                    <div class="seat" id="I1">I1</div>
+                    <div class="seat" id="I2">I2</div>
+                    <div class="seat" id="I3">I3</div>
+                    <div class="seat" id="I4">I4</div>
+                    <div class="seat" id="I5">I5</div>
+                    <div class="seat" id="I6">I6</div>
+                    <div class="seat" id="I7">I7</div>
+                    <div class="seat" id="I8">I8</div>
+                    <div class="seat" id="I9">I9</div>
+                    <div class="seat" id="I10">I10</div>
+                    <div class="seat" id="I11">I11</div>
+                    <div class="seat" id="I12">I12</div>
+                    <div class="seat" id="I13">I13</div>
+                    <div class="seat" id="I14">I14</div>
                 </div>
                 <div class="row">
                     <div class="seat" id="J1">J1</div>
@@ -369,7 +369,7 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const confirmedSeats = <%= new Gson().toJson(confirmedSeats) %>;
+                const confirmedSeats = <%= new Gson().toJson(confirmedSeats)%>;
 
                 function markOccupiedSeats(confirmedSeats) {
                     confirmedSeats.forEach(seatId => {
