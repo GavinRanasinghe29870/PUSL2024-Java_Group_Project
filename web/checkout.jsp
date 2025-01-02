@@ -56,7 +56,7 @@
     String formattedAdultTotalPrice = formatter.format(adultTotalPrice);
     String formattedChildTotalPrice = formatter.format(childTotalPrice);
     String formattedTotalPrice = formatter.format(totalPriceFloat);
-    
+
     User currentUser = (User) session.getAttribute("currentUser");
     int userId = currentUser != null ? currentUser.getUserId() : 0;
 %>
@@ -369,11 +369,23 @@
                         <h2>Your Details</h2>
                         <hr style="border: 1px solid black;">
                         <label for="name">Name:</label><br>
-                        <input type="text" id="user_name" name="user_name" required value><br>
+                        <input type="text" id="user_name" name="user_name" required 
+                               <% if (currentUser != null) {%>
+                               value="<%= currentUser.getFullName()%>"
+                               <% }%>
+                               ><br>
                         <label for="phone">Phone Number:</label><br>
-                        <input type="text" id="myTextBox" name="phoneNumber" required><br>
+                        <input type="text" id="myTextBox" name="phoneNumber" required
+                               <% if (currentUser != null) {%>
+                               value="<%= currentUser.getPhoneNumber()%>"
+                               <% }%>
+                               ><br>
                         <label for="email">Email:</label><br>
-                        <input type="email" id="user_email" name="user_email" required><br>
+                        <input type="email" id="user_email" name="user_email" required
+                               <% if (currentUser != null) {%>
+                               value="<%= currentUser.getEmail()%>"
+                               <% }%>
+                               ><br>
                         <hr style="border: 1px solid black;">
                         <input type="checkbox" id="terms" name="terms" required>
                         <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
@@ -381,7 +393,7 @@
                 </div>
 
                 <!-- Pass Hidden Fields -->
-                <input type="hidden" name="userId" value="<%= userId %>">
+                <input type="hidden" name="userId" value="<%= userId%>">
                 <input type="hidden" name="selectedSeats" value="<%= selectedSeats%>">
                 <input type="hidden" name="adultCount" value="<%= adultCount%>">
                 <input type="hidden" name="childCount" value="<%= childCount%>">
