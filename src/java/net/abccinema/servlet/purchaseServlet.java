@@ -27,16 +27,8 @@ public class purchaseServlet extends HttpServlet {
             HttpSession session = request.getSession();
             User currentUser = (User) session.getAttribute("currentUser");
 
-            if (currentUser == null) {
-                session.setAttribute("failedMsg", "You Have to Login First");
-                response.sendRedirect("login.jsp");
-                return;
-            }
-
             // Retrieve form parameters
             int userId = currentUser.getUserId();
-            System.out.println("purchaseServlet: Retrieved userId from session: " + userId); // Debugging statement
-
             String user_name = request.getParameter("user_name");
             String phoneNumber = request.getParameter("phoneNumber");
             String user_email = request.getParameter("user_email");
@@ -51,11 +43,10 @@ public class purchaseServlet extends HttpServlet {
             // Validate inputs
             if (user_name == null || phoneNumber == null || user_email == null
                     || adultCountStr == null || childCountStr == null || totalPriceStr == null
-                    || m_idStr == null || m_timeslot == null || seat_numbers == null 
+                    || m_idStr == null || m_timeslot == null || seat_numbers == null
                     || user_name.isEmpty() || phoneNumber.isEmpty() || user_email.isEmpty()
                     || adultCountStr.isEmpty() || childCountStr.isEmpty() || totalPriceStr.isEmpty()
                     || m_idStr.isEmpty() || m_timeslot.isEmpty() || seat_numbers.isEmpty()) {
-                System.out.println("purchaseServlet: Input validation failed!");
                 response.sendRedirect("checkout.jsp?error=invalidInput");
                 return;
             }
@@ -66,11 +57,17 @@ public class purchaseServlet extends HttpServlet {
             double amount = Double.parseDouble(totalPriceStr.replace(",", ""));
             int m_id = Integer.parseInt(m_idStr);
 
+            // Check for booking collisions
+            purchaseDao dao = new purchaseDao(DbCon.getConnection());
+            if (dao.isSeatAlreadyBooked(m_id, m_timeslot, seat_numbers)) {
+                session.setAttribute("latedMsg", "Apologies, the payment for these seats has already been completed by someone else.");
+                response.sendRedirect("BuyTickets.jsp?error=seatAlreadyBooked");
+                return;
+            }
+
             // Create a purchase object
             purchase newPurchase = new purchase();
-            newPurchase.setUserId(userId); // Set the user ID
-            System.out.println("purchaseServlet: Set userId in purchase object: " + userId); // Debugging statement
-
+            newPurchase.setUserId(userId);
             newPurchase.setUser_name(user_name);
             newPurchase.setPhoneNumber(phoneNumber);
             newPurchase.setUser_email(user_email);
@@ -83,22 +80,19 @@ public class purchaseServlet extends HttpServlet {
             newPurchase.setSeat_numbers(seat_numbers);
 
             // Insert purchase record using DAO
-            purchaseDao dao = new purchaseDao(DbCon.getConnection());
             if (dao.insertPurchase(newPurchase)) {
-                System.out.println("purchaseServlet: Insert successful.");
-                response.sendRedirect("checkout.jsp?success=true");
+                response.sendRedirect("BuyTickets.jsp?success=true");
+                session.setAttribute("succMsg", "Payment Completed");
             } else {
-                System.out.println("purchaseServlet: Insert failed!");
-                response.sendRedirect("checkout.jsp?error=insertFailed");
+                response.sendRedirect("BuyTickets.jsp?error=insertFailed");
+                session.setAttribute("failedMsg", "Server Error");
             }
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            System.out.println("purchaseServlet: Invalid number format - " + e.getMessage());
             response.sendRedirect("checkout.jsp?error=numberFormat");
         } catch (Exception ex) {
             ex.printStackTrace();
-            System.out.println("purchaseServlet: Exception occurred - " + ex.getMessage());
             response.sendRedirect("checkout.jsp?error=exception");
         } finally {
             out.close();

@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-between align-items-center my-4">
-                    <div class="yellow-box ms-auto" id="countdown" style="width: 90px;">05:00</div>
+                    <div class="yellow-box ms-auto" id="countdown" style="width: 90px;">03:00</div>
                 </div>
             </div>
             <hr style="border-bottom: 3px solid #D4AF37;">
@@ -476,7 +476,7 @@
 
         <script>
             // Set the countdown time in seconds (1 minute)
-            var countdownTime = 299;
+            var countdownTime = 179;
 
             // Update the countdown every 1 second
             var x = setInterval(function () {

@@ -75,13 +75,32 @@
                         <c:forEach var="booking" items="${bookings}">
                             <div class="booking-item mb-1">
                                 <p>Booking ID ${booking.id} | Adult ${booking.adultTickets} | Child ${booking.childTickets} - LKR ${booking.totalAmount}</p>
-                                <a href="bookingDelete?id=${booking.id}" class="btn cancel-btn">Delete</a>
+                                <a href="bookingDelete?id=${booking.id}&userId=${param.id}" class="btn cancel-btn">Cancel</a>
                             </div>
                         </c:forEach>
                     </div>
 
                     <div class="margin-border">
                         <hr style="border-top: 3px solid #D4AF37;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cancel Confirmation Modal -->
+            <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="cancelModalLabel">Confirm Cancellation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to cancel this booking?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a id="confirmCancelBtn" href="#" class="btn btn-danger">Cancel Booking</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -127,7 +146,8 @@
                 </div>
             </div>
         </div>
-        <%@include file="components/footer.jsp"%>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <%@include file="components/footer.jsp"%>
     </body>
 </html>

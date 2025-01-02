@@ -273,16 +273,34 @@
                 color: black;
             }
 
+            .yellow-box {
+                background-color: #D4AF37;
+                color: #0D0C0C;
+                padding: 5px 22px;
+                text-align: center;
+                font-size: 15px;
+                font-weight:500;
+                display: inline-block;
+                border-radius: 3px;
+            }
+
+            @media screen and (max-width: 768px){
+                .yellow-box {
+                    font-size: 12px;
+                }
+            }
+
         </style>
 
     </head>
     <body>
         <div class="container">
-            <c:if test="${not empty failedMsg}">
-                <div class="alert alert-danger text-center" role="alert" style="width: 35%; margin: 0 auto;">
-                    ${failedMsg}
-                </div>
-            </c:if>
+
+
+
+            <div class="col-3" style="padding-bottom: 50px;">
+                <div class="yellow-box ms-auto" id="countdown" style="width: 90px;">03:00</div>
+            </div>
             <div class="show-time-container">
                 <div class="date-container">
                     <i class="fa-solid fa-calendar-days"></i>
@@ -348,7 +366,7 @@
                         <h2>Your Details</h2>
                         <hr style="border: 1px solid black;">
                         <label for="name">Name:</label><br>
-                        <input type="text" id="user_name" name="user_name" required><br>
+                        <input type="text" id="user_name" name="user_name" required value><br>
                         <label for="phone">Phone Number:</label><br>
                         <input type="text" id="myTextBox" name="phoneNumber" required><br>
                         <label for="email">Email:</label><br>
@@ -373,6 +391,23 @@
                     <div type="submit" id ="paypal-button-container" value="Pay Now"></div>
                 </div>
             </form>
+        </div>
+
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        You have to login first.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <%@include file="components/footer.jsp" %>
@@ -421,10 +456,11 @@
                         // Check if user is logged in
                         const isLoggedIn = <%= (session.getAttribute("currentUser") != null)%>;
                         if (!isLoggedIn) {
-                            // Set error message in session and reload the page
-            <% session.setAttribute("failedMsg", "You have to login first");%>
+                            // Set error message in session
+            <% session.setAttribute("logMsg", "You have to login first");%>
                             valid = false;
-                            location.reload();
+                            // Trigger Bootstrap modal
+                            $('#loginModal').modal('show');
                         }
 
                         return valid;
@@ -503,6 +539,35 @@
                     }
                 });
             });
+        </script>
+
+        <script>
+            // Set the countdown time in seconds (1 minute)
+            var countdownTime = 179;
+
+            // Update the countdown every 1 second
+            var x = setInterval(function () {
+
+                // Time calculations for minutes and seconds
+                var minutes = Math.floor(countdownTime / 60);
+                var seconds = countdownTime % 60;
+
+                // Add leading zeros to minutes and seconds if needed
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                // Display the result in the element with id="countdown"
+                document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+
+                // If the countdown is finished, redirect to BuyTickets.jsp
+                if (countdownTime <= 0) {
+                    clearInterval(x);
+                    window.location.href = "BuyTickets.jsp";
+                }
+
+                // Decrease the countdown time by 1 second
+                countdownTime--;
+            }, 1000);
         </script>
 
 

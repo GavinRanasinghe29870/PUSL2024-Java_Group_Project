@@ -51,14 +51,14 @@
                         BUY TICKETS
                     </button>
                 </div>
-            </div>
-                    
                 <%
                         }
                     }
                 %>
+            </div>
         </div>
-            <div class="container">
+                    
+        <div class="container" style="padding-bottom: 100px; padding-top: 60px;">
             <h2 style="color: #D4AF37;">Coming Soon</h2>
             <hr style="border-top: 3px solid #D4AF37;">
         
@@ -74,16 +74,16 @@
                     <!-- Update the 'More' link to dynamically include the movie title in the query parameter -->
                     <a href="http://localhost:8080/PUSL2024_Group_Project/singleMoviepage.jsp?id=<%= movie.getId() %>" 
                        class="transparent-button">More</a>
-                    
                 </div>
-            </div>
-                      
                 <%
                         }
                     }
                 %>
-            </div> 
-       
+            </div>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <%@include file="components/footer.jsp" %>
     </body>
 </html>

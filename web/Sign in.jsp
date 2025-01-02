@@ -88,24 +88,26 @@
         </style>
     </head>
     <body style="background-color: #000000">
-        <div class="sign_container">
-            <div class="logo_section">
-                <img src="Images/navbarlogo.png" alt="Logo">
-            </div>
-            <div class="form_section">
-                <h2>Sign In</h2>
-                <form action="SigninServlet" method="post">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                    <button style="background-color: #000000; color:#fff " type="submit">Sign In</button>
-                </form>
-                <div class="form-group text-center mt-3">
-                    <p>
-                        Don't have an account?<a href="Signup.jsp"> <span
-                                style="font-size: 0.9em">SIGN UP NOW</span></a>
-                    </p>
+        <div class="container">
+            <div class="sign_container">
+                <div class="logo_section">
+                    <img src="Images/navbarlogo.png" alt="Logo">
+                </div>
+                <div class="form_section">
+                    <h2>Sign In</h2>
+                    <form action="SigninServlet" method="post">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                        <button style="background-color: #000000; color:#fff " type="submit">Sign In</button>
+                    </form>
+                    <div class="form-group text-center mt-3">
+                        <p>
+                            Don't have an account?<a href="Signup.jsp"> <span
+                                    style="font-size: 0.9em">SIGN UP NOW</span></a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
