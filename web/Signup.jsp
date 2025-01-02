@@ -93,7 +93,7 @@
 
             /* Submit Button */
             .signup-button {
-                background-color: #D4AF37; /* Gold color */
+                background-color: #000000; /* Gold color */
                 color: #fff; /* White text */
                 border: none;
                 padding: 8px 0px 2px 30px; /* Adjust padding for smaller height */

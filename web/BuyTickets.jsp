@@ -24,12 +24,13 @@
 <html>
     <head>
         <title>Buy Tickets</title>
-        <%@include file="components/navbar.jsp" %>
+        
         <link rel="stylesheet" type="text/css" href="./CSS/buytickets.css" />
         <link link-style href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     </head>
     <body style="background-color: #0D0C0C;">
+        <%@include file="components/navbar.jsp" %>
         <hr style="border-top: 3px solid #D4AF37;">
         <div style="background-color: #000000; padding-top: 20px;">
             <p class="Custom-title" data-text="Buy Tickets">Buy Tickets</p>
@@ -50,6 +51,8 @@
 
         </div>
         <div class="error-message" style="color: red;"></div>
+        
+        <%@include file="components/footer.jsp"%>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

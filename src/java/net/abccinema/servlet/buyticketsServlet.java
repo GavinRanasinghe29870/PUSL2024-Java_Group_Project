@@ -27,7 +27,7 @@ public class buyticketsServlet extends HttpServlet {
         try (Connection con = DbCon.getConnection(); PrintWriter out = response.getWriter()) {
             buyticketsDao dao = new buyticketsDao(con);
 
-            // Fetch the list of movies
+            
             List<buytickets> movies = dao.getAllMovies();
 
             // Convert the list to JSON using Gson
@@ -38,7 +38,7 @@ public class buyticketsServlet extends HttpServlet {
             out.print(json);
             out.flush();
         } catch (Exception e) {
-            // Send error response as JSON
+            
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             Gson gson = new Gson();
             String errorJson = gson.toJson("Error fetching movies: " + e.getMessage());
@@ -46,7 +46,7 @@ public class buyticketsServlet extends HttpServlet {
                 out.print(errorJson);
                 out.flush();
             }
-            e.printStackTrace(); // Log the exception for debugging
+            e.printStackTrace();
         }
     }
 }

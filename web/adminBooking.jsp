@@ -40,10 +40,16 @@
                         <tr>
                             <th>Booking ID</th>
                             <th>Name</th>
-                            <th>Adult Seats</th>
-                            <th>Child Seats</th>
-                            <th>Movie Name</th>
-                            <th>Total Amount LKR</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Adult Tickets</th>
+                            <th>Child Tickets</th>
+                            <th>Total Amount (LKR)</th>
+                            <th>Payment Method</th>
+                            <th>Movie ID</th>
+                            <th>Movie Time Slot</th>
+                            <th>Seat Numbers</th>
+                            <th>Booking Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,10 +61,16 @@
                             <tr>
                                 <td><%= b.getBookingId()%></td>
                                 <td><%= b.getName()%></td>
-                                <td><%= b.getAdultSeat()%></td>
-                                <td><%= b.getChildSeat()%></td>
-                                <td><%= b.getMovieName()%></td>
-                                <td><%= b.getTotalPrice()%></td> 
+                                <td><%= b.getPhoneNumber()%></td>
+                                <td><%= b.getEmail()%></td>
+                                <td><%= b.getAdultTickets()%></td>
+                                <td><%= b.getChildTickets()%></td>
+                                <td><%= b.getTotalAmount()%></td>
+                                <td><%= b.getPaymentMethod()%></td>
+                                <td><%= b.getMovieId()%></td>
+                                <td><%= b.getMovieTimeSlot()%></td>
+                                <td><%= b.getSeatNumbers()%></td>
+                                <td><%= b.getBookDate()%></td>
                             </tr>
                         <%
                                 }
